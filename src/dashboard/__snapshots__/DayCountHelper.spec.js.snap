@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DayCountHelper should return the formatted output for 'Wed Mar 21 2018 05:04:42 GMT+0530 (+0530)' 1`] = `"5:04:42 am"`;
+
+exports[`DayCountHelper should return the formatted output for 'Wed Mar 21 2018 05:30:00 GMT+0530 (+0530)' 1`] = `"5:30:00 am"`;

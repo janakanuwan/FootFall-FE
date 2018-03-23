@@ -1,0 +1,35 @@
+# FootFall System
+---
+
+See more details at [Google Drive](https://drive.google.com/drive/folders/1a23Ad9oDTwn10oYGa98jJdUOWWAep72j?usp=sharing)
+
+### Installation
+- Install node with npm (or yarm)
+- Run `npm install` to add required dependencies
+- To start in `development` mode run `npm start` inside the root folder (open the browser and type `http://localhost:8080/`)
+- To bundle with `production` mode (to `build` folder), run `npm start build`
+
+### Guides
+- [React](https://reactjs.org/tutorial/tutorial.html)
+- [Redux](https://redux.js.org/introduction)
+- [Webpack](https://webpack.js.org/guides/getting-started/)
+- Eslint : Airnb Style [js](https://github.com/airbnb/javascript), [react](https://github.com/airbnb/javascript/tree/master/react
+)
+- [React Components](https://github.com/brillout/awesome-react-components)
+- [Redux Eco System](https://github.com/markerikson/redux-ecosystem-links)
+
+### Practises
+- Make all view components (react) stateless
+- Follow TDD (Test Driven Development) [Hint: `npm run test:watch`]
+- Add `dependencies` correctly based on requirements (i.e. `--save` vs `--save-dev`)
+
+### Versions
+- Update the `version.md` and `package.json` for each release with correct version number
+- Add git tag with corresponding version number
+
+
+## TODO
+- Add storybook
+- Add test cases
+
+
