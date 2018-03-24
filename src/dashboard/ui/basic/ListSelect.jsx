@@ -5,16 +5,16 @@ import {MenuItem} from 'material-ui/Menu';
 
 
 /**
- * @param merchants array of merchant details (each merchant should have 'id' and 'name' property)
+ * @param data array of data in {id:<ID>, name: <NAME> } format
  * @param selectedIndex array index of selected merchant
  *
  * @param onSelect(index) fired at selecting a merchant
  */
-const MerchantSelect = ({merchants, selectedIndex, onSelect}) => {
+const ListSelect = ({data, selectedIndex, onSelect}) => {
 
-  const menuItems = merchants.map((merchant, index) =>
-    <MenuItem key={merchant.id} value={index}>
-      {merchant.name}
+  const menuItems = data.map((entry, index) =>
+    <MenuItem key={entry.id} value={index}>
+      {entry.name}
     </MenuItem>
   );
 
@@ -23,16 +23,21 @@ const MerchantSelect = ({merchants, selectedIndex, onSelect}) => {
       value={selectedIndex}
       onChange={(event) => onSelect(event.target.value)}
       // autoWidth
+      displayEmpty={false}
     >
       {menuItems}
     </Select>
   );
 };
 
-MerchantSelect.propTypes = {
-  merchants: PropTypes.array.isRequired,
+ListSelect.propTypes = {
+  data: PropTypes.array.isRequired,
   selectedIndex: PropTypes.number.isRequired,
   onSelect: PropTypes.func.isRequired
 };
 
-export default MerchantSelect;
+ListSelect.defaultProps = {
+  selectedIndex: 0
+};
+
+export default ListSelect;

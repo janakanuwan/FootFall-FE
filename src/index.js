@@ -1,6 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import CountChart from './dashboard/CountChart';
+import CountChart from './dashboard/ui/basic/CountChart';
+import UserLoginForm from "./auth/ui/UserLoginForm";
+import UserMenu from "./dashboard/ui/UserMenu";
+import ListSelect from "./dashboard/ui/basic/ListSelect";
+import DayCount from "./dashboard/ui/DayCount";
+import ButtonGroup from "./dashboard/ui/basic/ButtonGroup";
+import ButtonSelectGroup from "./dashboard/ui/basic/ButtonSelectGroup";
+import DateRangePicker from "./dashboard/ui/basic/DateRangePicker";
 
 const userMenuData = {
   userName: 'Hello Test',
@@ -8,8 +15,8 @@ const userMenuData = {
   onLogout: (data) => console.log("Loging out:", data)
 };
 
-const merchantSelectData = {
-  merchants: [
+const listSelectData = {
+  data: [
     {
       id: 1,
       name: 'Test Merchant 1'
@@ -20,7 +27,7 @@ const merchantSelectData = {
     }
   ],
   selectedIndex: 0,
-  onSelect: (index) => console.log('MerchantSelect selectedIndex: ', index)
+  onSelect: (index) => console.log('Selected data: ', index)
 };
 
 const dayCountData = {
@@ -86,15 +93,15 @@ const countChartData = [
 
 ReactDOM.render(
   <div>
-    {/*<UserLoginForm/>*/}
-    {/*<UserMenu {...userMenuData}/>*/}
-    {/*<MerchantSelect {...merchantSelectData}/>*/}
-    {/*<DayCount {...dayCountData}/>*/}
-    {/*<ButtonGroup {...buttonGroupData}/>*/}
-    {/*{buttonSelectGroupData.map((data, index) =>*/}
-    {/*<ButtonSelectGroup key={index} {...data}/>*/}
-    {/*)}*/}
-    {/*<DateRangePicker {...dateRangePickerData}/>*/}
+    <UserLoginForm/>
+    <UserMenu {...userMenuData}/>
+    <ListSelect {...listSelectData}/>
+    <DayCount {...dayCountData}/>
+    <ButtonGroup {...buttonGroupData}/>
+    {buttonSelectGroupData.map((data, index) =>
+      <ButtonSelectGroup key={index} {...data}/>
+    )}
+    <DateRangePicker {...dateRangePickerData}/>
     <CountChart data={countChartData}/>
   </div>,
   document.getElementById('root')

@@ -1,7 +1,7 @@
-import MerchantSelect from './MerchantSelect';
+import ListSelect from './ListSelect';
 
-const merchantSelectData = {
-  merchants: [
+const listSelectData = {
+  data: [
     {
       id: 1,
       name: 'Test Merchant 1'
@@ -15,7 +15,7 @@ const merchantSelectData = {
   onSelect: (index) => console.log('Selected data: ', index)
 };
 
-describe('MerchantSelect', () => {
+describe('ListSelect', () => {
   // FIXME
   throw('NEED TO IMPLEMENT');
 });
