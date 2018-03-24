@@ -5,13 +5,19 @@ import TextField from 'material-ui/TextField';
 import {formatDate, today} from "./DateRangePickerHelper";
 
 /**
- * @param props.onChange(event) fired at changing date
+ *
+ * @param props.label
+ * @param props.date
+ * @param props.min
+ * @param props.max
+ *
+ * @param props.onChange(event)  fired at changing date
  */
 const DateTextField = (props) => {
   return (
     <TextField
       {...props}
-      id={props.label+'-date'}
+      id={props.label + '-date'}
       name={props.label}
       label={props.label}
       type="date"
@@ -55,19 +61,19 @@ DateTextField.defaultProps = {
  */
 class DateRangePicker extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
       fromDate: formatDate(props.fromDate),
-      toDate:formatDate(props.toDate)
+      toDate: formatDate(props.toDate)
     };
 
     this.minString = formatDate(props.min);
     this.maxString = formatDate(props.max);
   }
 
-  handleChange(data){
+  handleChange(data) {
     // TODO: validate fromDate <= toDate
     this.setState(data);
     this.props.onChange({
@@ -79,7 +85,7 @@ class DateRangePicker extends React.Component {
   render() {
     const {fromDateValue, toDateValue} = this.state;
     const minValue = this.minString;
-    const maxValue= this.maxString;
+    const maxValue = this.maxString;
 
     return (
       <div>

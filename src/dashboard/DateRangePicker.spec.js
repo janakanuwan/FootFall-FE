@@ -1,4 +1,4 @@
-import DateRangePicker, {DateTextField} from './DateRangePicker';
+import DateRangePicker from './DateRangePicker';
 
 const dateRangePickerData = {
   fromDate: new Date(),

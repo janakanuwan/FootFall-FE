@@ -1,17 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-
-import UserLoginForm from './auth/UserLoginForm';
-
-import UserMenu from './dashboard/UserMenu';
+import CountChart from './dashboard/CountChart';
 
 const userMenuData = {
   userName: 'Hello Test',
   userEmail: 'hellotest@gmail.com',
   onLogout: (data) => console.log("Loging out:", data)
 };
-
-import MerchantSelect from './dashboard/MerchantSelect';
 
 const merchantSelectData = {
   merchants: [
@@ -28,15 +23,11 @@ const merchantSelectData = {
   onSelect: (index) => console.log('MerchantSelect selectedIndex: ', index)
 };
 
-import DayCount from './dashboard/DayCount';
-
 const dayCountData = {
   dayName: 'Today',
   date: new Date(),
   count: 40
 };
-
-import ButtonGroup from './dashboard/ButtonGroup';
 
 const buttonGroupData = {
   itemList: ['Button 1', 'Button 2', 'Button 3'],
@@ -44,8 +35,6 @@ const buttonGroupData = {
   onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
   size: 'large'
 };
-
-import ButtonSelectGroup from './dashboard/ButtonSelectGroup';
 
 const buttonSelectGroupData = [
   {
@@ -79,25 +68,34 @@ const buttonSelectGroupData = [
   },
 ];
 
-import DateRangePicker from './dashboard/DateRangePicker';
-
 const dateRangePickerData = {
   fromDate: new Date(),
   toDate: new Date(),
   onChange: (data) => console.log('DateRangePicker data:', data)
 };
 
+const countChartData = [
+  {name: 'Page A', IN: 4000, OUT: 2400, PRESENCE: 2400},
+  {name: 'Page B', IN: 3000, OUT: 1398, PRESENCE: 2210},
+  {name: 'Page C', IN: 2000, OUT: 9800, PRESENCE: 2290},
+  {name: 'Page D', IN: 2780, OUT: 3908, PRESENCE: 2000},
+  {name: 'Page E', IN: 1890, OUT: 4800, PRESENCE: 2181},
+  {name: 'Page F', IN: 2390, OUT: 3800, PRESENCE: 2500},
+  {name: 'Page G', IN: 3490, OUT: 4300, PRESENCE: 2100},
+];
+
 ReactDOM.render(
   <div>
-    <UserLoginForm/>
-    <UserMenu {...userMenuData}/>
-    <MerchantSelect {...merchantSelectData}/>
-    <DayCount {...dayCountData}/>
-    <ButtonGroup {...buttonGroupData}/>
-    {buttonSelectGroupData.map((data, index) =>
-      <ButtonSelectGroup key={index} {...data}/>
-    )}
-    <DateRangePicker {...dateRangePickerData}/>
+    {/*<UserLoginForm/>*/}
+    {/*<UserMenu {...userMenuData}/>*/}
+    {/*<MerchantSelect {...merchantSelectData}/>*/}
+    {/*<DayCount {...dayCountData}/>*/}
+    {/*<ButtonGroup {...buttonGroupData}/>*/}
+    {/*{buttonSelectGroupData.map((data, index) =>*/}
+    {/*<ButtonSelectGroup key={index} {...data}/>*/}
+    {/*)}*/}
+    {/*<DateRangePicker {...dateRangePickerData}/>*/}
+    <CountChart data={countChartData}/>
   </div>,
   document.getElementById('root')
 );

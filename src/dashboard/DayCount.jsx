@@ -7,7 +7,7 @@ import {withStyles} from 'material-ui/styles';
 
 import {formatDate, formatTime} from "./DayCountHelper";
 
-const styles= (theme) => ({
+const styles = (theme) => ({
   paperCount: {
     padding: theme.spacing.unit * 2,
     width: '50%',

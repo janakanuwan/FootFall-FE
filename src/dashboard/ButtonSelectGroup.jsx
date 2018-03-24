@@ -14,7 +14,6 @@ import Select from 'material-ui/Select';
  *
  * @param props.onClick(index) fired at clicking a button
  *
- * // Optional
  * @param props.maxButtonCount maximum number of buttons to display in-line
  * @param props.size size of button ('small','medium', 'large'; default: 'medium')
  */
@@ -25,7 +24,7 @@ class ButtonSelectGroup extends React.Component {
     this.state = {selectedIndex: props.selectedIndex};
   }
 
-  handleClick(index){
+  handleClick(index) {
     this.setState({selectedIndex: index});
     this.props.onClick(index);
   };
@@ -51,19 +50,19 @@ class ButtonSelectGroup extends React.Component {
       const modifiedIndex = index + MAX_BUTTON_COUNT_MINUS_1;
       return (
         <Button
-        key={modifiedIndex}
-        children={item}
-        variant={modifiedIndex === selectedIndex ? "raised" : "flat"}
-        size={size}
+          key={modifiedIndex}
+          children={item}
+          variant={modifiedIndex === selectedIndex ? "raised" : "flat"}
+          size={size}
 
-        value={modifiedIndex}
-      />
+          value={modifiedIndex}
+        />
       );
     });
 
     const selectComponent = buttonsInSelect.length === 0 ? null :
       <Select
-        value={selectedIndex > MAX_BUTTON_COUNT_MINUS_1 ? selectedIndex: MAX_BUTTON_COUNT_MINUS_1}
+        value={selectedIndex > MAX_BUTTON_COUNT_MINUS_1 ? selectedIndex : MAX_BUTTON_COUNT_MINUS_1}
         onChange={(event) => this.handleClick(event.target.value)}
       >
         {buttonsInSelect}

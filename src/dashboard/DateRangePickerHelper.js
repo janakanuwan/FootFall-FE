@@ -4,11 +4,11 @@ const DATE_FORMAT = "YYYY-MM-DD";
 
 /**
  *
- * @param date
+ * @param date {Date}
  * @returns {string|undefined} formatted date in {#DATE_FORMAT}
  */
 const formatDate = (date) => {
-  if(date && date instanceof Date){
+  if (date && date instanceof Date) {
     return moment(date).format(DATE_FORMAT);
   }
   return undefined;
@@ -27,7 +27,7 @@ const today = () => {
  * @returns {string} date one month before in {DATE_FORMAT}
  */
 const oneMonthBefore = () => {
-  return moment().subtract(1 , 'months').format(DATE_FORMAT);
+  return moment().subtract(1, 'months').format(DATE_FORMAT);
 };
 
 
