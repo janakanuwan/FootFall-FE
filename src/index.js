@@ -91,6 +91,17 @@ const countChartData = [
   {name: 'Page G', IN: 3490, OUT: 4300, PRESENCE: 2100},
 ];
 
+
+import ButtonMultipleGroup from './dashboard/ui/basic/ButtonMultipleGroup';
+
+const buttonMultipleGroupData = {
+  data: ['Button 1', 'Button 2', 'Button 3'],
+  selectedIndices: [0],
+  onClick: (index) => console.log('ButtonMultipleGroup selectedIndices:', index),
+  size: 'large'
+};
+
+
 ReactDOM.render(
   <div>
     <UserLoginForm/>
@@ -103,6 +114,7 @@ ReactDOM.render(
     )}
     <DateRangePicker {...dateRangePickerData}/>
     <CountChart data={countChartData}/>
+    <ButtonMultipleGroup {...buttonMultipleGroupData}/>
   </div>,
   document.getElementById('root')
 );
