@@ -80,7 +80,7 @@ class ButtonSelectGroup extends React.Component {
 
 ButtonSelectGroup.propTypes = {
   data: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedIndex: PropTypes.number.isRequired,
+  selectedIndex: PropTypes.number,
   onClick: PropTypes.func.isRequired,
   maxButtonCount: PropTypes.number,
   size: PropTypes.oneOf(['small', 'medium', 'large'])
