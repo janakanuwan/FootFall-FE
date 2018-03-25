@@ -9,8 +9,8 @@ import Select from 'material-ui/Select';
 // }}
 
 /**
- * @param props.itemList list of names for buttons
- * @param props.selectedIndex selected index from itemList
+ * @param props.data list of names for buttons
+ * @param props.selectedIndex selected index from data
  *
  * @param props.onClick(index) fired at clicking a button
  *
@@ -30,7 +30,7 @@ class ButtonSelectGroup extends React.Component {
   };
 
   render() {
-    const itemList = this.props.itemList;
+    const itemList = this.props.data;
     const selectedIndex = this.state.selectedIndex;
     const size = this.props.size;
 
@@ -79,7 +79,7 @@ class ButtonSelectGroup extends React.Component {
 }
 
 ButtonSelectGroup.propTypes = {
-  itemList: PropTypes.arrayOf(Object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedIndex: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
   maxButtonCount: PropTypes.number,

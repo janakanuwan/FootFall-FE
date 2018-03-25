@@ -1,7 +1,7 @@
 import ButtonGroup from './ButtonGroup';
 
 const buttonGroupData = {
-  itemList: ['Button 1', 'Button 2', 'Button 3'],
+  data: ['Button 1', 'Button 2', 'Button 3'],
   selectedIndex: 0,
   onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
   size: 'large'

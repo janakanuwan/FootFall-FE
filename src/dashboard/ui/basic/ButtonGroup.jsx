@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
 /**
- * @param props.itemList list of names for buttons
- * @param props.selectedIndex {number} selected index from itemList
+ * @param props.data array of names for buttons
+ * @param props.selectedIndex {number} selected index from data
  *
  * @param props.onClick(index {number}) fired at clicking a button
  *
@@ -28,7 +28,7 @@ class ButtonGroup extends React.Component {
 
     return (
       <div>
-        {this.props.itemList.map((item, index) =>
+        {this.props.data.map((item, index) =>
           <Button
             key={index}
             children={item}
@@ -43,7 +43,7 @@ class ButtonGroup extends React.Component {
 }
 
 ButtonGroup.propTypes = {
-  itemList: PropTypes.arrayOf(Object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedIndex: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
   size: PropTypes.oneOf(['small', 'medium', 'large'])
