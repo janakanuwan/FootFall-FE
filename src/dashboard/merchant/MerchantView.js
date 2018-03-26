@@ -5,15 +5,15 @@ import {changeMerchant} from "./merchantActions";
 
 const mapStateToProps = state => {
   return {
-    merchantList: state.list,
-    selectedIndex: state.selectedIndex
+    merchantList: state.merchants,
+    selectedMerchant: state.selectedMerchant
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelect: ({merchant, index}) => {
-      dispatch(changeMerchant(index, merchant));
+    onSelect: (merchant) => {
+      dispatch(changeMerchant(merchant));
     }
   }
 };

@@ -18,8 +18,9 @@ const userMenuData = {
     onLogout: (data) => console.log("Loging out:", data)
 };
 
+
 const listSelectData = {
-    data: [
+    items: [
         {
             id: 1,
             name: 'Test Merchant 1'
@@ -29,9 +30,13 @@ const listSelectData = {
             name: 'Test Merchant 2'
         }
     ],
-    selectedIndex: 0,
-    onSelect: (data) => console.log('Selected data: ', data)
+    selectedItem: {
+        id: 1,
+        name: 'Test Merchant 1'
+    },
+    onSelect: (item) => console.log('Selected item: ', item)
 };
+
 
 const dayCountData = {
     dayName: 'Today',
@@ -59,37 +64,39 @@ const buttonGroupData = {
     size: 'large'
 };
 
+const buttonSelectItems = ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'].map((item, index) => ({
+    id: index,
+    name: item
+}));
+
 const buttonSelectGroupData = [
     {
-        data: ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'].map((item, index) => ({
-            id: index,
-            name: item
-        })),
-        selectedIndex: 0,
-        onClick: (index) => console.log('ButtonGroup clickedIndex:', index)
+        items: buttonSelectItems,
+        selectedItem: buttonSelectItems[0],
+        onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem)
     },
     {
-        data: ['Button 1', 'Button 2'].map((item, index) => ({id: index, name: item})),
-        selectedIndex: 1,
-        onClick: (index) => console.log('ButtonGroup clickedIndex:', index)
+        items: buttonSelectItems.slice(0, 2),
+        selectedItem: buttonSelectItems[1],
+        onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem)
     },
     {
-        data: ['Button 1', 'Button 2', 'Button 3', 'Button 4'].map((item, index) => ({id: index, name: item})),
-        selectedIndex: 3,
-        onClick: (index) => console.log('ButtonGroup clickedIndex:', index)
+        items: buttonSelectItems.slice(0, 4),
+        selectedItem: buttonSelectItems[3],
+        onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem)
     },
     {
-        data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
-        selectedIndex: 2,
+        items: buttonSelectItems.slice(0, 3),
+        selectedItem: buttonSelectItems[2],
         maxButtonCount: 1,
-        onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
+        onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
         size: 'small'
     },
     {
-        data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
-        selectedIndex: 2,
+        items: buttonSelectItems.slice(0, 3),
+        selectedItem: buttonSelectItems[2],
         maxButtonCount: 2,
-        onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
+        onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
         size: 'large'
     },
 ];
@@ -129,35 +136,40 @@ const merchantOverviewData = {
             name: 'Test Merchant 2'
         }
     ],
-    selectedIndex: 0,
-    onSelect: (index) => console.log('Selected merchant index: ', index)
+    selectedMerchant: {
+        id: 1,
+        name: 'Test Merchant 1'
+    },
+    onSelect: (merchant) => console.log('Selected merchant: ', merchant)
 };
 
+const locationItems = [
+    {
+        id: 1,
+        name: 'Location 1'
+    },
+    {
+        id: 2,
+        name: 'Location 2'
+    },
+    {
+        id: 3,
+        name: 'Location 3'
+    },
+    {
+        id: 4,
+        name: 'Location 4'
+    },
+    {
+        id: 5,
+        name: 'Location 5'
+    }
+];
+
 const merchantLocationData = {
-    locationList: [
-        {
-            id: 1,
-            name: 'Location 1'
-        },
-        {
-            id: 2,
-            name: 'Location 2'
-        },
-        {
-            id: 3,
-            name: 'Location 3'
-        },
-        {
-            id: 4,
-            name: 'Location 4'
-        },
-        // {
-        //   id: 5,
-        //   name: 'Location 5'
-        // }
-    ],
-    selectedIndex: 0,
-    onClick: (clickedData) => console.log('Selected location data: ', clickedData)
+    locationList: locationItems,
+    selectedLocation: locationItems[3],
+    onClick: (location) => console.log('Selected location : ', location)
 };
 
 

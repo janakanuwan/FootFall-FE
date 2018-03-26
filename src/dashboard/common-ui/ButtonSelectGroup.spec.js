@@ -1,33 +1,38 @@
 import ButtonSelectGroup from './ButtonSelectGroup';
 
+const buttonSelectItems = ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'].map((item, index) => ({
+  id: index,
+  name: item
+}));
+
 const buttonSelectGroupData = [
   {
-    data: ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'].map((item, index) => ({id: index, name: item})),
-    selectedIndex: 0,
-    onClick: (clickedData) => console.log('ButtonGroup clicked data:', clickedData)
+    items: buttonSelectItems,
+    selectedItem: buttonSelectItems[0],
+    onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem)
   },
   {
-    data: ['Button 1', 'Button 2'].map((item, index) => ({id: index, name: item})),
-    selectedIndex: 1,
-    onClick: (clickedData) => console.log('ButtonGroup clicked data:', clickedData)
+    items: buttonSelectItems.slice(0, 2),
+    selectedItem: buttonSelectItems[1],
+    onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem)
   },
   {
-    data: ['Button 1', 'Button 2', 'Button 3', 'Button 4'].map((item, index) => ({id: index, name: item})),
-    selectedIndex: 3,
-    onClick: (clickedData) => console.log('ButtonGroup clicked data:', clickedData)
+    items: buttonSelectItems.slice(0, 4),
+    selectedItem: buttonSelectItems[3],
+    onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem)
   },
   {
-    data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
-    selectedIndex: 2,
+    items: buttonSelectItems.slice(0, 3),
+    selectedItem: buttonSelectItems[2],
     maxButtonCount: 1,
-    onClick: (clickedData) => console.log('ButtonGroup clicked data:', clickedData)
+    onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
     size: 'small'
   },
   {
-    data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
-    selectedIndex: 2,
+    items: buttonSelectItems.slice(0, 3),
+    selectedItem: buttonSelectItems[2],
     maxButtonCount: 2,
-    onClick: (clickedData) => console.log('ButtonGroup clicked data:', clickedData)
+    onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
     size: 'large'
   },
 ];

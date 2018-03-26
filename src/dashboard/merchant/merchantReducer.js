@@ -2,7 +2,7 @@ import {createReducer} from 'redux-create-reducer';
 import {CHANGE_MERCHANT} from "../../const/action-types";
 
 const initialState = {
-  list: [
+  merchants: [
     // FIXME,
     {
       id: 1,
@@ -13,13 +13,16 @@ const initialState = {
       name: 'Test Merchant 2'
     }
   ],
-  selectedIndex: 0
+  selectedMerchant: {
+    id: 1,
+    name: 'Test Merchant 1'
+  }
 };
 
 const merchantReducer = createReducer(initialState, {
 
-  [CHANGE_MERCHANT](merchants, action) {
-    return Object.assign({}, merchants, {selectedIndex: action.payload.selectedIndex});
+  [CHANGE_MERCHANT](state, action) {
+    return Object.assign({}, state, {selectedMerchant: action.payload.selectedMerchant});
   },
 
 });

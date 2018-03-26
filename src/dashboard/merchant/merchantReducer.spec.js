@@ -6,7 +6,7 @@ describe('merchantReducer', () => {
   it('should change merchant for empty selected index', () => {
     const initState = {};
     const action = changeMerchant(1);
-    const expected = {selectedIndex: 1};
+    const expected = {selectedMerchant: 1};
 
     expect(merchantReducer(initState, action)).toEqual(expected);
   });
@@ -14,7 +14,7 @@ describe('merchantReducer', () => {
   it('should change merchant for non-empty selected index', () => {
     const initState = merchantReducer({}, changeMerchant(null, 0));
     const action = changeMerchant(1);
-    const expected = {selectedIndex: 1};
+    const expected = {selectedMerchant: 1};
 
     expect(merchantReducer(initState, action)).toEqual(expected);
   });

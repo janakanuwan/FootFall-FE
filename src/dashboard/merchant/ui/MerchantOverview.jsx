@@ -9,15 +9,11 @@ import ListSelect from './../../common-ui/ListSelect';
 
 /**
  *
- * @param merchantList{array} array of merchant list with 'id' and 'name'
- * @param selectedIndex{number}
- * @param onSelect({merchant, index}) fired at a select change
+ * @param merchantList{array} array of merchants with 'id' and 'name' properties
+ * @param selectedMerchant{object}
+ * @param onSelect(merchant) fired at a select change
  */
-const MerchantOverview = ({merchantList, selectedIndex, onSelect}) => {
-
-  const handleChange = ({item, index}) => {
-    onSelect({merchant: item, index: index});
-  };
+const MerchantOverview = ({merchantList, selectedMerchant, onSelect}) => {
 
   return (
     <div>
@@ -32,9 +28,9 @@ const MerchantOverview = ({merchantList, selectedIndex, onSelect}) => {
 
         <Grid item xs>
           <ListSelect
-            data={merchantList}
-            selectedIndex={selectedIndex}
-            onSelect={handleChange}
+            items={merchantList}
+            selectedItem={selectedMerchant}
+            onSelect={onSelect}
           />
         </Grid>
       </Grid>
@@ -52,7 +48,10 @@ MerchantOverview.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  selectedIndex: PropTypes.number.isRequired,
+  selectedMerchant: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   onSelect: PropTypes.func.isRequired
 };
 

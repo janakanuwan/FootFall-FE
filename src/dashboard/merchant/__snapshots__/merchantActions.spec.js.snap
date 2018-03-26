@@ -3,8 +3,7 @@
 exports[`merchantActions should create an action for merchant change 1`] = `
 Object {
   "payload": Object {
-    "selectedIndex": 1,
-    "selectedMerchant": undefined,
+    "selectedMerchant": 1,
   },
   "type": "CHANGE_MERCHANT",
 }
