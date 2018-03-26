@@ -27,6 +27,8 @@ const DayCount = (props) => {
 
   return (
     <div>
+      <br/>
+
       <Paper elevation={4}>
         <Grid container alignItems="center" justify="center" direction="row">
 
@@ -37,10 +39,10 @@ const DayCount = (props) => {
           </Grid>
 
           <Grid item xs>
-            <Typography variant="headline" component="h3">
+            <Typography variant="headline" component="h5">
               {formatDate(date)}
             </Typography>
-            <Typography variant="headline" component="h5">
+            <Typography variant="headline" component="h6">
               {formatTime(date)}
             </Typography>
           </Grid>
@@ -49,8 +51,8 @@ const DayCount = (props) => {
             <Typography component="p">
               Visiting Customers
             </Typography>
-            <Paper elevation={8} className={classes.paperCount}>
-              <Typography variant="headline" component="h3">
+            <Paper elevation={16} className={classes.paperCount}>
+              <Typography variant="headline" component="h4">
                 {count}
               </Typography>
             </Paper>
@@ -58,6 +60,8 @@ const DayCount = (props) => {
 
         </Grid>
       </Paper>
+
+      <br/>
     </div>
   );
 };

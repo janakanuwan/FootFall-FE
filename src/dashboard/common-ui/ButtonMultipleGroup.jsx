@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
 /**
- * @param props.data array of names for buttons
+ * @param props.data array of data in {id:<ID>, name: <NAME> } format
  * @param props.selectedIndices [{number}] array of selected indices from data
  *
  * @param props.onClick([indices]) fired at clicking a button with new selected indices
@@ -33,8 +33,8 @@ class ButtonMultipleGroup extends React.Component {
       <div>
         {this.props.data.map((item, index) =>
           <Button
-            key={index}
-            children={item}
+            key={item.id}
+            children={item.name}
             variant={selectedIndices.includes(index) ? "raised" : "flat"}
             onClick={() => this.handleClick(index)}
             size={size}
@@ -46,7 +46,12 @@ class ButtonMultipleGroup extends React.Component {
 }
 
 ButtonMultipleGroup.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.string).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   selectedIndices: PropTypes.arrayOf(PropTypes.number),
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['small', 'medium', 'large'])

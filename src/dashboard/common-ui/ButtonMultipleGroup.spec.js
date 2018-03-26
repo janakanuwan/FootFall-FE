@@ -1,7 +1,7 @@
-import ButtonMultipleGroup from './dashboard/ui/basic/ButtonMultipleGroup';
+import ButtonMultipleGroup from './ButtonMultipleGroup';
 
 const buttonMultipleGroupData = {
-  data: ['Button 1', 'Button 2', 'Button 3'],
+  data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
   selectedIndices: [0],
   onClick: (index) => console.log('ButtonMultipleGroup selectedIndices:', index),
   size: 'large'

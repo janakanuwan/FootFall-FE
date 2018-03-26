@@ -19,7 +19,7 @@ const formatDate = (date) => {
  */
 const formatTime = (date) => {
   if (date && date instanceof Date) {
-    return moment(date).format("h:mm:ss a");
+    return moment(date).format("h:mm A");
   }
   return '';
 };

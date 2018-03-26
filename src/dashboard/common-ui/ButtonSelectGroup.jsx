@@ -9,12 +9,12 @@ import Select from 'material-ui/Select';
 // }}
 
 /**
- * @param props.data list of names for buttons
+ * @param props.data array of data in {id:<ID>, name: <NAME> } format
  * @param props.selectedIndex selected index from data
  *
  * @param props.onClick(index) fired at clicking a button
  *
- * @param props.maxButtonCount maximum number of buttons to display in-line
+ * @param props.maxButtonCount maximum number of items to display in-line
  * @param props.size size of button ('small','medium', 'large'; default: 'medium')
  */
 class ButtonSelectGroup extends React.Component {
@@ -38,8 +38,8 @@ class ButtonSelectGroup extends React.Component {
 
     const directButtons = itemList.slice(0, MAX_BUTTON_COUNT_MINUS_1).map((item, index) =>
       <Button
-        key={index}
-        children={item}
+        key={item.id}
+        children={item.name}
         variant={index === selectedIndex ? "raised" : "flat"}
         onClick={() => this.handleClick(index)}
         size={size}
@@ -50,8 +50,8 @@ class ButtonSelectGroup extends React.Component {
       const modifiedIndex = index + MAX_BUTTON_COUNT_MINUS_1;
       return (
         <Button
-          key={modifiedIndex}
-          children={item}
+          key={item.id}
+          children={item.name}
           variant={modifiedIndex === selectedIndex ? "raised" : "flat"}
           size={size}
 
@@ -79,7 +79,12 @@ class ButtonSelectGroup extends React.Component {
 }
 
 ButtonSelectGroup.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.string).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   selectedIndex: PropTypes.number,
   onClick: PropTypes.func.isRequired,
   maxButtonCount: PropTypes.number,

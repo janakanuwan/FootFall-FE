@@ -1,13 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import CountChart from './dashboard/ui/basic/CountChart';
+import CountChart from './dashboard/common-ui/CountChart';
 import UserLoginForm from "./auth/ui/UserLoginForm";
-import UserMenu from "./dashboard/ui/UserMenu";
-import ListSelect from "./dashboard/ui/basic/ListSelect";
-import DayCount from "./dashboard/ui/DayCount";
-import ButtonGroup from "./dashboard/ui/basic/ButtonGroup";
-import ButtonSelectGroup from "./dashboard/ui/basic/ButtonSelectGroup";
-import DateRangePicker from "./dashboard/ui/basic/DateRangePicker";
+import UserMenu from "./dashboard/userMenu/ui/UserMenu";
+import ListSelect from "./dashboard/common-ui/ListSelect";
+import DayCount from "./dashboard/dayCount/ui/DayCount";
+import ButtonGroup from "./dashboard/common-ui/ButtonGroup";
+import ButtonSelectGroup from "./dashboard/common-ui/ButtonSelectGroup";
+import DateRangePicker from "./dashboard/common-ui/DateRangePicker";
+import ButtonMultipleGroup from './dashboard/common-ui/ButtonMultipleGroup';
+import MerchantOverview from './dashboard/overview/ui/MerchantOverview';
+import MerchantLocation from './dashboard/location/ui/MerchantLocation';
 
 const userMenuData = {
   userName: 'Hello Test',
@@ -37,7 +40,20 @@ const dayCountData = {
 };
 
 const buttonGroupData = {
-  data: ['Button 1', 'Button 2', 'Button 3'],
+  data: [
+    {
+      id: 1,
+      name: 'Button 1'
+    },
+    {
+      id: 2,
+      name: 'Button 2'
+    },
+    {
+      id: 3,
+      name: 'Button 3'
+    }
+  ],
   selectedIndex: 0,
   onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
   size: 'large'
@@ -45,29 +61,29 @@ const buttonGroupData = {
 
 const buttonSelectGroupData = [
   {
-    data: ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'],
+    data: ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'].map((item, index) => ({id: index, name: item})),
     selectedIndex: 0,
     onClick: (index) => console.log('ButtonGroup clickedIndex:', index)
   },
   {
-    data: ['Button 1', 'Button 2'],
+    data: ['Button 1', 'Button 2'].map((item, index) => ({id: index, name: item})),
     selectedIndex: 1,
     onClick: (index) => console.log('ButtonGroup clickedIndex:', index)
   },
   {
-    data: ['Button 1', 'Button 2', 'Button 3', 'Button 4'],
+    data: ['Button 1', 'Button 2', 'Button 3', 'Button 4'].map((item, index) => ({id: index, name: item})),
     selectedIndex: 3,
     onClick: (index) => console.log('ButtonGroup clickedIndex:', index)
   },
   {
-    data: ['Button 1', 'Button 2', 'Button 3'],
+    data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
     selectedIndex: 2,
     maxButtonCount: 1,
     onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
     size: 'small'
   },
   {
-    data: ['Button 1', 'Button 2', 'Button 3'],
+    data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
     selectedIndex: 2,
     maxButtonCount: 2,
     onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
@@ -92,13 +108,53 @@ const countChartData = [
 ];
 
 
-import ButtonMultipleGroup from './dashboard/ui/basic/ButtonMultipleGroup';
-
 const buttonMultipleGroupData = {
-  data: ['Button 1', 'Button 2', 'Button 3'],
+  data: ['Button 1', 'Button 2', 'Button 3'].map((item, index) => ({id: index, name: item})),
   selectedIndices: [0],
   onClick: (index) => console.log('ButtonMultipleGroup selectedIndices:', index),
   size: 'large'
+};
+
+const merchantOverviewData = {
+  merchantList: [
+    {
+      id: 1,
+      name: 'Test Merchant 1'
+    },
+    {
+      id: 2,
+      name: 'Test Merchant 2'
+    }
+  ],
+  selectedIndex: 0,
+  onSelect: (index) => console.log('Selected merchant index: ', index)
+};
+
+const merchantLocationData = {
+  locationList: [
+    {
+      id: 1,
+      name: 'Location 1'
+    },
+    {
+      id: 2,
+      name: 'Location 2'
+    },
+    {
+      id: 3,
+      name: 'Location 3'
+    },
+    {
+      id: 4,
+      name: 'Location 4'
+    },
+    // {
+    //   id: 5,
+    //   name: 'Location 5'
+    // }
+  ],
+  selectedIndex: 0,
+  onClick: (index) => console.log('Selected location index: ', index)
 };
 
 
@@ -115,6 +171,10 @@ ReactDOM.render(
     <DateRangePicker {...dateRangePickerData}/>
     <CountChart data={countChartData}/>
     <ButtonMultipleGroup {...buttonMultipleGroupData}/>
+    <MerchantOverview {...merchantOverviewData}/>
+    <MerchantLocation {...merchantLocationData}/>
+    <DayCount {...dayCountData}/>
+
   </div>,
   document.getElementById('root')
 );
