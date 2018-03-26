@@ -10,9 +10,14 @@ import ButtonSelectGroup from './../../common-ui/ButtonSelectGroup';
  *
  * @param locationList{array} array of merchant list with 'id' and 'name'
  * @param selectedIndex{number}
- * @param onSelect(index{number}) fired at a select change
+ * @param onSelect({location, index}) fired at a select change
  */
 const MerchantLocation = ({locationList, selectedIndex, onClick}) => {
+
+  const handleClick = ({item, index}) => {
+    onClick({location: locationList[index], index: index});
+  };
+
   return (
     <div>
       <br/>
@@ -28,7 +33,7 @@ const MerchantLocation = ({locationList, selectedIndex, onClick}) => {
           <ButtonSelectGroup
             data={locationList}
             selectedIndex={selectedIndex}
-            onClick={onClick}
+            onClick={handleClick}
             maxButtonCount={4}
           />
         </Grid>

@@ -12,7 +12,7 @@ import Select from 'material-ui/Select';
  * @param props.data array of data in {id:<ID>, name: <NAME> } format
  * @param props.selectedIndex selected index from data
  *
- * @param props.onClick(index) fired at clicking a button
+ * @param props.onClick({item, index}) fired at clicking a button
  *
  * @param props.maxButtonCount maximum number of items to display in-line
  * @param props.size size of button ('small','medium', 'large'; default: 'medium')
@@ -26,7 +26,7 @@ class ButtonSelectGroup extends React.Component {
 
   handleClick(index) {
     this.setState({selectedIndex: index});
-    this.props.onClick(index);
+    this.props.onClick({item: this.props.data[index], index: index});
   };
 
   render() {

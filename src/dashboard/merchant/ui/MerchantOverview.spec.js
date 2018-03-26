@@ -12,7 +12,7 @@ const merchantOverviewData = {
     }
   ],
   selectedIndex: 0,
-  onSelect: (index) => console.log('Selected merchant index: ', index)
+  onSelect: (itemData) => console.log('Selected merchant index: ', itemData)
 };
 
 describe('MerchantOverview', () => {

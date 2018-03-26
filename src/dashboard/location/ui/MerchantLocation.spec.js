@@ -24,7 +24,7 @@ const merchantLocationData = {
     // }
   ],
   selectedIndex: 0,
-  onClick: (index) => console.log('Selected location index: ', index)
+  onClick: (selectedData) => console.log('Selected location data: ', selectedData)
 };
 
 describe('MerchantLocation', () => {

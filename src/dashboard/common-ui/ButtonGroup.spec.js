@@ -16,7 +16,7 @@ const buttonGroupData = {
     }
   ],
   selectedIndex: 0,
-  onClick: (index) => console.log('ButtonGroup clickedIndex:', index),
+  onClick: (clickedData) => console.log('ButtonGroup clicked data:', clickedData),
   size: 'large'
 };
 describe('ButtonGroup', () => {

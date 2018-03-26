@@ -8,7 +8,7 @@ import {MenuItem} from 'material-ui/Menu';
  * @param data array of data in {id:<ID>, name: <NAME> } format
  * @param selectedIndex array index of selected merchant
  *
- * @param onSelect(index) fired at selecting a merchant
+ * @param onSelect({item, index}) fired at selecting a list item
  */
 const ListSelect = ({data, selectedIndex, onSelect}) => {
 
@@ -21,7 +21,7 @@ const ListSelect = ({data, selectedIndex, onSelect}) => {
   return (
     <Select
       value={selectedIndex}
-      onChange={(event) => onSelect(event.target.value)}
+      onChange={(event) => onSelect({item: data[event.target.value], index: event.target.value})}
       // autoWidth
       displayEmpty={false}
     >

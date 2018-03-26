@@ -11,9 +11,14 @@ import ListSelect from './../../common-ui/ListSelect';
  *
  * @param merchantList{array} array of merchant list with 'id' and 'name'
  * @param selectedIndex{number}
- * @param onSelect(index{number}) fired at a select change
+ * @param onSelect({merchant, index}) fired at a select change
  */
 const MerchantOverview = ({merchantList, selectedIndex, onSelect}) => {
+
+  const handleChange = ({item, index}) => {
+    onSelect({merchant: item, index: index});
+  };
+
   return (
     <div>
       <br/>
@@ -29,7 +34,7 @@ const MerchantOverview = ({merchantList, selectedIndex, onSelect}) => {
           <ListSelect
             data={merchantList}
             selectedIndex={selectedIndex}
-            onSelect={onSelect}
+            onSelect={handleChange}
           />
         </Grid>
       </Grid>

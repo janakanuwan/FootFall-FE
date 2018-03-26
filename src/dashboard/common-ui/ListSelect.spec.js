@@ -12,7 +12,7 @@ const listSelectData = {
     }
   ],
   selectedIndex: 0,
-  onSelect: (index) => console.log('Selected data: ', index)
+  onSelect: (selectedData) => console.log('Selected data: ', selectedData)
 };
 
 describe('ListSelect', () => {

@@ -1,0 +1,1 @@
+export const CHANGE_MERCHANT = 'CHANGE_MERCHANT';

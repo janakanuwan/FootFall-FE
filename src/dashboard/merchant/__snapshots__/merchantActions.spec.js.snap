@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`merchantActions should create an action for merchant change 1`] = `
+Object {
+  "payload": Object {
+    "selectedIndex": 1,
+    "selectedMerchant": undefined,
+  },
+  "type": "CHANGE_MERCHANT",
+}
+`;
