@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
+/**
+ * @param props.data array of names for buttons
+ * @param props.selectedIndices [{number}] array of selected indices from data
+ *
+ * @param props.onClick([indices]) fired at clicking a button with new selected indices
+ *
+ * @param props.size {'small'|'medium'|'large'} size of button (default: 'medium')
+ */
 class ButtonMultipleGroup extends React.Component {
   constructor(props) {
     super(props);

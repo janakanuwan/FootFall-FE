@@ -31,7 +31,12 @@ const ListSelect = ({data, selectedIndex, onSelect}) => {
 };
 
 ListSelect.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   selectedIndex: PropTypes.number.isRequired,
   onSelect: PropTypes.func.isRequired
 };

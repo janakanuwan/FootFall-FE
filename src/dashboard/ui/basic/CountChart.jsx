@@ -60,7 +60,14 @@ const CountChart = (props) => {
 };
 
 CountChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      IN: PropTypes.number.isRequired,
+      OUT: PropTypes.number.isRequired,
+      PRESENCE: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
   displayIn: PropTypes.bool.isRequired,
   displayOut: PropTypes.bool.isRequired,
   displayPresence: PropTypes.bool.isRequired,
