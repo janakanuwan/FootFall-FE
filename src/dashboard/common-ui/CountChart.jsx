@@ -28,6 +28,8 @@ const ACTIVE_DOT = {
  * @param props.legend if true, display legend
  * @param props.tooltip if true, display tooltip
  * @param props.grid if true, display grid
+ *
+ * @see http://recharts.org/#/en-US/api/ResponsiveContainer
  */
 const CountChart = (props) => {
 

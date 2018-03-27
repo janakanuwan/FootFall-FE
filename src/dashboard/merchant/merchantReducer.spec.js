@@ -1,29 +1,31 @@
-import merchantReducer from './merchantReducer';
+import reducer from './merchantReducer';
 import {changeMerchant} from "./merchantActions";
 
+import deepFreeze from 'deep-freeze';
 
-describe('merchantReducer', () => {
+describe('reducer', () => {
+
+  const initialState = deepFreeze(reducer(undefined, {type: 'INIT'}));
+
   it('should change merchant for empty selected merchant', () => {
-    const initState = {};
     const action = changeMerchant(1);
-    const expected = {selectedMerchant: 1};
+    const expected = {list: [], selectedMerchant: 1};
 
-    expect(merchantReducer(initState, action)).toEqual(expected);
+    expect(reducer(initialState, action)).toEqual(expected);
   });
 
   it('should change merchant for non-empty selected merchant', () => {
-    const initState = merchantReducer({}, changeMerchant(null, 0));
+    const baseState = reducer(initialState, changeMerchant(null, 0));
     const action = changeMerchant(1);
-    const expected = {selectedMerchant: 1};
+    const expected = {list: [], selectedMerchant: 1};
 
-    expect(merchantReducer(initState, action)).toEqual(expected);
+    expect(reducer(baseState, action)).toEqual(expected);
   });
 
   it('should not change the state for unknown action', () => {
-    const initState = merchantReducer({}, changeMerchant(0));
     const action = {type: 'UNSUPPORTED_ACTION_TYPE'};
 
-    expect(merchantReducer(initState, action)).toBe(initState);
+    expect(reducer(initialState, action)).toBe(initialState);
   });
 
 });
