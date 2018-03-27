@@ -25,7 +25,9 @@ class ButtonSelectGroup extends React.Component {
 
   handleClick(item) {
     this.setState({selectedItem: item});
-    this.props.onClick(item);
+    if (this.props.onClick) {
+      this.props.onClick(item);
+    }
   };
 
   render() {
@@ -83,12 +85,12 @@ ButtonSelectGroup.propTypes = {
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       name: PropTypes.string.isRequired,
     }).isRequired
-  ).isRequired,
+  ),
   selectedItem: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     name: PropTypes.string.isRequired,
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
+  }),
+  onClick: PropTypes.func,
   maxButtonCount: PropTypes.number,
   size: PropTypes.oneOf(['small', 'medium', 'large'])
 };

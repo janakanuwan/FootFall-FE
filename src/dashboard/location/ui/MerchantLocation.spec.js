@@ -1,33 +1,22 @@
 import MerchantLocation from './MerchantLocation';
 
-const locationItems = [
+const locationItems = [1, 2, 3, 4, 5].map((item) => ({id: item, name: `Location ${item}`}));
+const merchantLocationData = [
   {
-    id: 1,
-    name: 'Location 1'
+    locationList: locationItems,
+    selectedLocation: locationItems[0],
+    onClick: (location) => console.log('Selected location : ', location)
   },
   {
-    id: 2,
-    name: 'Location 2'
+    locationList: locationItems,
+    selectedLocation: {id: 6, name: 'Location 6'},
+    onClick: (location) => console.log('Selected location : ', location)
   },
   {
-    id: 3,
-    name: 'Location 3'
-  },
-  {
-    id: 4,
-    name: 'Location 4'
-  },
-  {
-    id: 5,
-    name: 'Location 5'
+    locationList: [],
+    selectedLocation: null,
   }
 ];
-
-const merchantLocationData = {
-  locationList: locationItems,
-  selectedLocation: locationItems[0],
-  onClick: (location) => console.log('Selected location : ', location)
-};
 
 describe('MerchantLocation', () => {
   // FIXME

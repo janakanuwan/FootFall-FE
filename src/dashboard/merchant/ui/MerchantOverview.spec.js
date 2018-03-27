@@ -11,11 +11,27 @@ const merchants = [
   }
 ];
 
-const merchantOverviewData = {
-  merchantList: merchants,
-  selectedMerchant: merchants[0],
-  onSelect: (merchant) => console.log('Selected merchant: ', merchant)
-};
+const merchantOverviewData = [
+  {
+    merchantList: merchants,
+    selectedMerchant: merchants[0],
+    onSelect: (merchant) => console.log('Selected merchant: ', merchant)
+  },
+  {
+    merchantList: merchants,
+    selectedMerchant: null,
+    onSelect: (merchant) => console.log('Selected merchant: ', merchant)
+  },
+  {
+    merchantList: [],
+    selectedMerchant: null,
+    onSelect: (merchant) => console.log('Selected merchant: ', merchant)
+  },
+  {
+    merchantList: merchants,
+    selectedMerchant: merchants[1]
+  },
+];
 
 describe('MerchantOverview', () => {
   // FIXME

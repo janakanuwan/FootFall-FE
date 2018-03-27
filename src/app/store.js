@@ -1,8 +1,8 @@
 import {createStore} from 'redux';
 
-import merchantReducer from "../dashboard/merchant/merchantReducer";
-
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
+
+import dashboardReducer from '../dashboard/dashboardReducer';
 
 const composeEnhancers = composeWithDevTools({
   // options like actionSanitizer, stateSanitizer
@@ -10,7 +10,7 @@ const composeEnhancers = composeWithDevTools({
 
 
 const store = createStore(
-  merchantReducer,
+  dashboardReducer,
   composeEnhancers()
 );
 

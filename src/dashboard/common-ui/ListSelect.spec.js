@@ -1,6 +1,6 @@
 import ListSelect from './ListSelect';
 
-const items = [
+const listItems = [
   {
     id: 1,
     name: 'Test Merchant 1'
@@ -11,11 +11,33 @@ const items = [
   }
 ];
 
-const listSelectData = {
-  items: items,
-  selectedItem: items[0],
-  onSelect: (item) => console.log('Selected item: ', item)
-};
+const listSelectData = [
+  {
+    items: listItems,
+    selectedItem: listItems[0],
+    onSelect: (item) => console.log('Selected item: ', item)
+  },
+  {
+    items: listItems,
+    selectedItem: null,
+    onSelect: (item) => console.log('Selected item: ', item)
+  },
+  {
+    items: [],
+    selectedItem: null,
+    onSelect: (item) => console.log('Selected item: ', item)
+  },
+  {
+    items: listItems,
+    selectedItem: listItems[1],
+    onSelect: (item) => console.log('Selected item: ', item)
+  },
+  {
+    items: listItems,
+    selectedItem: {id: 3, name: 'Test Merchant 3'},
+    onSelect: (item) => console.log('Selected item: ', item)
+  },
+];
 
 describe('ListSelect', () => {
   // FIXME

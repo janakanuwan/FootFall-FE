@@ -2,8 +2,8 @@ import {createReducer} from 'redux-create-reducer';
 import {CHANGE_MERCHANT} from "../../const/action-types";
 
 const initialState = {
-  merchants: [
-    // FIXME,
+  // FIXME
+  list: [
     {
       id: 1,
       name: 'Test Merchant 1'
@@ -13,10 +13,7 @@ const initialState = {
       name: 'Test Merchant 2'
     }
   ],
-  selectedMerchant: {
-    id: 1,
-    name: 'Test Merchant 1'
-  }
+  selectedMerchant: null
 };
 
 const merchantReducer = createReducer(initialState, {

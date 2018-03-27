@@ -55,5 +55,4 @@ MerchantOverview.propTypes = {
   onSelect: PropTypes.func.isRequired
 };
 
-
 export default MerchantOverview;

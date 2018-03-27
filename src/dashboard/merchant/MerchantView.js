@@ -3,18 +3,16 @@ import {connect} from 'react-redux';
 import MerchantOverview from './ui/MerchantOverview';
 import {changeMerchant} from "./merchantActions";
 
-const mapStateToProps = state => {
+const mapStateToProps = ({merchants}) => {
   return {
-    merchantList: state.merchants,
-    selectedMerchant: state.selectedMerchant
+    merchantList: merchants.list,
+    selectedMerchant: merchants.selectedMerchant
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelect: (merchant) => {
-      dispatch(changeMerchant(merchant));
-    }
+    onSelect: (merchant) => dispatch(changeMerchant(merchant))
   }
 };
 

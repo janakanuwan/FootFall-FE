@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`locationActions should create an action for location change 1`] = `
+Object {
+  "payload": Object {
+    "selectedLocation": 1,
+  },
+  "type": "CHANGE_LOCATION",
+}
+`;

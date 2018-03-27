@@ -35,6 +35,15 @@ const buttonSelectGroupData = [
     onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
     size: 'large'
   },
+  {
+    items: [],
+    selectedItem: null,
+  },
+  {
+    items: buttonSelectItems,
+    selectedItem: {id: 6, name: 'Button 6'},
+    onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
+  },
 ];
 
 describe('ButtonSelectGroup', () => {

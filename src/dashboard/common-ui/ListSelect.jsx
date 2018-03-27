@@ -19,7 +19,9 @@ const ListSelect = ({items, selectedItem, onSelect}) => {
   );
 
   const handleChange = (event) => {
-    onSelect(items[event.target.value]);
+    if (onSelect) {
+      onSelect(items[event.target.value]);
+    }
   };
 
   return (
@@ -40,12 +42,12 @@ ListSelect.propTypes = {
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       name: PropTypes.string.isRequired,
     }).isRequired
-  ).isRequired,
+  ),
   selectedItem: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     name: PropTypes.string.isRequired,
-  }).isRequired,
-  onSelect: PropTypes.func.isRequired
+  }),
+  onSelect: PropTypes.func
 };
 
 export default ListSelect;

@@ -3,7 +3,7 @@ import {changeMerchant} from "./merchantActions";
 
 
 describe('merchantReducer', () => {
-  it('should change merchant for empty selected index', () => {
+  it('should change merchant for empty selected merchant', () => {
     const initState = {};
     const action = changeMerchant(1);
     const expected = {selectedMerchant: 1};
@@ -11,7 +11,7 @@ describe('merchantReducer', () => {
     expect(merchantReducer(initState, action)).toEqual(expected);
   });
 
-  it('should change merchant for non-empty selected index', () => {
+  it('should change merchant for non-empty selected merchant', () => {
     const initState = merchantReducer({}, changeMerchant(null, 0));
     const action = changeMerchant(1);
     const expected = {selectedMerchant: 1};
