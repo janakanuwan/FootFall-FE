@@ -1,25 +1,28 @@
 import {changeLocation} from "./locationActions";
 import reducer from "./locationReducer";
 
-import deepFreeze from 'deep-freeze';
+import {Location} from 'Models';
 
 describe('reducer', () => {
 
-  const initialState = deepFreeze(reducer(undefined, {type: 'INIT'}));
+  const initialState = reducer(undefined, {type: 'INIT'});
+
+  const location1 = {id: 1, name: 'Location 1'};
+  const location2 = {id: 2, name: 'Location 2'};
 
   it('should change the location for empty selected location', () => {
-    const action = changeLocation(1);
-    const expected = {list: [], selectedLocation: 1};
+    const action = changeLocation(Location(location1));
+    const expected = {list: [], selectedLocation: location1};
 
-    expect(reducer(initialState, action)).toEqual(expected);
+    expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
 
   it('should change the location for non-empty selected location', () => {
-    const baseState = reducer(initialState, changeLocation(0));
-    const action = changeLocation(1);
-    const expected = {list: [], selectedLocation: 1};
+    const baseState = reducer(initialState, changeLocation(Location(location2)));
+    const action = changeLocation(Location(location1));
+    const expected = {list: [], selectedLocation: location1};
 
-    expect(reducer(baseState, action)).toEqual(expected);
+    expect(reducer(baseState, action).toJS()).toEqual(expected);
   });
 
   it('should not change the state for unsupported action', () => {

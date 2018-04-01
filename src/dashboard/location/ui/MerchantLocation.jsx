@@ -6,6 +6,9 @@ import Typography from 'material-ui/Typography';
 
 import ButtonSelectGroup from './../../common-ui/ButtonSelectGroup';
 
+import {List, Location} from 'Models';
+
+
 /**
  *
  * @param locationList{array} array of location list with 'id' and 'name'
@@ -42,16 +45,22 @@ const MerchantLocation = ({locationList, selectedLocation, onClick}) => {
 
 
 MerchantLocation.propTypes = {
-  locationList: PropTypes.arrayOf(
+  locationList: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+        name: PropTypes.string.isRequired,
+      }).isRequired
+    ),
+    PropTypes.instanceOf(List)
+  ]).isRequired,
+  selectedLocation: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  selectedLocation: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+    }),
+    PropTypes.instanceOf(Location)
+  ]).isRequired,
   onClick: PropTypes.func.isRequired
 };
 

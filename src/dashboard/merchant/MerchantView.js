@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import MerchantOverview from './ui/MerchantOverview';
 import {changeMerchant} from "./merchantActions";
 
-const mapStateToProps = ({merchants}) => {
+const mapStateToProps = (state) => {
   return {
-    merchantList: merchants.list,
-    selectedMerchant: merchants.selectedMerchant
+    merchantList: state.getIn(['merchants', 'list']),
+    selectedMerchant: state.getIn(['merchants', 'selectedMerchant'])
   };
 };
 

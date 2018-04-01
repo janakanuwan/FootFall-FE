@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Menu, {MenuItem} from 'material-ui/Menu';
 
+import {User} from "Models";
+
 /**
  * @userName: logged in user's name
  * @userEmail: logged in user's email
@@ -31,15 +33,12 @@ class UserMenu extends React.Component {
 
   handleLogout() {
     this.handleClose();
-    this.props.onLogout({
-      userName: this.props.userName,
-      userEmail: this.props.userEmail
-    });
+    this.props.onLogout(this.props.user);
   }
 
   render() {
-    const userName = this.props.userName;
-    const userEmail = this.props.userEmail;
+    const userName = this.props.user && this.props.user.userName;
+    const userEmail = this.props.user && this.props.user.userEmail;
 
     const {anchorEl} = this.state;
 
@@ -67,8 +66,12 @@ class UserMenu extends React.Component {
 }
 
 UserMenu.propTypes = {
-  userName: PropTypes.string.isRequired,
-  userEmail: PropTypes.string.isRequired,
+  user: PropTypes.oneOfType([PropTypes.shape({
+    user: PropTypes.string,
+    userEmail: PropTypes.string
+  }),
+    PropTypes.instanceOf(User)
+  ]).isRequired,
   onLogout: PropTypes.func.isRequired
 };
 

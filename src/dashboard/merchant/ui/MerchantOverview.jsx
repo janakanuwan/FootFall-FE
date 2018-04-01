@@ -7,6 +7,8 @@ import Divider from 'material-ui/Divider';
 
 import ListSelect from './../../common-ui/ListSelect';
 
+import {List, Merchant} from 'Models';
+
 /**
  *
  * @param merchantList{array} array of merchants with 'id' and 'name' properties
@@ -42,16 +44,22 @@ const MerchantOverview = ({merchantList, selectedMerchant, onSelect}) => {
 };
 
 MerchantOverview.propTypes = {
-  merchantList: PropTypes.arrayOf(
+  merchantList: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+        name: PropTypes.string.isRequired,
+      }).isRequired
+    ),
+    PropTypes.instanceOf(List)
+  ]).isRequired,
+  selectedMerchant: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  selectedMerchant: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+    }),
+    PropTypes.instanceOf(Merchant)
+  ]).isRequired,
   onSelect: PropTypes.func.isRequired
 };
 

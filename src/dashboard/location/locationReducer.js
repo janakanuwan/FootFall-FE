@@ -1,16 +1,17 @@
 import {createReducer} from 'redux-create-reducer';
+import {List, Location, Maybe, Record} from 'Models';
 
 import {CHANGE_LOCATION} from "../../const/action-types";
 
-const initialState = {
-  list: [],
-  selectedLocation: null
-};
+const initialState = Record({
+  list: List(Location),
+  selectedLocation: Maybe(Location)
+}, 'LocationState')();
 
 const locationReducer = createReducer(initialState, {
 
   [CHANGE_LOCATION](state, action) {
-    return Object.assign({}, state, {selectedLocation: action.payload.selectedLocation});
+    return state.set('selectedLocation', action.payload.selectedLocation);
   }
 
 });

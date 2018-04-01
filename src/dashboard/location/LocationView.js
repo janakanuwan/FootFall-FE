@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import MerchantLocation from './ui/MerchantLocation';
 import {changeLocation} from "./locationActions";
 
-const mapStateToProps = ({locations}) => {
+const mapStateToProps = (state) => {
   return {
-    locationList: locations.list,
-    selectedLocation: locations.selectedLocation
+    locationList: state.getIn(['locations', 'list']),
+    selectedLocation: state.getIn(['locations', 'selectedLocation'])
   }
 };
 

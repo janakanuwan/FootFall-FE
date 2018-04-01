@@ -94,7 +94,10 @@ const webpackConfig = {
   ])
   ,
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      Models: path.resolve(__dirname, 'src/app/models/index.js'),
+    }
   },
   devtool: isDev ? 'cheap-module-source-map' : 'source-map',
   devServer: {

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`userActions should create an action for user logout 1`] = `
+Object {
+  "payload": Object {
+    "user": 1,
+  },
+  "type": "LOGOUT_USER",
+}
+`;

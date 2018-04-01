@@ -1,15 +1,16 @@
 import {createReducer} from 'redux-create-reducer';
 import {CHANGE_MERCHANT} from "../../const/action-types";
+import {List, Maybe, Merchant, Record} from 'Models';
 
-const initialState = {
-  list: [],
-  selectedMerchant: null
-};
+const initialState = Record({
+  list: List(Merchant),
+  selectedMerchant: Maybe(Merchant)
+}, 'MerchantState')();
 
 const merchantReducer = createReducer(initialState, {
 
   [CHANGE_MERCHANT](state, action) {
-    return Object.assign({}, state, {selectedMerchant: action.payload.selectedMerchant});
+    return state.set('selectedMerchant', action.payload.selectedMerchant);
   },
 
 });

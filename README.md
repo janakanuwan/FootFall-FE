@@ -19,6 +19,8 @@ See more details at [Google Drive](https://drive.google.com/drive/folders/1a23Ad
 )
 - [React Components](https://github.com/brillout/awesome-react-components)
 - [Redux Eco System](https://github.com/markerikson/redux-ecosystem-links)
+- [Immutable.js](https://facebook.github.io/immutable-js/)
+- [Typed-Immutable](https://github.com/typed-immutable/typed-immutable)
 
 ### Practises
 - Make all view components (react) stateless
@@ -28,6 +30,11 @@ See more details at [Google Drive](https://drive.google.com/drive/folders/1a23Ad
 compliant actions, please use {createAction} from 'redux-actions' 
 - In testing reducers, make sure to test unknown actions and the immutability of initial 
 and expected objects
+- We will use redux with Immutable.js (and Typed-immutable) for application store. Please follow [Best Practices](https://redux.js.org/recipes/using-immutable.js-with-redux#what-are-some-opinionated-best-practices-for-using-immutable.js-with-redux) 
+
+### Notes
+- All models (including Immutable.js, Typed-immutable) are exported via 'Models' (models->index.js)
+
 
 ### Versions
 - Update the `version.md` and `package.json` for each release with correct version number
