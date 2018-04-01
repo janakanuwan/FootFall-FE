@@ -68,7 +68,10 @@ const DayCount = (props) => {
 
 DayCount.propTypes = {
   dayName: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.oneOfType([
+    PropTypes.instanceOf(Date),
+    PropTypes.string
+  ]).isRequired,
   count: PropTypes.number.isRequired
 };
 

@@ -56,11 +56,17 @@ const listSelectData = [
 ];
 
 
-const dayCountData = {
+const dayCountData = [{
   dayName: 'Today',
   date: new Date(),
   count: 40
-};
+},
+  {
+    dayName: 'Yesterday',
+    date: '2018-04-01',
+    count: 50
+  },
+];
 
 const buttonSelectItems = ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'].map((item, index) => ({
   id: index,
@@ -195,7 +201,9 @@ ReactDOM.render(
     {listSelectData.map((data, index) =>
       <ListSelect key={index} {...data}/>
     )}
-    <DayCount {...dayCountData}/>
+    {dayCountData.map((data, index) =>
+      <DayCount key={index} {...data}/>
+    )}
     {buttonSelectGroupData.map((data, index) =>
       <ButtonSelectGroup key={index} {...data}/>
     )}
