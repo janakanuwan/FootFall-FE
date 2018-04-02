@@ -5,7 +5,7 @@ const dateTextFieldData = [
     label: 'From',
     date: '2010-02-20',
     min: '2010-02-01',
-    max: new Date('2010-02-28'),
+    max: '2010-02-28T05:04:42',
     onChange: (value) => console.log("Date: ", value)
   },
   {
@@ -23,7 +23,7 @@ const dateTextFieldData = [
   },
   {
     label: 'From',
-    date: new Date("2018-01-01"),
+    date: "2018-01-01",
     max: null,
     onChange: (value) => console.log("Date: ", value)
   },

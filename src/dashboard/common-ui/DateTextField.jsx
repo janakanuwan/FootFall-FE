@@ -8,21 +8,13 @@ const today = () => {
   return moment().format('YYYY-MM-DD');
 };
 
-const formatDate = (date) => {
-  if (date === undefined || date === null) {
-    return date;
-  } else {
-    return moment(date).format('YYYY-MM-DD');
-  }
-};
-
 /**
  *
  * @param props.label label (and name) of the text field
- * @param props.date{string|Date} value of the text field (default: today)
+ * @param props.date{string} value of the text field (default: today)
  *
- * @param props.min {string|Date}
- * @param props.max {string|Date} (default: today)
+ * @param props.min {string}
+ * @param props.max {string} (default: today)
  *
  * @param props.onChange(date{string})  fired at changing date
  *
@@ -45,13 +37,13 @@ const DateTextField = (props) => {
       name={props.label}
       label={props.label}
       type="date"
-      defaultValue={formatDate(props.date)}
+      defaultValue={props.date}
       InputLabelProps={{
         shrink: true,
       }}
       inputProps={{
-        min: formatDate(props.min),
-        max: formatDate(props.max)
+        min: props.min,
+        max: props.max
       }}
       onChange={handleChange}
     />
@@ -60,9 +52,9 @@ const DateTextField = (props) => {
 
 DateTextField.propTypes = {
   label: PropTypes.string.isRequired,
-  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
-  min: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
-  max: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+  date: PropTypes.string,
+  min: PropTypes.string,
+  max: PropTypes.string,
   onChange: PropTypes.func
 };
 
