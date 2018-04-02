@@ -1,5 +1,4 @@
-
-import {Typed, Record} from './Model';
+import {Record, Typed} from './Model';
 
 describe('Typed.Enum', () => {
 
@@ -16,6 +15,7 @@ describe('Typed.Enum', () => {
       value: Directions
     });
 
+    console.log(TestRecord({value: 'NORTH'}));
     expect(TestRecord({value: 'NORTH'})).toEqual(TestRecord({value: Directions.NORTH}));
     expect(TestRecord({value: 'North'})).toEqual(TypeError('North should be in NORTH,EAST,WEST,SOUTH'));
   });

@@ -7,7 +7,6 @@ import Paper from 'material-ui/Paper';
 import {withStyles} from 'material-ui/styles';
 
 import CountChart from '../../common-ui/CountChart';
-import ButtonSelectGroup from "../../common-ui/ButtonSelectGroup";
 import DateTextField from "../../common-ui/DateTextField";
 
 
@@ -16,7 +15,7 @@ const DisplayButton = ({children, selected, onClick}) => {
     <Button
       size="small"
       variant={selected ? "raised" : "flat"}
-      onClick={() => onClick({value: children})}
+      onClick={() => onClick({displayType: children})}
       children={children}
     />
   );
@@ -38,11 +37,9 @@ const styles = (theme) => ({
 
 /**
  *
- * @param props.graphData data array for chart in [{name:String, IN: Number, OUT: Number, PRESENCE: Number },...] format
- * @param props.displayTypeIn if true, display IN data
- * @param props.displayTypeOut if true, display OUT data
- * @param props.displayTypePresence if true, display PRESENCE data
- * @param props.onClickDisplayType({value: 'IN|OUT|PRESENCE'}) fired at clicking IN, OUT or PRESENCE
+ * @param props.graphData data array for chart in [{name:string, IN: number, OUT: number, PRESENCE: number },...] format
+ * @param props.displayTypeData {in: boolean, out: boolean, presence: boolean}
+ * @param props.onClickDisplayType({type: 'IN|OUT|PRESENCE'}) fired at clicking IN, OUT or PRESENCE
  * @param props.displayOptions array of data in {id:ID, name: NAME} format [e.g. Hourly, Day, Month]
  * @param props.selectedDisplayOption
  * @param props.onClickDisplayOption(option)
@@ -59,7 +56,7 @@ const GraphCount = (props) => {
   const {
     graphData,
 
-    displayTypeIn, displayTypeOut, displayTypePresence,
+    displayTypeData,
     onClickDisplayType,
 
     displayOptions,
@@ -83,25 +80,29 @@ const GraphCount = (props) => {
 
           <Grid item xs={8}>
             {/*NOTE: DO NOT CHANGE the names of buttons*/}
-            <DisplayButton selected={displayTypeIn} onClick={onClickDisplayType}>IN</DisplayButton>
-            <DisplayButton selected={displayTypeOut} onClick={onClickDisplayType}>OUT</DisplayButton>
-            <DisplayButton selected={displayTypePresence} onClick={onClickDisplayType}>PRESENCE</DisplayButton>
+            {['in', 'out', 'presence'].map((value) =>
+              <DisplayButton key={value} selected={displayTypeData[value]}
+                             onClick={onClickDisplayType}>{value.toUpperCase()}</DisplayButton>
+            )}
           </Grid>
 
           <Grid item xs>
-            <ButtonSelectGroup size="small"
-                               items={displayOptions}
-                               selectedItem={selectedDisplayOption}
-                               onClick={onClickDisplayOption}
-            />
+            {/*<ButtonSelectGroup size="small"*/}
+            {/*items={displayOptions}*/}
+            {/*selectedItem={selectedDisplayOption}*/}
+            {/*onClick={onClickDisplayOption}*/}
+            {/*/>*/}
 
             <DateTextField label={'From'} date={fromDate} max={fromDateMax} onChange={onChangeFromDate}/>
             <DateTextField label={'To'} date={toDate} min={toDateMin} onChange={onChangeToDate}/>
           </Grid>
 
         </Grid>
+
         <CountChart data={graphData}
-                    displayIn={displayTypeIn} displayOut={displayTypeOut} displayPresence={displayTypePresence}
+                    displayIn={displayTypeData.in}
+                    displayOut={displayTypeData.out}
+                    displayPresence={displayTypeData.presence}
                     width="90%"
         />
       </Paper>
@@ -119,9 +120,11 @@ GraphCount.propTypes = {
     }).isRequired
   ).isRequired,
 
-  displayTypeIn: PropTypes.bool.isRequired,
-  displayTypeOut: PropTypes.bool.isRequired,
-  displayTypePresence: PropTypes.bool.isRequired,
+  displayTypeData: PropTypes.shape({
+    in: PropTypes.bool.isRequired,
+    out: PropTypes.bool.isRequired,
+    presence: PropTypes.bool.isRequired,
+  }).isRequired,
   onClickDisplayType: PropTypes.func.isRequired,
 
   displayOptions: PropTypes.arrayOf(

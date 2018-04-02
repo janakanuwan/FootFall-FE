@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`graphActions should create an action to change graph display type 1`] = `
+Object {
+  "payload": Object {
+    "displayType": "IN",
+  },
+  "type": "CHANGE_GRAPH_DISPLAY_TYPE",
+}
+`;
+
+exports[`graphActions should create an action to set graph data 1`] = `
+Object {
+  "payload": Object {
+    "graphData": Array [
+      Object {
+        "IN": 1,
+        "OUT": 1,
+        "PRESENCE": 0,
+        "name": "Hello",
+      },
+    ],
+  },
+  "type": "SET_GRAPH_DATA",
+}
+`;

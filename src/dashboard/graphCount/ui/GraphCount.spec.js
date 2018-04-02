@@ -28,10 +28,8 @@ const graphDisplayOptions = [
 const graphCountData = {
   graphData: countChartData,
 
-  displayIn: true, displayOut: true, displayPresence: true,
-  onClickDisplayIn: (event) => console.log('In: ', event),
-  onClickDisplayOut: (event) => console.log('Out: ', event),
-  onClickDisplayPresence: (event) => console.log('Presence: ', event),
+  displayTypeData: {in: true, out: true, presence: true},
+  onClickDisplayType: (event) => console.log('Type: ', event),
 
   displayOptions: graphDisplayOptions,
   selectedDisplayOption: graphDisplayOptions[0],
@@ -43,6 +41,7 @@ const graphCountData = {
   toDateMin: '2018-03-01',
   onChangeFromDate: (newFromDate) => console.log('From date change: ', newFromDate),
   onChangeToDate: (newToDate) => console.log('To date change: ', newToDate),
+
 };
 
 describe('GraphCount', () => {

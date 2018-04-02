@@ -6,4 +6,7 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 
 export const SET_DAY_COUNT = 'SET_DAY_COUNT';
 
+export const CHANGE_GRAPH_DISPLAY_TYPE = 'CHANGE_GRAPH_DISPLAY_TYPE';
+export const SET_GRAPH_DATA = 'SET_GRAPH_DATA';
+
 

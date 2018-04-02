@@ -9,7 +9,7 @@ import ButtonSelectGroup from "./dashboard/common-ui/ButtonSelectGroup";
 import MerchantOverview from './dashboard/merchant/ui/MerchantOverview';
 import MerchantLocation from './dashboard/location/ui/MerchantLocation';
 import DateTextField from './dashboard/common-ui/DateTextField';
-import GraphCount from './dashboard/graph/ui/GraphCount';
+import GraphCount from './dashboard/graphCount/ui/GraphCount';
 
 const userMenuData = {
   user: {userName: 'Hello Test', userEmail: 'hellotest@gmail.com'},
@@ -213,7 +213,7 @@ const graphDisplayOptions = [
 const graphCountData = {
   graphData: countChartData,
 
-  displayTypeIn: true, displayTypeOut: true, displayTypePresence: true,
+  displayTypeData: {in: true, out: true, presence: true},
   onClickDisplayType: (event) => console.log('Type: ', event),
 
   displayOptions: graphDisplayOptions,

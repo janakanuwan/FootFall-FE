@@ -4,6 +4,7 @@ import MerchantView from '../dashboard/merchant/MerchantView';
 import LocationView from '../dashboard/location/LocationView';
 import UserView from "../dashboard/user/UserView";
 import DayCountView from "../dashboard/dayCount/DayCountView";
+import GraphCountView from '../dashboard/graphCount/GraphCountView';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <MerchantView/>
       <LocationView/>
       <DayCountView/>
+      <GraphCountView/>
     </div>
   );
 };
