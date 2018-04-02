@@ -9,6 +9,7 @@ import ButtonSelectGroup from "./dashboard/common-ui/ButtonSelectGroup";
 import MerchantOverview from './dashboard/merchant/ui/MerchantOverview';
 import MerchantLocation from './dashboard/location/ui/MerchantLocation';
 import DateTextField from './dashboard/common-ui/DateTextField';
+import GraphCount from './dashboard/graph/ui/GraphCount';
 
 const userMenuData = {
   user: {userName: 'Hello Test', userEmail: 'hellotest@gmail.com'},
@@ -170,7 +171,7 @@ const dateTextFieldData = [
     label: 'From',
     date: '2010-02-20',
     min: '2010-02-01',
-    max: new Date('2010-02-28'),
+    max: '2010-02-28T05:04:42',
     onChange: (value) => console.log("Date: ", value)
   },
   {
@@ -188,11 +189,45 @@ const dateTextFieldData = [
   },
   {
     label: 'From',
-    date: new Date("2018-01-01"),
+    date: "2018-01-01",
     max: null,
     onChange: (value) => console.log("Date: ", value)
   },
 ];
+
+const graphDisplayOptions = [
+  {
+    id: 1,
+    name: 'Hourly'
+  },
+  {
+    id: 2,
+    name: 'Day'
+  },
+  {
+    id: 3,
+    name: 'Month'
+  }
+];
+
+const graphCountData = {
+  graphData: countChartData,
+
+  displayTypeIn: true, displayTypeOut: true, displayTypePresence: true,
+  onClickDisplayType: (event) => console.log('Type: ', event),
+
+  displayOptions: graphDisplayOptions,
+  selectedDisplayOption: graphDisplayOptions[0],
+  onClickDisplayOption: (option) => console.log('Option: ', option),
+
+  fromDate: '2018-03-01',
+  fromDateMax: '2018-04-02',
+  toDate: '2018-04-02',
+  toDateMin: '2018-03-01',
+  onChangeFromDate: (newFromDate) => console.log('From date change: ', newFromDate),
+  onChangeToDate: (newToDate) => console.log('To date change: ', newToDate),
+
+};
 
 ReactDOM.render(
   <div>
@@ -217,6 +252,8 @@ ReactDOM.render(
     {merchantLocationData.map((data, index) =>
       <MerchantLocation key={index} {...data}/>
     )}
+
+    <GraphCount {...graphCountData}/>
 
   </div>,
   document.getElementById('root')
