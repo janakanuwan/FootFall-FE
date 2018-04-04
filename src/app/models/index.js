@@ -20,13 +20,5 @@ export {Location};
 import User from './User.model';
 export {User};
 
-import GraphDisplayTypeData from './graph/GraphDisplayTypeData.model';
-export {GraphDisplayTypeData};
-
-import GraphDisplayType from './graph/GraphDisplayType.model';
-export {GraphDisplayType};
-
-import GraphData from './graph/GraphData.model';
-export {GraphData};
-
+export {GraphDisplayTypeData, GraphData, GraphDateRange} from './graph/index';
 

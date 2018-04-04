@@ -1,7 +1,7 @@
 import {Record} from '../Model';
 
 const GraphData = Record({
-  name: String,
+  NAME: String,
   IN: Number,
   OUT: Number,
   PRESENCE: Number

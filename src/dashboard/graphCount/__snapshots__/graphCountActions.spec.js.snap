@@ -9,6 +9,18 @@ Object {
 }
 `;
 
+exports[`graphActions should create an action to chnage the graph date range 1`] = `
+Object {
+  "payload": Object {
+    "graphDateRange": Object {
+      "date": "2018-04-04",
+      "type": "FROM",
+    },
+  },
+  "type": "CHANGE_GRAPH_DATE_RANGE",
+}
+`;
+
 exports[`graphActions should create an action to set graph data 1`] = `
 Object {
   "payload": Object {

@@ -2,50 +2,46 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextField from "material-ui/TextField";
 
-import moment from 'moment';
-
-const today = () => {
-  return moment().format('YYYY-MM-DD');
-};
-
 /**
  *
- * @param props.label label (and name) of the text field
- * @param props.date{string} value of the text field (default: today)
+ * @param label label (and name) of the text field
+ * @param date{string} value of the text field (default: today)
  *
- * @param props.min {string}
- * @param props.max {string} (default: today)
+ * @param min {string}
+ * @param max {string} (default: today)
  *
- * @param props.onChange(date{string})  fired at changing date
+ * @param onChange(date{string})  fired at changing date
+ *
+ * @param error {bool}
  *
  * @see https://github.com/dmtrKovalenko/material-ui-pickers
  * @see https://github.com/gpbl/react-day-picker
  */
-const DateTextField = (props) => {
+const DateTextField = ({label, date, min, max, onChange, error}) => {
 
   const handleChange = (event) => {
     const selectedDate = event.target.value;
-    if (props.onChange) {
-      props.onChange(selectedDate);
+    if (onChange) {
+      onChange(selectedDate);
     }
   };
 
   return (
     <TextField
-      {...props}
-      id={props.label + '-date'}
-      name={props.label}
-      label={props.label}
+      id={label + '-date'}
+      name={label}
+      label={label}
       type="date"
-      defaultValue={props.date}
+      defaultValue={date}
       InputLabelProps={{
         shrink: true,
       }}
       inputProps={{
-        min: props.min,
-        max: props.max
+        min: min,
+        max: max
       }}
       onChange={handleChange}
+      error={error}
     />
   );
 };
@@ -55,12 +51,12 @@ DateTextField.propTypes = {
   date: PropTypes.string,
   min: PropTypes.string,
   max: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  error: PropTypes.bool
 };
 
 DateTextField.defaultProps = {
-  date: today(),
-  max: today()
+  error: false
 };
 
 export default DateTextField;

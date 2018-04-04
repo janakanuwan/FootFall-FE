@@ -18,7 +18,7 @@ const ACTIVE_DOT = {
 
 /**
  *
- * @param props.data data array for chart in [{name:<string>, IN:<number>, OUT: <number>, PRESENCE: <number> },...] format
+ * @param props.data data array for chart in [{NAME:<string>, IN:<number>, OUT: <number>, PRESENCE: <number> },...] format
  * @param props.displayIn if true, display IN data
  * @param props.displayOut if true, display OUT data
  * @param props.displayPresence if true, display PRESENCE data
@@ -37,7 +37,7 @@ const CountChart = (props) => {
     <ResponsiveContainer width={props.width} height={props.height}>
       <LineChart data={props.data} margin={CHART_MARGIN}>
 
-        <XAxis dataKey="name" height={X_AXIS_WIDTH}/>
+        <XAxis dataKey="NAME" height={X_AXIS_WIDTH}/>
         <YAxis width={Y_AXIS_WIDTH}>
           <Label value={props.yAxisLabel} angle={-90} position="left"/>
         </YAxis>
@@ -64,7 +64,7 @@ const CountChart = (props) => {
 CountChart.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      NAME: PropTypes.string.isRequired,
       IN: PropTypes.number.isRequired,
       OUT: PropTypes.number.isRequired,
       PRESENCE: PropTypes.number.isRequired,
