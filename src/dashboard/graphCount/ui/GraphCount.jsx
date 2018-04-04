@@ -8,8 +8,9 @@ import {withStyles} from 'material-ui/styles';
 
 import CountChart from '../../common-ui/CountChart';
 import DateTextField from "../../common-ui/DateTextField";
+import ButtonSelectGroup from '../../common-ui/ButtonSelectGroup';
 
-import {GraphDateRangeTypes, GraphDisplayTypes} from '../graphCountConstants';
+import {GraphDateRangeTypes, GraphDisplayOptions, GraphDisplayTypes, GraphOptionItems} from '../graphCountConstants';
 
 const DisplayButton = ({children, selected, onClick}) => {
   return (
@@ -36,13 +37,13 @@ const styles = (theme) => ({
   }
 });
 
+
 /**
  *
  * @param props.graphData data array for chart in [{NAME:<string>, IN:<number>, OUT: <number>, PRESENCE: <number> ,...] format
  * @param props.displayTypeData {in: boolean, out: boolean, presence: boolean}
- * @param props.onClickDisplayType({type: 'IN|OUT|PRESENCE'}) fired at clicking IN, OUT or PRESENCE
- * @param props.displayOptions array of data in {id:ID, name: NAME} format [e.g. Hourly, Day, Month]
- * @param props.selectedDisplayOption
+ * @param props.onClickDisplayType({displayType: 'in|out|presence'}) fired at clicking IN, OUT or PRESENCE
+ * @param props.selectedDisplayOption {@link GraphDisplayOptions}
  * @param props.onClickDisplayOption(option)
  * @param props.dateRange {fromDate: string, fromDateMax: string, toDate: string, toDateMax: string}
  * @param props.onChangeDate ({type: 'FROM|TO', date:string})  fired at changing From/To date
@@ -56,7 +57,6 @@ const GraphCount = (props) => {
     displayTypeData,
     onClickDisplayType,
 
-    displayOptions,
     selectedDisplayOption,
     onClickDisplayOption,
 
@@ -65,6 +65,7 @@ const GraphCount = (props) => {
 
     classes
   } = props;
+
 
   return (
     <div>
@@ -79,11 +80,14 @@ const GraphCount = (props) => {
           </Grid>
 
           <Grid item xs>
-            {/*<ButtonSelectGroup size="small"*/}
-            {/*items={displayOptions}*/}
-            {/*selectedItem={selectedDisplayOption}*/}
-            {/*onClick={onClickDisplayOption}*/}
-            {/*/>*/}
+
+            <ButtonSelectGroup
+              size="small" maxButtonCount={5}
+              items={GraphOptionItems}
+              selectedItem={GraphOptionItems.find(option => option.name === selectedDisplayOption)}
+              onClick={(option) => onClickDisplayOption(option.name)}
+            />
+            <br/>
 
             {GraphDateRangeTypes.map((value) =>
               <DateTextField key={value} label={value.toUpperCase()} date={dateRange[`${value}Date`]}
@@ -124,16 +128,7 @@ GraphCount.propTypes = {
   }).isRequired,
   onClickDisplayType: PropTypes.func.isRequired,
 
-  displayOptions: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ),
-  selectedDisplayOption: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+  selectedDisplayOption: PropTypes.string.isRequired,
   onClickDisplayOption: PropTypes.func.isRequired,
 
   dateRange: PropTypes.shape({

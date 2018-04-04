@@ -2,10 +2,15 @@ import reducer from './graphCountReducer';
 
 import moment from 'moment';
 
-import {changeGraphDateRange, changeGraphDisplayType, setGraphData} from "./graphCountActions";
+import {
+  changeGraphDateRange,
+  changeGraphDisplayOption,
+  changeGraphDisplayType,
+  setGraphData
+} from "./graphCountActions";
 import {GraphData, List} from 'Models';
 
-import {GraphDisplayTypes} from './graphCountConstants'
+import {GraphDisplayOptions, GraphDisplayTypes} from './graphCountConstants'
 
 describe('graphReducer', () => {
 
@@ -26,7 +31,8 @@ describe('graphReducer', () => {
         toDateMin: today,
         toDateMax: today,
         fromDateMin: null
-      }
+      },
+      displayOption: "hourly"
     };
 
     expect(initialState.toJS()).toEqual(expected);
@@ -114,6 +120,21 @@ describe('graphReducer', () => {
   ].forEach(({action, expected}, index) => {
     it(`should change the date range (index:${index})`, () => {
       expect(reducer(initialState, action).get('dateRange').toJS()).toEqual(expected);
+    });
+  });
+
+  [
+    {
+      action: changeGraphDisplayOption(GraphDisplayOptions[1]),
+      expected: "day"
+    },
+    {
+      action: changeGraphDisplayOption("minute"),
+      expected: "hourly"
+    },
+  ].forEach(({action, expected}, index) => {
+    it(`should change the graph display option (index:${index})`, () => {
+      expect(reducer(initialState, action).get('displayOption')).toEqual(expected);
     });
   });
 

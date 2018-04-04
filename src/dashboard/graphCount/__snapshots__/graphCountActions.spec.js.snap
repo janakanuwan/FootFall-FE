@@ -9,7 +9,7 @@ Object {
 }
 `;
 
-exports[`graphActions should create an action to chnage the graph date range 1`] = `
+exports[`graphActions should create an action to change the graph date range 1`] = `
 Object {
   "payload": Object {
     "graphDateRange": Object {
@@ -18,6 +18,15 @@ Object {
     },
   },
   "type": "CHANGE_GRAPH_DATE_RANGE",
+}
+`;
+
+exports[`graphActions should create an action to change the graph display option 1`] = `
+Object {
+  "payload": Object {
+    "displayOption": "day",
+  },
+  "type": "CHANGE_GRAPH_DISPLAY_OPTION",
 }
 `;
 

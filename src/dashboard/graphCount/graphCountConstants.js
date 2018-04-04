@@ -10,3 +10,13 @@ export const GraphDisplayTypes = ['in', 'out', 'presence' ];
  */
 export const GraphDateRangeTypes = ['from', 'to'];
 
+/**
+ * Graph Display Option values
+ * @type {string[]}
+ */
+export const GraphDisplayOptions = ['hourly', 'day', 'week', 'month'];
+
+export const GraphOptionItems = GraphDisplayOptions.map((value, index) => ({
+  id: index,
+  name: value
+}));

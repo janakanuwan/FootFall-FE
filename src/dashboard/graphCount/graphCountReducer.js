@@ -1,19 +1,25 @@
 import {createReducer} from 'redux-create-reducer';
 
-import {CHANGE_GRAPH_DATE_RANGE, CHANGE_GRAPH_DISPLAY_TYPE, SET_GRAPH_DATA} from "../../const/action-types";
+import {
+  CHANGE_GRAPH_DATE_RANGE,
+  CHANGE_GRAPH_DISPLAY_OPTION,
+  CHANGE_GRAPH_DISPLAY_TYPE,
+  SET_GRAPH_DATA
+} from "../../const/action-types";
 
 import {GraphData, GraphDisplayTypeData, List, Record} from 'Models';
 import GraphDateRange from "../../app/models/graph/GraphDateRange.model";
 
 import graphCountManager from './graphCountManager';
-import {GraphDisplayTypes} from "./graphCountConstants";
+import {GraphDisplayOptions, GraphDisplayTypes} from "./graphCountConstants";
 
 const Today = graphCountManager.today();
 
 const initialState = Record({
   displayTypeData: GraphDisplayTypeData({in: true, out: true, presence: true}),
   graphData: List(GraphData),
-  dateRange: GraphDateRange({fromDate: Today, toDate: Today, fromDateMax: Today, toDateMin: Today, toDateMax: Today})
+  dateRange: GraphDateRange({fromDate: Today, toDate: Today, fromDateMax: Today, toDateMin: Today, toDateMax: Today}),
+  displayOption: String(GraphDisplayOptions[0]),
 }, 'GraphState')();
 
 
@@ -40,6 +46,14 @@ const graphReducer = createReducer(initialState, {
           state = state.setIn(['dateRange', key], value);
         });
       });
+    }
+    return state;
+  },
+
+  [CHANGE_GRAPH_DISPLAY_OPTION](state, action) {
+    const option = action.payload.displayOption;
+    if (GraphDisplayOptions.includes(option)) {
+      return state.set('displayOption', option);
     }
     return state;
   }

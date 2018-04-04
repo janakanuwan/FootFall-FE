@@ -1,6 +1,11 @@
 import {createAction} from 'redux-actions';
 
-import {CHANGE_GRAPH_DATE_RANGE, CHANGE_GRAPH_DISPLAY_TYPE, SET_GRAPH_DATA} from "../../const/action-types";
+import {
+  CHANGE_GRAPH_DATE_RANGE,
+  CHANGE_GRAPH_DISPLAY_OPTION,
+  CHANGE_GRAPH_DISPLAY_TYPE,
+  SET_GRAPH_DATA
+} from "../../const/action-types";
 
 const changeGraphDisplayType = createAction(
   CHANGE_GRAPH_DISPLAY_TYPE,
@@ -17,4 +22,9 @@ const changeGraphDateRange = createAction(
   (graphDateRange) => ({graphDateRange})
 );
 
-export {changeGraphDisplayType, setGraphData, changeGraphDateRange};
+const changeGraphDisplayOption = createAction(
+  CHANGE_GRAPH_DISPLAY_OPTION,
+  (displayOption) => ({displayOption})
+);
+
+export {changeGraphDisplayType, setGraphData, changeGraphDateRange, changeGraphDisplayOption};
