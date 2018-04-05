@@ -1,9 +1,17 @@
-import dashboardReducer from "./dashboardReducer";
+import reducer from "./dashboardReducer";
+import dashboardUtil from './dashboardUtil';
 
-describe('dashboardReducer', () => {
+describe('reducer', () => {
+
+  const today = dashboardUtil.today();
+
 
   it('should create initial state for unsupported action', () => {
+    const action = {type: 'UNSUPPORTED_ACTION_TYPE'};
     const expected = {
+      user: {
+        userInfo: null
+      },
       merchants: {
         list: [],
         selectedMerchant: null
@@ -11,11 +19,33 @@ describe('dashboardReducer', () => {
       locations: {
         list: [],
         selectedLocation: null
+      },
+      dayCount: {
+        count: 0,
+        date: dashboardUtil.todayWithTime(),
+        dayName: "Today",
+      },
+
+      graphCount: {
+        displayTypeData: {
+          in: true,
+          out: true,
+          presence: true,
+        },
+        graphData: [],
+        dateRange: {
+          fromDate: today,
+          fromDateMax: today,
+          fromDateMin: null,
+          toDate: today,
+          toDateMax: today,
+          toDateMin: today,
+        },
+        displayOption: "hourly",
       }
     };
-    const action = {type: 'UNSUPPORTED_ACTION_TYPE'};
 
-    expect(dashboardReducer(undefined, action)).toEqual(expected);
+    expect(reducer(undefined, action).toJS()).toEqual(expected);
 
   });
 

@@ -10,7 +10,7 @@ import CountChart from '../../common-ui/CountChart';
 import DateTextField from "../../common-ui/DateTextField";
 import ButtonSelectGroup from '../../common-ui/ButtonSelectGroup';
 
-import {GraphDateRangeTypes, GraphDisplayOptions, GraphDisplayTypes, GraphOptionItems} from '../graphCountConstants';
+import {GraphDateRangeTypes, GraphDisplayOptions, GraphDisplayTypes} from '../graphCountConstants';
 
 const DisplayButton = ({children, selected, onClick}) => {
   return (
@@ -29,6 +29,10 @@ DisplayButton.propTypes = {
   onClick: PropTypes.func
 };
 
+const GraphOptionItems = GraphDisplayOptions.map((value, index) => ({
+  id: index,
+  name: value
+}));
 
 const styles = (theme) => ({
   graphCount: {

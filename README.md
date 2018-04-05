@@ -31,6 +31,7 @@ compliant actions, please use {createAction} from 'redux-actions'
 - In testing reducers, make sure to test unknown actions and the immutability of initial 
 and expected objects
 - We will use redux with Immutable.js (and Typed-immutable) for application store. Please follow [Best Practices](https://redux.js.org/recipes/using-immutable.js-with-redux#what-are-some-opinionated-best-practices-for-using-immutable.js-with-redux) 
+- We will use 'moment.js' for all date/time related functions
 
 ### Notes
 - All models (including Immutable.js, Typed-immutable) are exported via 'Models' (models->index.js)

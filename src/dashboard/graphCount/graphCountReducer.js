@@ -10,10 +10,12 @@ import {
 import {GraphData, GraphDisplayTypeData, List, Record} from 'Models';
 import GraphDateRange from "../../app/models/graph/GraphDateRange.model";
 
-import graphCountManager from './graphCountManager';
 import {GraphDisplayOptions, GraphDisplayTypes} from "./graphCountConstants";
 
-const Today = graphCountManager.today();
+import graphCountManager from './graphCountManager';
+import dashboardUtil from '../dashboardUtil';
+
+const Today = dashboardUtil.today();
 
 const initialState = Record({
   displayTypeData: GraphDisplayTypeData({in: true, out: true, presence: true}),

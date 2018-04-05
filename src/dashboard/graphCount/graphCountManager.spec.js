@@ -1,25 +1,6 @@
 import graphCountManager from './graphCountManager';
 
 describe('graphCountManager', () => {
-  it('should display current date', () => {
-    const expected= new Date().toISOString().substring(0, 10);
-
-    expect(graphCountManager.today()).toEqual(expected);
-  });
-
-  [
-    {date1: '2018-04-04', date2: '2018-04-04', expected: true},
-    {date1: '2018-04-03', date2: '2018-04-04', expected: false},
-    {date1: '2018-04-05', date2: '2018-04-04', expected: true},
-    {date1: null, date2: '2014-04-04', expected: false},
-    {date1: '2018-04-04', date2: null, expected: false},
-    {date1: undefined, date2: '2014-04-04', expected: false},
-    {date1: '2018-04-04', date2: undefined, expected: false},
-  ].forEach(({date1, date2, expected}) => {
-    it(`should send correct result for 'isSameOrAfter' (${date1}, ${date2})`, () => {
-      expect(graphCountManager.isSameOrAfter(date1, date2)).toEqual(expected);
-    });
-  });
 
   [
     {dateRange: {fromDate: '2018-04-04', toDate: '2018-04-04'}, type: 'from', date: '2018-04-04', expected: true},

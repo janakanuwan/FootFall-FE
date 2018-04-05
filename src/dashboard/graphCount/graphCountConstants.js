@@ -16,7 +16,3 @@ export const GraphDateRangeTypes = ['from', 'to'];
  */
 export const GraphDisplayOptions = ['hourly', 'day', 'week', 'month'];
 
-export const GraphOptionItems = GraphDisplayOptions.map((value, index) => ({
-  id: index,
-  name: value
-}));
