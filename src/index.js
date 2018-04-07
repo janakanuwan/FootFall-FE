@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 
 import store from './app/store';
 
-import Routes from './Routes';
+import Routes from './app/Routes';
 
 ReactDOM.render(
   <div>

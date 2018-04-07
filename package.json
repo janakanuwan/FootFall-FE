@@ -8,6 +8,7 @@
   "license": "ISC",
   "scripts": {
     "start": "webpack-dev-server --mode development",
+    "start:open": "webpack-dev-server --open --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
     "eslint": "eslint ./src || true",
     "eslint:html": "eslint ./src -f html -o ./coverage/eslint_result.html || true",

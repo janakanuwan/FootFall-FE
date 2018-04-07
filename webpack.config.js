@@ -112,7 +112,18 @@ const webpackConfig = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty',
-  }
+  },
+  stats: {
+    assets: true,
+    colors: true,
+    errors: true,
+    version: true,
+    hash: true,
+    timings: true,
+    chunks: true,
+    chunkModules: false,
+    children: false,
+  },
 };
 
 module.exports = webpackConfig;
