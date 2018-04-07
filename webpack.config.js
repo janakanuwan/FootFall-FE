@@ -102,7 +102,8 @@ const webpackConfig = {
   devtool: isDev ? 'cheap-module-source-map' : 'source-map',
   devServer: {
     contentBase: outputDir,
-    hot: true
+    hot: true,
+    historyApiFallback: true,
   },
   bail: !isDev,
   node: {

@@ -21,6 +21,7 @@ See more details at [Google Drive](https://drive.google.com/drive/folders/1a23Ad
 - [Redux Eco System](https://github.com/markerikson/redux-ecosystem-links)
 - [Immutable.js](https://facebook.github.io/immutable-js/)
 - [Typed-Immutable](https://github.com/typed-immutable/typed-immutable)
+- [Jest](https://facebook.github.io/jest/)
 
 ### Practises
 - Make all view components (react) stateless
