@@ -19,7 +19,6 @@ describe('userReducer', () => {
   it('should login the user with given login info', () => {
     const action = loginUser({userEmail: 'hellotest@gmail.com', userPassword: '1234', rememberMe: false});
 
-    // FIXME
     const expected = {user: {id: 1, userName: 'Test User', userEmail: 'hellotest@gmail.com'}};
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });

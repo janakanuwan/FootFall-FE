@@ -22,6 +22,7 @@ See more details at [Google Drive](https://drive.google.com/drive/folders/1a23Ad
 - [Immutable.js](https://facebook.github.io/immutable-js/)
 - [Typed-Immutable](https://github.com/typed-immutable/typed-immutable)
 - [Jest](https://facebook.github.io/jest/)
+- [React Router](https://reacttraining.com/react-router/web/example/basic)
 
 ### Practises
 - Make all view components (react) stateless
@@ -37,6 +38,9 @@ and expected objects
 ### Notes
 - All models (including Immutable.js, Typed-immutable) are exported via 'Models' (models->index.js)
 
+### Dev Tools
+- Using [React Developer Tools](https://github.com/facebook/react-devtools) and [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension) 
+will simply development efforts and enable debugging
 
 ### Versions
 - Update the `version.md` and `package.json` for each release with correct version number
@@ -47,4 +51,6 @@ and expected objects
 - Add storybook
 - Add test cases
 - Add loading overlay
+- Add logger for failures
+- Add the middleware ??
 
