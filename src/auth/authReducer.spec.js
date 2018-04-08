@@ -1,5 +1,5 @@
 import reducer from './authReducer';
-import {logoutUser} from "./authActions";
+import {loginUser, logoutUser} from "./authActions";
 import {User} from 'Models';
 
 describe('userReducer', () => {
@@ -9,11 +9,19 @@ describe('userReducer', () => {
   const user1 = User({id: 1, userEmail: 'hellotest@gmail.com', userName: 'Hello Test'});
 
   it('should logout user who is logged in', () => {
+    const baseState = initialState.set('user', user1);
     const action = logoutUser(user1);
-    // FIXME
     const expected = {user: null};
 
-    expect(reducer(initialState, action).toJS()).not.toEqual(expected);
+    expect(reducer(baseState, action).toJS()).toEqual(expected);
+  });
+
+  it('should login the user with given login info', () => {
+    const action = loginUser({userEmail: 'hellotest@gmail.com', userPassword: '1234', rememberMe: false});
+
+    // FIXME
+    const expected = {user: {id: 1, userName: 'Test User', userEmail: 'hellotest@gmail.com'}};
+    expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
 
   it('should not change the state for unknown actions', () => {

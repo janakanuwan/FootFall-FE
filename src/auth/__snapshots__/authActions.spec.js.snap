@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`userActions should create an action for user login request 1`] = `
+Object {
+  "payload": Object {
+    "loginInfo": Object {
+      "rememberMe": true,
+      "userEmail": "hello@test.com",
+      "userPassword": "1234",
+    },
+  },
+  "type": "LOGIN_USER_REQUEST",
+}
+`;
+
 exports[`userActions should create an action for user logout 1`] = `
 Object {
   "payload": Object {

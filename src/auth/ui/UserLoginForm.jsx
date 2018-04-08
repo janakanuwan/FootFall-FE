@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {FormControlLabel} from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
@@ -20,61 +22,123 @@ const styles = (theme) => ({
 });
 
 /**
- * FIXME
+ * @param props.onSubmit ({userEmail, userPassword, rememberMe})
  */
-const UserLoginForm = (props) => {
+class UserLoginForm extends React.Component {
 
-  const {classes} = props;
+  constructor(props) {
+    super(props);
 
-  return (
-    <div align="center">
+    this.state = {
+      userEmail: props.userEmail,
+      userPassword: props.userPassword,
+      rememberMe: props.rememberMe
+    };
 
-      <Paper elevation={4} className={classes.paper}>
-        <Typography variant="headline" component="h2">
-          Login
-        </Typography>
-        <Divider/>
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-        <form autoComplete="on">
+  handleSubmit(e) {
+    e.preventDefault();
 
-          <TextField
-            label="User Email"
-            name="userEmail"
-            required
-            margin="normal"
-            autoFocus
-          />
-          <br/>
+    if (this.props.onSubmit) {
+      this.props.onSubmit(Object.assign({}, this.state));
+    }
+  }
 
-          <TextField
-            label="Password"
-            name="userPassword"
-            type="password"
-            required
-            margin="normal"
-          />
-          <br/>
+  handleChange(e) {
+    const {name, value, checked} = e.target;
 
-          <FormControlLabel
-            label="Remember me"
-            control={
-              <Checkbox
-                name="isRememberMe"
-                color="primary"
-              />
-            }
-          />
-          <br/>
+    if (name === 'rememberMe') {
+      this.setState({[name]: checked});
+    } else {
+      this.setState({[name]: value});
+    }
+  }
 
-          <Button type="submit" color="primary" variant="raised">
-            Log in
-          </Button>
 
-        </form>
-      </Paper>
+  render() {
+    const {classes, userEmailError, userPasswordError} = this.props;
+    const {userEmail, userPassword, rememberMe} = this.state;
 
-    </div>
-  );
+    return (
+      <div align="center">
+        <Paper elevation={4} className={classes.paper}>
+          <Typography variant="headline" component="h2">
+            Login
+          </Typography>
+          <Divider/>
+
+          <form autoComplete="on" onSubmit={this.handleSubmit}>
+
+            <TextField
+              label="User Email"
+              name="userEmail"
+              required
+              margin="normal"
+              autoFocus
+              onChange={this.handleChange}
+              value={userEmail}
+              error={userEmailError}
+              helperText={undefined}
+            />
+            <br/>
+
+            <TextField
+              label="Password"
+              name="userPassword"
+              type="password"
+              required
+              margin="normal"
+              onChange={this.handleChange}
+              value={userPassword}
+              error={userPasswordError}
+              helperText={undefined}
+            />
+            <br/>
+
+            <FormControlLabel
+              label="Remember me"
+              control={
+                <Checkbox
+                  name="rememberMe"
+                  color="primary"
+                  onChange={this.handleChange}
+                  checked={rememberMe}
+                />
+              }
+            />
+            <br/>
+
+            <Button type="submit" color="primary" variant="raised" disabled={false}>
+              Log in
+            </Button>
+
+          </form>
+        </Paper>
+
+      </div>
+    );
+  }
+}
+
+
+UserLoginForm.propTypes = {
+  userEmail: PropTypes.string,
+  userPassword: PropTypes.string,
+  rememberMe: PropTypes.bool,
+  userEmailError: PropTypes.bool,
+  userPasswordError: PropTypes.bool,
+  onSubmit: PropTypes.func,
+};
+
+UserLoginForm.defaultProps = {
+  userEmail: '',
+  userPassword: '',
+  rememberMe: false,
+  userEmailError: false,
+  userPasswordError: false,
 };
 
 export default withStyles(styles)(UserLoginForm);
