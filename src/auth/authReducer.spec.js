@@ -1,5 +1,5 @@
-import reducer from './userReducer';
-import {logoutUser} from "./userActions";
+import reducer from './authReducer';
+import {logoutUser} from "./authActions";
 import {User} from 'Models';
 
 describe('userReducer', () => {
@@ -11,7 +11,7 @@ describe('userReducer', () => {
   it('should logout user who is logged in', () => {
     const action = logoutUser(user1);
     // FIXME
-    const expected = {userInfo: null};
+    const expected = {user: null};
 
     expect(reducer(initialState, action).toJS()).not.toEqual(expected);
   });

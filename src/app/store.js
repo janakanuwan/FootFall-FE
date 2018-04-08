@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 import {Map} from 'Models';
 
-import dashboardReducer from '../dashboard/dashboardReducer';
+import rootReducer from './rootReducer';
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 
 
@@ -12,7 +12,7 @@ const composeEnhancers = composeWithDevTools({
 const initialState = Map();
 
 const store = createStore(
-  dashboardReducer,
+  rootReducer,
   initialState,
   composeEnhancers()
 );

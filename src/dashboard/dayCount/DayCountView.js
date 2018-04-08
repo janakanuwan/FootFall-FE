@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import DayCount from './ui/DayCount';
 
 const mapStateToProps = (state) => {
+  const dayCount = state.getIn(['dashboard', 'dayCount']);
   return {
-    dayName: state.getIn(['dayCount', 'dayName']),
-    date: state.getIn(['dayCount', 'date']),
-    count: state.getIn(['dayCount', 'count']),
+    dayName: dayCount.get('dayName'),
+    date: dayCount.get('date'),
+    count: dayCount.get('count'),
   };
 };
 

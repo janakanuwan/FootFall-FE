@@ -1,13 +1,13 @@
 import {createReducer} from 'redux-create-reducer';
 
 import {Maybe, Record, User} from 'Models';
-import {LOGOUT_USER} from "../../const/action-types";
+import {LOGOUT_USER} from "../const/action-types";
 
 const initialState = Record({
-  userInfo: Maybe(User)
-}, 'UserState')();
+  user: Maybe(User)
+}, 'AuthState')();
 
-const userReducer = createReducer(initialState, {
+const authReducer = createReducer(initialState, {
   [LOGOUT_USER](state, action) {
     // FIXME
     console.log(action, ' - ', state);
@@ -15,4 +15,4 @@ const userReducer = createReducer(initialState, {
   }
 });
 
-export default userReducer;
+export default authReducer;

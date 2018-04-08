@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 
 import UserMenu from './ui/UserMenu';
-import {logoutUser} from "./userActions";
+import {logoutUser} from "../../auth/authActions";
 
 const mapStateToProps = (state) => {
+  const auth = state.get('auth');
   return {
-    user: state.getIn(['user', 'userInfo'])
+    user: auth.get('user')
   };
 };
 

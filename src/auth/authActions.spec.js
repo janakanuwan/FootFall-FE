@@ -1,4 +1,4 @@
-import {logoutUser} from "./userActions";
+import {logoutUser} from "./authActions";
 
 describe('userActions', () => {
   it('should create an action for user logout', () => {

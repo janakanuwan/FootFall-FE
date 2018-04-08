@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import CountChart from './dashboard/common-ui/CountChart';
 import UserLoginForm from "./auth/ui/UserLoginForm";
-import UserMenu from "./dashboard/user/ui/UserMenu";
+import UserMenu from "./dashboard/userMenu/ui/UserMenu";
 import ListSelect from "./dashboard/common-ui/ListSelect";
 import DayCount from "./dashboard/dayCount/ui/DayCount";
 import ButtonSelectGroup from "./dashboard/common-ui/ButtonSelectGroup";

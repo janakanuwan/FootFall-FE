@@ -4,9 +4,10 @@ import MerchantOverview from './ui/MerchantOverview';
 import {changeMerchant} from "./merchantActions";
 
 const mapStateToProps = (state) => {
+  const merchants = state.getIn(['dashboard', 'merchants']);
   return {
-    merchantList: state.getIn(['merchants', 'list']),
-    selectedMerchant: state.getIn(['merchants', 'selectedMerchant'])
+    merchantList: merchants.get('list'),
+    selectedMerchant: merchants.get('selectedMerchant')
   };
 };
 

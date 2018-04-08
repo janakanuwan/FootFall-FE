@@ -4,11 +4,12 @@ import GraphCount from './ui/GraphCount';
 import {changeGraphDateRange, changeGraphDisplayOption, changeGraphDisplayType} from "./graphCountActions";
 
 const mapStateToProps = (state) => {
+  const graphCount = state.getIn(['dashboard', 'graphCount']);
   return {
-    graphData: state.getIn(['graphCount', 'graphData']),
-    displayTypeData: state.getIn(['graphCount', 'displayTypeData']),
-    dateRange: state.getIn(['graphCount', 'dateRange']),
-    selectedDisplayOption: state.getIn(['graphCount', 'displayOption']),
+    graphData: graphCount.get('graphData'),
+    displayTypeData: graphCount.get('displayTypeData'),
+    dateRange: graphCount.get('dateRange'),
+    selectedDisplayOption: graphCount.get('displayOption'),
   };
 };
 
