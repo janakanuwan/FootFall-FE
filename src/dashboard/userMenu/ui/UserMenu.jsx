@@ -43,7 +43,7 @@ class UserMenu extends React.Component {
     const {anchorEl} = this.state;
 
     return (
-      <div>
+      <div align="right">
         <Button
           aria-owns={anchorEl ? 'simple-user-menu' : null}
           aria-haspopup="true"
