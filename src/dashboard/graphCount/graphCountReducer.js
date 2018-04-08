@@ -4,13 +4,13 @@ import {
   CHANGE_GRAPH_DATE_RANGE,
   CHANGE_GRAPH_DISPLAY_OPTION,
   CHANGE_GRAPH_DISPLAY_TYPE,
-  SET_GRAPH_DATA
-} from "../../const/action-types";
+  SET_GRAPH_DATA,
+} from '../../const/action-types';
 
 import { GraphData, GraphDisplayTypeData, List, Record } from 'Models';
-import GraphDateRange from "../../app/models/graph/GraphDateRange.model";
+import GraphDateRange from '../../app/models/graph/GraphDateRange.model';
 
-import { GraphDisplayOptions, GraphDisplayTypes } from "./graphCountConstants";
+import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants';
 
 import graphCountManager from './graphCountManager';
 import dashboardUtil from '../dashboardUtil';
@@ -20,7 +20,9 @@ const Today = dashboardUtil.today();
 const initialState = Record({
   displayTypeData: GraphDisplayTypeData({ in: true, out: true, presence: true }),
   graphData: List(GraphData),
-  dateRange: GraphDateRange({ fromDate: Today, toDate: Today, fromDateMax: Today, toDateMin: Today, toDateMax: Today }),
+  dateRange: GraphDateRange({
+    fromDate: Today, toDate: Today, fromDateMax: Today, toDateMin: Today, toDateMax: Today,
+  }),
   displayOption: String(GraphDisplayOptions[0]),
 }, 'GraphState')();
 
@@ -43,7 +45,7 @@ const graphReducer = createReducer(initialState, {
 
     if (graphCountManager.isValidDateRange(dateRange, type, date)) {
       const updatedValues = graphCountManager.getUpdatedDateRangeValues(dateRange, type, date);
-      updatedValues.forEach(values => {
+      updatedValues.forEach((values) => {
         Object.entries(values).forEach(([key, value]) => {
           state = state.setIn(['dateRange', key], value);
         });
@@ -58,7 +60,7 @@ const graphReducer = createReducer(initialState, {
       return state.set('displayOption', option);
     }
     return state;
-  }
+  },
 
 });
 

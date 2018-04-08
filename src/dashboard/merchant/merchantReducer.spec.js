@@ -1,9 +1,8 @@
 import reducer from './merchantReducer';
-import { changeMerchant } from "./merchantActions";
+import { changeMerchant } from './merchantActions';
 import { Merchant } from 'Models';
 
 describe('merchantReducer', () => {
-
   const initialState = reducer(undefined, { type: 'INIT' });
 
   const merchant1 = { id: 1, name: 'Test1' };
@@ -29,5 +28,4 @@ describe('merchantReducer', () => {
 
     expect(reducer(initialState, action)).toBe(initialState);
   });
-
 });

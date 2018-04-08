@@ -9,10 +9,10 @@ import Routes from './app/Routes';
 ReactDOM.render(
   <div>
     <Provider store={store}>
-      <Routes/>
+      <Routes />
     </Provider>
   </div>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 

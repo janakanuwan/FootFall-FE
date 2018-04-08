@@ -8,7 +8,7 @@ const GraphDateRange = Record({
   toDateMin: Maybe(String),
 
   fromDateMin: Maybe(String),
-  toDateMax: Maybe(String)
+  toDateMax: Maybe(String),
 }, 'GraphDateRange');
 
 export default GraphDateRange;

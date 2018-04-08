@@ -5,12 +5,12 @@ logger.setAdditivity(true);
 logger.setLevel(Level.WARN);
 
 const appender = new BrowserConsoleAppender();
-appender.setLayout(new PatternLayout("[%c] %d{yyyy-MM-dd HH:mm:ss,SSS} %-5p - %m%n"));
+appender.setLayout(new PatternLayout('[%c] %d{yyyy-MM-dd HH:mm:ss,SSS} %-5p - %m%n'));
 appender.setThreshold(Level.WARN);
 
 logger.addAppender(appender);
 
-const errorReportingMiddleware = () => next => action => {
+const errorReportingMiddleware = () => next => (action) => {
   try {
     next(action);
   } catch (err) {

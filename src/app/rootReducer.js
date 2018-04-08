@@ -5,7 +5,7 @@ import dashboardReducer from '../dashboard/dashboardReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  dashboard: dashboardReducer
+  dashboard: dashboardReducer,
 });
 
 export default rootReducer;

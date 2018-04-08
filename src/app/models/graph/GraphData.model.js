@@ -4,7 +4,7 @@ const GraphData = Record({
   NAME: String,
   IN: Number,
   OUT: Number,
-  PRESENCE: Number
+  PRESENCE: Number,
 }, 'GraphData');
 
 export default GraphData;

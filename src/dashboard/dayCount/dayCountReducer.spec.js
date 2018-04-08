@@ -1,8 +1,7 @@
 import reducer from './dayCountReducer';
-import { setDayCount } from "./dayCountActions";
+import { setDayCount } from './dayCountActions';
 
 describe('dayCountReducer', () => {
-
   const initialState = reducer(undefined, { Type: 'INIT' });
 
   it('should set the day count with default values', () => {
@@ -32,5 +31,4 @@ describe('dayCountReducer', () => {
 
     expect(reducer(initialState, action)).toBe(initialState);
   });
-
 });

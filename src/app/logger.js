@@ -4,7 +4,7 @@ import {
   setShowStackTraces,
   BrowserConsoleAppender,
   PatternLayout,
-  Level
+  Level,
 } from 'log4javascript';
 
 setEnabled(true);

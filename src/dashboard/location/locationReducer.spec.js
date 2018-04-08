@@ -1,10 +1,9 @@
-import { changeLocation } from "./locationActions";
-import reducer from "./locationReducer";
+import { changeLocation } from './locationActions';
+import reducer from './locationReducer';
 
 import { Location } from 'Models';
 
 describe('reducer', () => {
-
   const initialState = reducer(undefined, { type: 'INIT' });
 
   const location1 = { id: 1, name: 'Location 1' };

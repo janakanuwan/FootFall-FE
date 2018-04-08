@@ -1,10 +1,10 @@
 import { createReducer } from 'redux-create-reducer';
-import { CHANGE_MERCHANT } from "../../const/action-types";
+import { CHANGE_MERCHANT } from '../../const/action-types';
 import { List, Maybe, Merchant, Record } from 'Models';
 
 const initialState = Record({
   list: List(Merchant),
-  selectedMerchant: Maybe(Merchant)
+  selectedMerchant: Maybe(Merchant),
 }, 'MerchantState')();
 
 const merchantReducer = createReducer(initialState, {

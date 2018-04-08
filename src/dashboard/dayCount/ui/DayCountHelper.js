@@ -7,7 +7,7 @@ import moment from 'moment';
  */
 const formatDate = (date) => {
   if (date) {
-    return moment(date).format("dddd, MMMM Do YYYY");
+    return moment(date).format('dddd, MMMM Do YYYY');
   }
   return '';
 };
@@ -19,7 +19,7 @@ const formatDate = (date) => {
  */
 const formatTime = (date) => {
   if (date) {
-    return moment(date).format("h:mm A");
+    return moment(date).format('h:mm A');
   }
   return '';
 };

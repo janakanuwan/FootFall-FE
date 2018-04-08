@@ -17,11 +17,7 @@ const initialState = Map();
 const store = createStore(
   rootReducer,
   initialState,
-  composeEnhancers(
-    applyMiddleware(
-      errorReportingMiddleware
-    )
-  )
+  composeEnhancers(applyMiddleware(errorReportingMiddleware)),
 );
 
 export default store;

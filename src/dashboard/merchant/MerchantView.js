@@ -1,21 +1,19 @@
 import { connect } from 'react-redux';
 
 import MerchantOverview from './ui/MerchantOverview';
-import { changeMerchant } from "./merchantActions";
+import { changeMerchant } from './merchantActions';
 
 const mapStateToProps = (state) => {
   const merchants = state.getIn(['dashboard', 'merchants']);
   return {
     merchantList: merchants.get('list'),
-    selectedMerchant: merchants.get('selectedMerchant')
+    selectedMerchant: merchants.get('selectedMerchant'),
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSelect: (merchant) => dispatch(changeMerchant(merchant))
-  }
-};
+const mapDispatchToProps = dispatch => ({
+  onSelect: merchant => dispatch(changeMerchant(merchant)),
+});
 
 const MerchantView = connect(
   mapStateToProps,
@@ -23,6 +21,4 @@ const MerchantView = connect(
 )(MerchantOverview);
 
 export default MerchantView;
-
-
 

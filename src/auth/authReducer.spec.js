@@ -1,9 +1,8 @@
 import reducer from './authReducer';
-import { loginUser, logoutUser } from "./authActions";
+import { loginUser, logoutUser } from './authActions';
 import { User } from 'Models';
 
 describe('userReducer', () => {
-
   const initialState = reducer(undefined, { TYPE: 'INIT' });
 
   const user1 = User({ id: 1, userEmail: 'hellotest@gmail.com', userName: 'Hello Test' });

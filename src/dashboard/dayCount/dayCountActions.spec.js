@@ -1,4 +1,4 @@
-import { setDayCount } from "./dayCountActions";
+import { setDayCount } from './dayCountActions';
 
 describe('dayCountActions', () => {
   it('should create an action for set day count', () => {

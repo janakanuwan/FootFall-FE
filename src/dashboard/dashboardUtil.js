@@ -4,17 +4,13 @@ import moment from 'moment';
  *
  * @returns {string} today in "YYYY-MM-DD" format
  */
-const today = () => {
-  return moment().format('YYYY-MM-DD');
-};
+const today = () => moment().format('YYYY-MM-DD');
 
 /**
  *
  * @returns {string} today in ISO 8601 format (e.g. "2018-04-05T07:09:23+05:30")
  */
-const todayWithTime = () => {
-  return moment().format();
-};
+const todayWithTime = () => moment().format();
 
 /**
  *
@@ -38,5 +34,5 @@ const isSameOrAfter = (date1, date2) => {
 export default {
   today,
   todayWithTime,
-  isSameOrAfter
-}
+  isSameOrAfter,
+};

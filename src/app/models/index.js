@@ -9,7 +9,7 @@ export {
   List,
   Record,
   Typed,
-  Union
+  Union,
 };
 
 import Merchant from './Merchant.model';

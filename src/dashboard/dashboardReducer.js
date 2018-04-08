@@ -8,7 +8,7 @@ const dashboardReducer = combineReducers({
   merchants: merchantReducer,
   locations: locationReducer,
   dayCount: dayCountReducer,
-  graphCount: graphCountReducer
+  graphCount: graphCountReducer,
 });
 
 export default dashboardReducer;

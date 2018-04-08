@@ -6,15 +6,14 @@ import {
   changeGraphDateRange,
   changeGraphDisplayOption,
   changeGraphDisplayType,
-  setGraphData
-} from "./graphCountActions";
+  setGraphData,
+} from './graphCountActions';
 
 import { GraphData, List } from 'Models';
 
-import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants'
+import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants';
 
 describe('graphReducer', () => {
-
   const initialState = reducer(undefined, { type: 'INIT' });
 
   const today = moment().format('YYYY-MM-DD');
@@ -31,9 +30,9 @@ describe('graphReducer', () => {
         fromDateMax: today,
         toDateMin: today,
         toDateMax: today,
-        fromDateMin: null
+        fromDateMin: null,
       },
-      displayOption: "hourly"
+      displayOption: 'hourly',
     };
 
     expect(initialState.toJS()).toEqual(expected);
@@ -44,32 +43,32 @@ describe('graphReducer', () => {
     {
       state: initialState,
       action: changeGraphDisplayType(GraphDisplayTypes[0]),
-      expected: { in: false, out: true, presence: true }
+      expected: { in: false, out: true, presence: true },
     },
     {
       state: reducer(initialState, changeGraphDisplayType(GraphDisplayTypes[0])),
       action: changeGraphDisplayType(GraphDisplayTypes[0]),
-      expected: { in: true, out: true, presence: true }
+      expected: { in: true, out: true, presence: true },
     },
     {
       state: initialState,
       action: changeGraphDisplayType(GraphDisplayTypes[1]),
-      expected: { in: true, out: false, presence: true }
+      expected: { in: true, out: false, presence: true },
     },
     {
       state: reducer(initialState, changeGraphDisplayType(GraphDisplayTypes[1])),
       action: changeGraphDisplayType(GraphDisplayTypes[1]),
-      expected: { in: true, out: true, presence: true }
+      expected: { in: true, out: true, presence: true },
     },
     {
       state: initialState,
       action: changeGraphDisplayType(GraphDisplayTypes[2]),
-      expected: { in: true, out: true, presence: false }
+      expected: { in: true, out: true, presence: false },
     },
     {
       state: reducer(initialState, changeGraphDisplayType(GraphDisplayTypes[2])),
       action: changeGraphDisplayType(GraphDisplayTypes[2]),
-      expected: { in: true, out: true, presence: true }
+      expected: { in: true, out: true, presence: true },
     },
   ].forEach(({ state, action, expected }, index) => {
     it(`should change the displayTypeData based on changeDisplayType (index:${index})`, () => {
@@ -80,13 +79,17 @@ describe('graphReducer', () => {
 
   it('should set the graph data', () => {
     const expected = [
-      { NAME: 'Test1', IN: 1, OUT: 1, PRESENCE: 0 },
-      { NAME: 'Test2', IN: 2, OUT: 0, PRESENCE: 2 },
+      {
+        NAME: 'Test1', IN: 1, OUT: 1, PRESENCE: 0,
+      },
+      {
+        NAME: 'Test2', IN: 2, OUT: 0, PRESENCE: 2,
+      },
     ];
 
     let graphDataList = List(GraphData)();
     expected.forEach((value) => {
-      graphDataList = graphDataList.push(value)
+      graphDataList = graphDataList.push(value);
     });
 
     const action = setGraphData(graphDataList);
@@ -103,21 +106,21 @@ describe('graphReducer', () => {
       fromDateMax: today,
       toDateMin: yesterday,
       toDateMax: today,
-      fromDateMin: null
-    }
+      fromDateMin: null,
+    },
   },
 
-    {
-      action: changeGraphDateRange({ type: 'to', date: tomorrow }),
-      expected: {
-        fromDate: today,
-        toDate: tomorrow,
-        fromDateMax: tomorrow,
-        toDateMin: today,
-        toDateMax: today,
-        fromDateMin: null
-      }
-    }
+  {
+    action: changeGraphDateRange({ type: 'to', date: tomorrow }),
+    expected: {
+      fromDate: today,
+      toDate: tomorrow,
+      fromDateMax: tomorrow,
+      toDateMin: today,
+      toDateMax: today,
+      fromDateMin: null,
+    },
+  },
   ].forEach(({ action, expected }, index) => {
     it(`should change the date range (index:${index})`, () => {
       expect(reducer(initialState, action).get('dateRange').toJS()).toEqual(expected);
@@ -127,11 +130,11 @@ describe('graphReducer', () => {
   [
     {
       action: changeGraphDisplayOption(GraphDisplayOptions[1]),
-      expected: "day"
+      expected: 'day',
     },
     {
-      action: changeGraphDisplayOption("minute"),
-      expected: "hourly"
+      action: changeGraphDisplayOption('minute'),
+      expected: 'hourly',
     },
   ].forEach(({ action, expected }, index) => {
     it(`should change the graph display option (index:${index})`, () => {
@@ -145,5 +148,4 @@ describe('graphReducer', () => {
 
     expect(reducer(initialState, action)).toBe(initialState);
   });
-
 });

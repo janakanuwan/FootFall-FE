@@ -1,14 +1,11 @@
 import dashboardUtil from './dashboardUtil';
 
 describe('dashboardManager', () => {
-
-  const getTwoDigitNumber = (number) => {
-    return number <= 9 ? `0${number}` : `${number}`;
-  };
+  const getTwoDigitNumber = number => (number <= 9 ? `0${number}` : `${number}`);
 
   it('should display \'today\'', () => {
     const todayDate = new Date();
-    const expected = todayDate.getFullYear() + '-' + getTwoDigitNumber(todayDate.getMonth() + 1) + '-' + getTwoDigitNumber(todayDate.getDate());
+    const expected = `${todayDate.getFullYear()}-${getTwoDigitNumber(todayDate.getMonth() + 1)}-${getTwoDigitNumber(todayDate.getDate())}`;
 
     expect(dashboardUtil.today()).toEqual(expected);
   });
@@ -32,5 +29,4 @@ describe('dashboardManager', () => {
       expect(dashboardUtil.isSameOrAfter(date1, date2)).toEqual(expected);
     });
   });
-
 });

@@ -8,4 +8,4 @@ export { GraphData };
 
 import GraphDateRange from './GraphDateRange.model';
 
-export { GraphDateRange }
+export { GraphDateRange };

@@ -2,7 +2,7 @@ import { Record } from './Model';
 
 const Merchant = Record({
   id: Number,
-  name: String
+  name: String,
 }, 'Merchant');
 
 export default Merchant;

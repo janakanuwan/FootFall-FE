@@ -1,8 +1,7 @@
-import reducer from "./dashboardReducer";
+import reducer from './dashboardReducer';
 import dashboardUtil from './dashboardUtil';
 
 describe('reducer', () => {
-
   const today = dashboardUtil.today();
 
 
@@ -11,16 +10,16 @@ describe('reducer', () => {
     const expected = {
       merchants: {
         list: [],
-        selectedMerchant: null
+        selectedMerchant: null,
       },
       locations: {
         list: [],
-        selectedLocation: null
+        selectedLocation: null,
       },
       dayCount: {
         count: 0,
         date: dashboardUtil.todayWithTime(),
-        dayName: "Today",
+        dayName: 'Today',
       },
 
       graphCount: {
@@ -38,12 +37,10 @@ describe('reducer', () => {
           toDateMax: today,
           toDateMin: today,
         },
-        displayOption: "hourly",
-      }
+        displayOption: 'hourly',
+      },
     };
 
     expect(reducer(undefined, action).toJS()).toEqual(expected);
-
   });
-
 });

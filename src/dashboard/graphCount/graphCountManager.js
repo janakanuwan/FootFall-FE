@@ -8,9 +8,9 @@ import dashboardUtil from '../dashboardUtil';
  * @returns {boolean} true if valid
  */
 const isValidDateRange = (dateRange, type, date) => {
-  if ('from' === type) {
+  if (type === 'from') {
     return dashboardUtil.isSameOrAfter(dateRange.toDate, date);
-  } else if ('to' === type) {
+  } else if (type === 'to') {
     return dashboardUtil.isSameOrAfter(date, dateRange.fromDate);
   }
   return false;
@@ -25,9 +25,9 @@ const isValidDateRange = (dateRange, type, date) => {
  * @returns {Array} with {param1: value1, param2: value2} format
  */
 const getUpdatedDateRangeValues = (dateRange, type, date) => {
-  if ('from' === type) {
+  if (type === 'from') {
     return [{ fromDate: date }, { toDateMin: date }];
-  } else if ('to' === type) {
+  } else if (type === 'to') {
     return [{ toDate: date }, { fromDateMax: date }];
   }
   return [];
@@ -36,5 +36,5 @@ const getUpdatedDateRangeValues = (dateRange, type, date) => {
 
 export default {
   isValidDateRange,
-  getUpdatedDateRangeValues
-}
+  getUpdatedDateRangeValues,
+};

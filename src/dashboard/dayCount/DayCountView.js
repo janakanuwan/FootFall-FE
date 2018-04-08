@@ -11,8 +11,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const DayCountView = connect(
-  mapStateToProps
-)(DayCount);
+const DayCountView = connect(mapStateToProps)(DayCount);
 
 export default DayCountView;

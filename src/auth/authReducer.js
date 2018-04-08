@@ -1,10 +1,10 @@
 import { createReducer } from 'redux-create-reducer';
 
 import { Maybe, Record, User } from 'Models';
-import { LOGIN_USER_REQUEST, LOGOUT_USER } from "../const/action-types";
+import { LOGIN_USER_REQUEST, LOGOUT_USER } from '../const/action-types';
 
 const initialState = Record({
-  user: Maybe(User)
+  user: Maybe(User),
 }, 'AuthState')();
 
 const authReducer = createReducer(initialState, {
@@ -20,10 +20,10 @@ const authReducer = createReducer(initialState, {
     const user = User({
       id: 1,
       userEmail: action.payload.loginInfo.userEmail,
-      userName: 'Test User'
+      userName: 'Test User',
     });
     return state.set('user', user);
-  }
+  },
 
 });
 
