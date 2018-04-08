@@ -1,4 +1,4 @@
-import {changeMerchant} from './merchantActions';
+import { changeMerchant } from './merchantActions';
 
 describe('merchantActions', () => {
   it('should create an action for merchant change', () => {

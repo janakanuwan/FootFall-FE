@@ -1,9 +1,11 @@
-
 import GraphDisplayTypeData from './GraphDisplayTypeData.model';
-export {GraphDisplayTypeData};
+
+export { GraphDisplayTypeData };
 
 import GraphData from './GraphData.model';
-export {GraphData};
+
+export { GraphData };
 
 import GraphDateRange from './GraphDateRange.model';
-export {GraphDateRange}
+
+export { GraphDateRange }

@@ -7,7 +7,7 @@ import Divider from 'material-ui/Divider';
 
 import ListSelect from './../../common-ui/ListSelect';
 
-import {List, Merchant} from 'Models';
+import { List, Merchant } from 'Models';
 
 /**
  *
@@ -15,7 +15,7 @@ import {List, Merchant} from 'Models';
  * @param selectedMerchant{object}
  * @param onSelect(merchant) fired at a select change
  */
-const MerchantOverview = ({merchantList, selectedMerchant, onSelect}) => {
+const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => {
 
   return (
     <div>

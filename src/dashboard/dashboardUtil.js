@@ -22,14 +22,14 @@ const todayWithTime = () => {
  * @param date2
  * @returns {boolean} true if date1 is same or after date2 (from day)
  */
-const isSameOrAfter = (date1, date2)=> {
-  if(date1 === undefined || date2 === undefined){
+const isSameOrAfter = (date1, date2) => {
+  if (date1 === undefined || date2 === undefined) {
     return false;
   }
 
-  try{
+  try {
     return moment(date1).isSameOrAfter(date2, 'day');
-  } catch(err) {
+  } catch (err) {
     return false;
   }
 };

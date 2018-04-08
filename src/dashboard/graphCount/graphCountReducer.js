@@ -1,4 +1,4 @@
-import {createReducer} from 'redux-create-reducer';
+import { createReducer } from 'redux-create-reducer';
 
 import {
   CHANGE_GRAPH_DATE_RANGE,
@@ -7,10 +7,10 @@ import {
   SET_GRAPH_DATA
 } from "../../const/action-types";
 
-import {GraphData, GraphDisplayTypeData, List, Record} from 'Models';
+import { GraphData, GraphDisplayTypeData, List, Record } from 'Models';
 import GraphDateRange from "../../app/models/graph/GraphDateRange.model";
 
-import {GraphDisplayOptions, GraphDisplayTypes} from "./graphCountConstants";
+import { GraphDisplayOptions, GraphDisplayTypes } from "./graphCountConstants";
 
 import graphCountManager from './graphCountManager';
 import dashboardUtil from '../dashboardUtil';
@@ -18,9 +18,9 @@ import dashboardUtil from '../dashboardUtil';
 const Today = dashboardUtil.today();
 
 const initialState = Record({
-  displayTypeData: GraphDisplayTypeData({in: true, out: true, presence: true}),
+  displayTypeData: GraphDisplayTypeData({ in: true, out: true, presence: true }),
   graphData: List(GraphData),
-  dateRange: GraphDateRange({fromDate: Today, toDate: Today, fromDateMax: Today, toDateMin: Today, toDateMax: Today}),
+  dateRange: GraphDateRange({ fromDate: Today, toDate: Today, fromDateMax: Today, toDateMin: Today, toDateMax: Today }),
   displayOption: String(GraphDisplayOptions[0]),
 }, 'GraphState')();
 
@@ -38,7 +38,7 @@ const graphReducer = createReducer(initialState, {
     return state.set('graphData', action.payload.graphData);
   },
   [CHANGE_GRAPH_DATE_RANGE](state, action) {
-    const {type, date} = action.payload.graphDateRange;
+    const { type, date } = action.payload.graphDateRange;
     const dateRange = state.get('dateRange');
 
     if (graphCountManager.isValidDateRange(dateRange, type, date)) {

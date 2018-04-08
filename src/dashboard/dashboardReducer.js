@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux-immutable';
+import { combineReducers } from 'redux-immutable';
 import merchantReducer from './merchant/merchantReducer';
 import locationReducer from './location/locationReducer';
 import dayCountReducer from './dayCount/dayCountReducer';

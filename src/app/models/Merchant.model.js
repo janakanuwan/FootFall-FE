@@ -1,4 +1,4 @@
-import {Record} from './Model';
+import { Record } from './Model';
 
 const Merchant = Record({
   id: Number,

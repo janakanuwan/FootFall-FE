@@ -1,6 +1,13 @@
-import {getLogger, setEnabled, setShowStackTraces, BrowserConsoleAppender, PatternLayout, Level} from 'log4javascript';
+import {
+  getLogger,
+  setEnabled,
+  setShowStackTraces,
+  BrowserConsoleAppender,
+  PatternLayout,
+  Level
+} from 'log4javascript';
 
 setEnabled(true);
 setShowStackTraces(true);
 
-export {getLogger, BrowserConsoleAppender, PatternLayout, Level};
+export { getLogger, BrowserConsoleAppender, PatternLayout, Level };

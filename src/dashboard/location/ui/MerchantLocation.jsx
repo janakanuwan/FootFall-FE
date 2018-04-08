@@ -6,7 +6,7 @@ import Typography from 'material-ui/Typography';
 
 import ButtonSelectGroup from './../../common-ui/ButtonSelectGroup';
 
-import {List, Location} from 'Models';
+import { List, Location } from 'Models';
 
 
 /**
@@ -15,7 +15,7 @@ import {List, Location} from 'Models';
  * @param selectedLocation
  * @param onClick(location) fired at a select change
  */
-const MerchantLocation = ({locationList, selectedLocation, onClick}) => {
+const MerchantLocation = ({ locationList, selectedLocation, onClick }) => {
 
   return (
     <div>

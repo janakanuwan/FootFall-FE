@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import MerchantOverview from './ui/MerchantOverview';
-import {changeMerchant} from "./merchantActions";
+import { changeMerchant } from "./merchantActions";
 
 const mapStateToProps = (state) => {
   const merchants = state.getIn(['dashboard', 'merchants']);

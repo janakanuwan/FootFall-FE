@@ -24,4 +24,4 @@ const formatTime = (date) => {
   return '';
 };
 
-export {formatDate, formatTime};
+export { formatDate, formatTime };

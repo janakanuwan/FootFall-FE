@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'material-ui/Select';
-import {MenuItem} from 'material-ui/Menu';
+import { MenuItem } from 'material-ui/Menu';
 
 
 /**
@@ -10,7 +10,7 @@ import {MenuItem} from 'material-ui/Menu';
  *
  * @param onSelect(item) fired at selecting a list item
  */
-const ListSelect = ({items, selectedItem, onSelect}) => {
+const ListSelect = ({ items, selectedItem, onSelect }) => {
 
   const menuItems = items.map((entry, index) =>
     <MenuItem key={entry.id} value={index}>

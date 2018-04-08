@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import GraphCount from './ui/GraphCount';
-import {changeGraphDateRange, changeGraphDisplayOption, changeGraphDisplayType} from "./graphCountActions";
+import { changeGraphDateRange, changeGraphDisplayOption, changeGraphDisplayType } from "./graphCountActions";
 
 const mapStateToProps = (state) => {
   const graphCount = state.getIn(['dashboard', 'graphCount']);
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapStateToDispatch = (dispatch) => {
   return {
-    onClickDisplayType: ({displayType}) => dispatch(changeGraphDisplayType(displayType)),
+    onClickDisplayType: ({ displayType }) => dispatch(changeGraphDisplayType(displayType)),
     onChangeDate: (graphDateRange) => dispatch(changeGraphDateRange(graphDateRange)),
     onClickDisplayOption: (displayOption) => dispatch(changeGraphDisplayOption(displayOption)),
   };

@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
-import {withStyles} from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import CountChart from '../../common-ui/CountChart';
 import DateTextField from "../../common-ui/DateTextField";
 import ButtonSelectGroup from '../../common-ui/ButtonSelectGroup';
 
-import {GraphDateRangeTypes, GraphDisplayOptions, GraphDisplayTypes} from '../graphCountConstants';
+import { GraphDateRangeTypes, GraphDisplayOptions, GraphDisplayTypes } from '../graphCountConstants';
 
-const DisplayButton = ({children, selected, onClick}) => {
+const DisplayButton = ({ children, selected, onClick }) => {
   return (
     <Button
       size="small"
       variant={selected ? "raised" : "flat"}
-      onClick={() => onClick({displayType: children})}
+      onClick={() => onClick({ displayType: children })}
       children={children}
     />
   );
@@ -96,7 +96,7 @@ const GraphCount = (props) => {
             {GraphDateRangeTypes.map((value) =>
               <DateTextField key={value} label={value.toUpperCase()} date={dateRange[`${value}Date`]}
                              max={dateRange[`${value}DateMax`]} min={dateRange[`${value}DateMin`]}
-                             onChange={(date) => onChangeDate({type: value, date})}
+                             onChange={(date) => onChangeDate({ type: value, date })}
               />
             )}
 

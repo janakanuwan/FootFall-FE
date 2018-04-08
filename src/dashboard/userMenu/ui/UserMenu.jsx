@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
-import Menu, {MenuItem} from 'material-ui/Menu';
+import Menu, { MenuItem } from 'material-ui/Menu';
 
-import {User} from "Models";
+import { User } from "Models";
 
 /**
  * @userName: logged in user's name
@@ -16,7 +16,7 @@ class UserMenu extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {anchorEl: null};
+    this.state = { anchorEl: null };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -24,11 +24,11 @@ class UserMenu extends React.Component {
   }
 
   handleClick(event) {
-    this.setState({anchorEl: event.currentTarget});
+    this.setState({ anchorEl: event.currentTarget });
   }
 
   handleClose() {
-    this.setState({anchorEl: null});
+    this.setState({ anchorEl: null });
   }
 
   handleLogout() {
@@ -40,7 +40,7 @@ class UserMenu extends React.Component {
     const userName = this.props.user && this.props.user.userName;
     const userEmail = this.props.user && this.props.user.userEmail;
 
-    const {anchorEl} = this.state;
+    const { anchorEl } = this.state;
 
     return (
       <div align="right">

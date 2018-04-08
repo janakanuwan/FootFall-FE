@@ -17,7 +17,7 @@ import TextField from "material-ui/TextField";
  * @see https://github.com/dmtrKovalenko/material-ui-pickers
  * @see https://github.com/gpbl/react-day-picker
  */
-const DateTextField = ({label, date, min, max, onChange, error}) => {
+const DateTextField = ({ label, date, min, max, onChange, error }) => {
 
   const handleChange = (event) => {
     const selectedDate = event.target.value;

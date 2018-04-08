@@ -1,7 +1,7 @@
-import {createReducer} from 'redux-create-reducer';
+import { createReducer } from 'redux-create-reducer';
 
-import {Maybe, Record, User} from 'Models';
-import {LOGIN_USER_REQUEST, LOGOUT_USER} from "../const/action-types";
+import { Maybe, Record, User } from 'Models';
+import { LOGIN_USER_REQUEST, LOGOUT_USER } from "../const/action-types";
 
 const initialState = Record({
   user: Maybe(User)

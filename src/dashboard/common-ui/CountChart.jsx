@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {CartesianGrid, Label, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
+import { CartesianGrid, Label, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const IN_COLOR = "#12939A";
 const OUT_COLOR = "#FF9833";
@@ -10,7 +10,7 @@ const PRESENT_COLOR = "#1A3177";
 const X_AXIS_WIDTH = 40;
 const Y_AXIS_WIDTH = 65;
 
-const CHART_MARGIN = {top: 5, right: 20, left: 20, bottom: 5};
+const CHART_MARGIN = { top: 5, right: 20, left: 20, bottom: 5 };
 
 const ACTIVE_DOT = {
   r: 8

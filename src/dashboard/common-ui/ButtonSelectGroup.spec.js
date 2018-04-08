@@ -41,7 +41,7 @@ const buttonSelectGroupData = [
   },
   {
     items: buttonSelectItems,
-    selectedItem: {id: 6, name: 'Button 6'},
+    selectedItem: { id: 6, name: 'Button 6' },
     onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
   },
 ];

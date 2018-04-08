@@ -20,11 +20,11 @@ class ButtonSelectGroup extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {selectedItem: props.selectedItem};
+    this.state = { selectedItem: props.selectedItem };
   }
 
   handleClick(item) {
-    this.setState({selectedItem: item});
+    this.setState({ selectedItem: item });
     if (this.props.onClick) {
       this.props.onClick(item);
     }

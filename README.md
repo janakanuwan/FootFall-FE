@@ -51,6 +51,4 @@ will simply development efforts and enable debugging
 - Add storybook
 - Add test cases
 - Add loading overlay
-- Add logger for failures
-- Add the middleware ??
 

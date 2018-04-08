@@ -7,7 +7,7 @@ describe('reducer', () => {
 
 
   it('should create initial state for unsupported action', () => {
-    const action = {type: 'UNSUPPORTED_ACTION_TYPE'};
+    const action = { type: 'UNSUPPORTED_ACTION_TYPE' };
     const expected = {
       merchants: {
         list: [],

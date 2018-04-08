@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import MerchantLocation from './ui/MerchantLocation';
-import {changeLocation} from "./locationActions";
+import { changeLocation } from "./locationActions";
 
 const mapStateToProps = (state) => {
   const locations = state.getIn(['dashboard', 'locations']);

@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import UserMenu from './ui/UserMenu';
-import {logoutUser} from "../../auth/authActions";
+import { logoutUser } from "../../auth/authActions";
 
 const mapStateToProps = (state) => {
   const auth = state.get('auth');

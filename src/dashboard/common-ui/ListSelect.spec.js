@@ -34,7 +34,7 @@ const listSelectData = [
   },
   {
     items: listItems,
-    selectedItem: {id: 3, name: 'Test Merchant 3'},
+    selectedItem: { id: 3, name: 'Test Merchant 3' },
     onSelect: (item) => console.log('Selected item: ', item)
   },
 ];

@@ -1,7 +1,7 @@
-import {createReducer} from 'redux-create-reducer';
-import {List, Location, Maybe, Record} from 'Models';
+import { createReducer } from 'redux-create-reducer';
+import { List, Location, Maybe, Record } from 'Models';
 
-import {CHANGE_LOCATION} from "../../const/action-types";
+import { CHANGE_LOCATION } from "../../const/action-types";
 
 const initialState = Record({
   list: List(Location),

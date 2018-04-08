@@ -1,4 +1,4 @@
-import {BrowserConsoleAppender, getLogger, Level, PatternLayout} from '../logger';
+import { BrowserConsoleAppender, getLogger, Level, PatternLayout } from '../logger';
 
 const logger = getLogger('errorReportingMiddleware');
 logger.setAdditivity(true);

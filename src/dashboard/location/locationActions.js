@@ -1,9 +1,9 @@
-import {createAction} from 'redux-actions';
-import {CHANGE_LOCATION} from "../../const/action-types";
+import { createAction } from 'redux-actions';
+import { CHANGE_LOCATION } from "../../const/action-types";
 
 const changeLocation = createAction(
   CHANGE_LOCATION,
-  (selectedLocation) => ({selectedLocation})
+  (selectedLocation) => ({ selectedLocation })
 );
 
-export {changeLocation};
+export { changeLocation };

@@ -1,4 +1,4 @@
-import {createAction} from 'redux-actions';
+import { createAction } from 'redux-actions';
 
 import {
   CHANGE_GRAPH_DATE_RANGE,
@@ -9,22 +9,22 @@ import {
 
 const changeGraphDisplayType = createAction(
   CHANGE_GRAPH_DISPLAY_TYPE,
-  (displayType) => ({displayType})
+  (displayType) => ({ displayType })
 );
 
 const setGraphData = createAction(
   SET_GRAPH_DATA,
-  (graphData) => ({graphData})
+  (graphData) => ({ graphData })
 );
 
 const changeGraphDateRange = createAction(
   CHANGE_GRAPH_DATE_RANGE,
-  (graphDateRange) => ({graphDateRange})
+  (graphDateRange) => ({ graphDateRange })
 );
 
 const changeGraphDisplayOption = createAction(
   CHANGE_GRAPH_DISPLAY_OPTION,
-  (displayOption) => ({displayOption})
+  (displayOption) => ({ displayOption })
 );
 
-export {changeGraphDisplayType, setGraphData, changeGraphDateRange, changeGraphDisplayOption};
+export { changeGraphDisplayType, setGraphData, changeGraphDateRange, changeGraphDisplayOption };

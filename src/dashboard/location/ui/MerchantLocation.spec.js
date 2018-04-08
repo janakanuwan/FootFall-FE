@@ -1,6 +1,6 @@
 import MerchantLocation from './MerchantLocation';
 
-const locationItems = [1, 2, 3, 4, 5].map((item) => ({id: item, name: `Location ${item}`}));
+const locationItems = [1, 2, 3, 4, 5].map((item) => ({ id: item, name: `Location ${item}` }));
 const merchantLocationData = [
   {
     locationList: locationItems,
@@ -9,7 +9,7 @@ const merchantLocationData = [
   },
   {
     locationList: locationItems,
-    selectedLocation: {id: 6, name: 'Location 6'},
+    selectedLocation: { id: 6, name: 'Location 6' },
     onClick: (location) => console.log('Selected location : ', location)
   },
   {

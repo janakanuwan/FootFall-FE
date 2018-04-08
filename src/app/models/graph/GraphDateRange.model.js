@@ -1,4 +1,4 @@
-import {Maybe, Record} from '../Model';
+import { Maybe, Record } from '../Model';
 
 const GraphDateRange = Record({
   fromDate: String,

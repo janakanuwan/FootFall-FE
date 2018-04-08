@@ -12,7 +12,7 @@ import DateTextField from './dashboard/common-ui/DateTextField';
 import GraphCount from './dashboard/graphCount/ui/GraphCount';
 
 const userMenuData = {
-  user: {userName: 'Hello Test', userEmail: 'hellotest@gmail.com'},
+  user: { userName: 'Hello Test', userEmail: 'hellotest@gmail.com' },
   onLogout: (user) => console.log("Loging out:", user)
 };
 
@@ -51,7 +51,7 @@ const listSelectData = [
   },
   {
     items: listItems,
-    selectedItem: {id: 3, name: 'Test Merchant 3'},
+    selectedItem: { id: 3, name: 'Test Merchant 3' },
     onSelect: (item) => console.log('Selected item: ', item)
   },
 ];
@@ -110,23 +110,23 @@ const buttonSelectGroupData = [
   },
   {
     items: buttonSelectItems,
-    selectedItem: {id: 6, name: 'Button 6'},
+    selectedItem: { id: 6, name: 'Button 6' },
     onClick: (clickedItem) => console.log('ButtonGroup clicked item:', clickedItem),
   },
 ];
 
 const countChartData = [
-  {NAME: 'Page A', IN: 4000, OUT: 2400, PRESENCE: 2400},
-  {NAME: 'Page B', IN: 3000, OUT: 1398, PRESENCE: 2210},
-  {NAME: 'Page C', IN: 2000, OUT: 9800, PRESENCE: 2290},
-  {NAME: 'Page D', IN: 2780, OUT: 3908, PRESENCE: 2000},
-  {NAME: 'Page E', IN: 1890, OUT: 4800, PRESENCE: 2181},
-  {NAME: 'Page F', IN: 2390, OUT: 3800, PRESENCE: 2500},
-  {NAME: 'Page G', IN: 3490, OUT: 4300, PRESENCE: 2100},
+  { NAME: 'Page A', IN: 4000, OUT: 2400, PRESENCE: 2400 },
+  { NAME: 'Page B', IN: 3000, OUT: 1398, PRESENCE: 2210 },
+  { NAME: 'Page C', IN: 2000, OUT: 9800, PRESENCE: 2290 },
+  { NAME: 'Page D', IN: 2780, OUT: 3908, PRESENCE: 2000 },
+  { NAME: 'Page E', IN: 1890, OUT: 4800, PRESENCE: 2181 },
+  { NAME: 'Page F', IN: 2390, OUT: 3800, PRESENCE: 2500 },
+  { NAME: 'Page G', IN: 3490, OUT: 4300, PRESENCE: 2100 },
 ];
 
 
-const merchants = [1, 2].map((item) => ({id: item, name: `Test Merchant ${item}`}));
+const merchants = [1, 2].map((item) => ({ id: item, name: `Test Merchant ${item}` }));
 const merchantOverviewData = [
   {
     merchantList: merchants,
@@ -149,7 +149,7 @@ const merchantOverviewData = [
   },
 ];
 
-const locationItems = [1, 2, 3, 4, 5].map((item) => ({id: item, name: `Location ${item}`}));
+const locationItems = [1, 2, 3, 4, 5].map((item) => ({ id: item, name: `Location ${item}` }));
 const merchantLocationData = [
   {
     locationList: locationItems,
@@ -158,7 +158,7 @@ const merchantLocationData = [
   },
   {
     locationList: locationItems,
-    selectedLocation: {id: 6, name: 'Location 6'},
+    selectedLocation: { id: 6, name: 'Location 6' },
     onClick: (location) => console.log('Selected location : ', location)
   },
   {
@@ -214,7 +214,7 @@ const graphDisplayOptions = [
 const graphCountData = {
   graphData: countChartData,
 
-  displayTypeData: {in: true, out: true, presence: true},
+  displayTypeData: { in: true, out: true, presence: true },
   onClickDisplayType: (event) => console.log('Type: ', event),
 
   displayOptions: graphDisplayOptions,

@@ -1,4 +1,5 @@
-import {Any, fromJS, List, Map, Maybe, Record, Typed, Union} from './Model';
+import { Any, fromJS, List, Map, Maybe, Record, Typed, Union } from './Model';
+
 export {
   Map,
   fromJS,
@@ -12,13 +13,16 @@ export {
 };
 
 import Merchant from './Merchant.model';
-export {Merchant};
+
+export { Merchant };
 
 import Location from './Location.model';
-export {Location};
+
+export { Location };
 
 import User from './User.model';
-export {User};
 
-export {GraphDisplayTypeData, GraphData, GraphDateRange} from './graph/index';
+export { User };
+
+export { GraphDisplayTypeData, GraphData, GraphDateRange } from './graph/index';
 

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import {withStyles} from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
-import {formatDate, formatTime} from "./DayCountHelper";
+import { formatDate, formatTime } from "./DayCountHelper";
 
 const styles = (theme) => ({
   paperCount: {
@@ -23,7 +23,7 @@ const styles = (theme) => ({
  */
 const DayCount = (props) => {
 
-  const {dayName, date, count, classes} = props;
+  const { dayName, date, count, classes } = props;
 
   return (
     <div>

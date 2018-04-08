@@ -1,4 +1,4 @@
-import {formatDate, formatTime} from './DayCountHelper';
+import { formatDate, formatTime } from './DayCountHelper';
 
 describe('DayCountHelper', () => {
 

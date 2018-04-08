@@ -1,9 +1,10 @@
-import {fromJS, Map} from 'immutable';
-import {Any, List, Maybe, Record, Typed, Union} from 'typed-immutable';
+import { fromJS, Map } from 'immutable';
 
-export {Map, fromJS};
+export { Map, fromJS };
 
-export {Maybe, Any, List, Record, Typed, Union};
+import { Any, List, Maybe, Record, Typed, Union } from 'typed-immutable';
+
+export { Maybe, Any, List, Record, Typed, Union };
 
 Typed.Enum = (types) => {
   if (typeof(types) !== 'object') {

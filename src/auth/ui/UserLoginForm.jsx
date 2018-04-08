@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {FormControlLabel} from 'material-ui/Form';
+import { FormControlLabel } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
-import {withStyles} from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 const styles = (theme) => ({
   paper: {
@@ -48,19 +48,19 @@ class UserLoginForm extends React.Component {
   }
 
   handleChange(e) {
-    const {name, value, checked} = e.target;
+    const { name, value, checked } = e.target;
 
     if (name === 'rememberMe') {
-      this.setState({[name]: checked});
+      this.setState({ [name]: checked });
     } else {
-      this.setState({[name]: value});
+      this.setState({ [name]: value });
     }
   }
 
 
   render() {
-    const {classes, userEmailError, userPasswordError} = this.props;
-    const {userEmail, userPassword, rememberMe} = this.state;
+    const { classes, userEmailError, userPasswordError } = this.props;
+    const { userEmail, userPassword, rememberMe } = this.state;
 
     return (
       <div align="center">

@@ -9,13 +9,13 @@ import {
   setGraphData
 } from "./graphCountActions";
 
-import {GraphData, List} from 'Models';
+import { GraphData, List } from 'Models';
 
-import {GraphDisplayOptions, GraphDisplayTypes} from './graphCountConstants'
+import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants'
 
 describe('graphReducer', () => {
 
-  const initialState = reducer(undefined, {type: 'INIT'});
+  const initialState = reducer(undefined, { type: 'INIT' });
 
   const today = moment().format('YYYY-MM-DD');
   const tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
@@ -23,7 +23,7 @@ describe('graphReducer', () => {
 
   it('should set the state with default values', () => {
     const expected = {
-      displayTypeData: {in: true, out: true, presence: true},
+      displayTypeData: { in: true, out: true, presence: true },
       graphData: [],
       dateRange: {
         fromDate: today,
@@ -44,34 +44,34 @@ describe('graphReducer', () => {
     {
       state: initialState,
       action: changeGraphDisplayType(GraphDisplayTypes[0]),
-      expected: {in: false, out: true, presence: true}
+      expected: { in: false, out: true, presence: true }
     },
     {
       state: reducer(initialState, changeGraphDisplayType(GraphDisplayTypes[0])),
       action: changeGraphDisplayType(GraphDisplayTypes[0]),
-      expected: {in: true, out: true, presence: true}
+      expected: { in: true, out: true, presence: true }
     },
     {
       state: initialState,
       action: changeGraphDisplayType(GraphDisplayTypes[1]),
-      expected: {in: true, out: false, presence: true}
+      expected: { in: true, out: false, presence: true }
     },
     {
       state: reducer(initialState, changeGraphDisplayType(GraphDisplayTypes[1])),
       action: changeGraphDisplayType(GraphDisplayTypes[1]),
-      expected: {in: true, out: true, presence: true}
+      expected: { in: true, out: true, presence: true }
     },
     {
       state: initialState,
       action: changeGraphDisplayType(GraphDisplayTypes[2]),
-      expected: {in: true, out: true, presence: false}
+      expected: { in: true, out: true, presence: false }
     },
     {
       state: reducer(initialState, changeGraphDisplayType(GraphDisplayTypes[2])),
       action: changeGraphDisplayType(GraphDisplayTypes[2]),
-      expected: {in: true, out: true, presence: true}
+      expected: { in: true, out: true, presence: true }
     },
-  ].forEach(({state, action, expected}, index) => {
+  ].forEach(({ state, action, expected }, index) => {
     it(`should change the displayTypeData based on changeDisplayType (index:${index})`, () => {
       expect(reducer(state, action).get('displayTypeData').toJS()).toEqual(expected);
     });
@@ -80,8 +80,8 @@ describe('graphReducer', () => {
 
   it('should set the graph data', () => {
     const expected = [
-      {NAME: 'Test1', IN: 1, OUT: 1, PRESENCE: 0},
-      {NAME: 'Test2', IN: 2, OUT: 0, PRESENCE: 2},
+      { NAME: 'Test1', IN: 1, OUT: 1, PRESENCE: 0 },
+      { NAME: 'Test2', IN: 2, OUT: 0, PRESENCE: 2 },
     ];
 
     let graphDataList = List(GraphData)();
@@ -96,7 +96,7 @@ describe('graphReducer', () => {
 
 
   [{
-    action: changeGraphDateRange({type: 'from', date: yesterday}),
+    action: changeGraphDateRange({ type: 'from', date: yesterday }),
     expected: {
       fromDate: yesterday,
       toDate: today,
@@ -108,7 +108,7 @@ describe('graphReducer', () => {
   },
 
     {
-      action: changeGraphDateRange({type: 'to', date: tomorrow}),
+      action: changeGraphDateRange({ type: 'to', date: tomorrow }),
       expected: {
         fromDate: today,
         toDate: tomorrow,
@@ -118,7 +118,7 @@ describe('graphReducer', () => {
         fromDateMin: null
       }
     }
-  ].forEach(({action, expected}, index) => {
+  ].forEach(({ action, expected }, index) => {
     it(`should change the date range (index:${index})`, () => {
       expect(reducer(initialState, action).get('dateRange').toJS()).toEqual(expected);
     });
@@ -133,7 +133,7 @@ describe('graphReducer', () => {
       action: changeGraphDisplayOption("minute"),
       expected: "hourly"
     },
-  ].forEach(({action, expected}, index) => {
+  ].forEach(({ action, expected }, index) => {
     it(`should change the graph display option (index:${index})`, () => {
       expect(reducer(initialState, action).get('displayOption')).toEqual(expected);
     });
@@ -141,7 +141,7 @@ describe('graphReducer', () => {
 
 
   it('should not change the state for unsupported action', () => {
-    const action = {type: 'UNSUPPORTED_ACTION_TYPE'};
+    const action = { type: 'UNSUPPORTED_ACTION_TYPE' };
 
     expect(reducer(initialState, action)).toBe(initialState);
   });

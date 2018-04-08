@@ -1,6 +1,6 @@
-import {createReducer} from 'redux-create-reducer';
-import {Record} from 'Models';
-import {SET_DAY_COUNT} from "../../const/action-types";
+import { createReducer } from 'redux-create-reducer';
+import { Record } from 'Models';
+import { SET_DAY_COUNT } from "../../const/action-types";
 
 import dashboardUtil from '../dashboardUtil';
 
