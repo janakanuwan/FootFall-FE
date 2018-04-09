@@ -43,12 +43,10 @@ const MerchantLocation = ({ locationList, selectedLocation, onClick }) => (
 
 MerchantLocation.propTypes = {
   locationList: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-        name: PropTypes.string.isRequired,
-      }).isRequired
-    ),
+    PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired),
     PropTypes.instanceOf(List),
   ]).isRequired,
   selectedLocation: PropTypes.oneOfType([

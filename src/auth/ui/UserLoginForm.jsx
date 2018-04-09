@@ -10,29 +10,28 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
 
-const styles = (theme) => ({
+const styles = theme => ({
   paper: {
-    width: "50%",
+    width: '50%',
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
     marginTop: theme.spacing.unit * 3,
-  }
+  },
 });
 
 /**
  * @param props.onSubmit ({userEmail, userPassword, rememberMe})
  */
 class UserLoginForm extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       userEmail: props.userEmail,
       userPassword: props.userPassword,
-      rememberMe: props.rememberMe
+      rememberMe: props.rememberMe,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -130,7 +129,9 @@ UserLoginForm.propTypes = {
   rememberMe: PropTypes.bool,
   userEmailError: PropTypes.bool,
   userPasswordError: PropTypes.bool,
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
+
+  classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 UserLoginForm.defaultProps = {

@@ -32,6 +32,7 @@ const webpackConfig = {
         include: [appSrc],
         loader: 'eslint-loader',
         options: {
+          useEslintrc: true,
           failOnError: true,
           quiet: true
         }

@@ -17,14 +17,15 @@ const DisplayButton = ({ children, selected, onClick }) => (
     size="small"
     variant={selected ? 'raised' : 'flat'}
     onClick={() => onClick({ displayType: children })}
-    children={children}
-  />
+  >
+    {children}
+  </Button>
 );
 
 DisplayButton.propTypes = {
   children: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };
 
 const GraphOptionItems = GraphDisplayOptions.map((value, index) => ({
@@ -42,9 +43,11 @@ const styles = theme => ({
 
 /**
  *
- * @param props.graphData data array for chart in [{NAME:<string>, IN:<number>, OUT: <number>, PRESENCE: <number> ,...] format
+ * @param props.graphData data array for chart in
+ * [{NAME:<string>, IN:<number>, OUT: <number>, PRESENCE: <number> ,...] format
  * @param props.displayTypeData {in: boolean, out: boolean, presence: boolean}
- * @param props.onClickDisplayType({displayType: 'in|out|presence'}) fired at clicking IN, OUT or PRESENCE
+ * @param props.onClickDisplayType({displayType: 'in|out|presence'}) fired at clicking
+ * IN, OUT or PRESENCE
  * @param props.selectedDisplayOption {@link GraphDisplayOptions}
  * @param props.onClickDisplayOption(option)
  * @param props.dateRange {fromDate: string, fromDateMax: string, toDate: string, toDateMax: string}
@@ -52,7 +55,6 @@ const styles = theme => ({
  *
  */
 const GraphCount = (props) => {
-
   const {
     graphData,
 
@@ -75,13 +77,14 @@ const GraphCount = (props) => {
         <Grid container justify="space-between" alignItems="center" direction="row">
 
           <Grid item xs={8}>
-            {GraphDisplayTypes.map(value =>
-              (<DisplayButton
+            {GraphDisplayTypes.map(value => (
+              <DisplayButton
                 key={value}
                 selected={displayTypeData[value]}
                 onClick={onClickDisplayType}
               >{value}
-              </DisplayButton>))}
+              </DisplayButton>
+            ))}
           </Grid>
 
           <Grid item xs>
@@ -122,14 +125,12 @@ const GraphCount = (props) => {
 };
 
 GraphCount.propTypes = {
-  graphData: PropTypes.arrayOf(
-    PropTypes.shape({
-      NAME: PropTypes.string.isRequired,
-      IN: PropTypes.number.isRequired,
-      OUT: PropTypes.number.isRequired,
-      PRESENCE: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
+  graphData: PropTypes.arrayOf(PropTypes.shape({
+    NAME: PropTypes.string.isRequired,
+    IN: PropTypes.number.isRequired,
+    OUT: PropTypes.number.isRequired,
+    PRESENCE: PropTypes.number.isRequired,
+  }).isRequired).isRequired,
 
   displayTypeData: PropTypes.shape({
     in: PropTypes.bool.isRequired,
@@ -150,6 +151,8 @@ GraphCount.propTypes = {
     toDateMax: PropTypes.string,
   }).isRequired,
   onChangeDate: PropTypes.func.isRequired,
+
+  classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default withStyles(styles)(GraphCount);

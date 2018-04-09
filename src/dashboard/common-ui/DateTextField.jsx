@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import TextField from "material-ui/TextField";
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextField from 'material-ui/TextField';
 
 /**
  *
@@ -17,8 +17,14 @@ import TextField from "material-ui/TextField";
  * @see https://github.com/dmtrKovalenko/material-ui-pickers
  * @see https://github.com/gpbl/react-day-picker
  */
-const DateTextField = ({ label, date, min, max, onChange, error }) => {
-
+const DateTextField = ({
+  label,
+  date,
+  min,
+  max,
+  onChange,
+  error,
+}) => {
   const handleChange = (event) => {
     const selectedDate = event.target.value;
     if (onChange) {
@@ -28,7 +34,7 @@ const DateTextField = ({ label, date, min, max, onChange, error }) => {
 
   return (
     <TextField
-      id={label + '-date'}
+      id={`${label}-date`}
       name={label}
       label={label}
       type="date"
@@ -37,8 +43,8 @@ const DateTextField = ({ label, date, min, max, onChange, error }) => {
         shrink: true,
       }}
       inputProps={{
-        min: min,
-        max: max
+        min,
+        max,
       }}
       onChange={handleChange}
       error={error}
@@ -48,15 +54,17 @@ const DateTextField = ({ label, date, min, max, onChange, error }) => {
 
 DateTextField.propTypes = {
   label: PropTypes.string.isRequired,
-  date: PropTypes.string,
+  date: PropTypes.string.isRequired,
   min: PropTypes.string,
   max: PropTypes.string,
-  onChange: PropTypes.func,
-  error: PropTypes.bool
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.bool,
 };
 
 DateTextField.defaultProps = {
-  error: false
+  min: null,
+  max: null,
+  error: false,
 };
 
 export default DateTextField;

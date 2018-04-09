@@ -12,7 +12,6 @@ import { User } from 'Models';
  * @onLogout({username, userEmail}): fired on 'Logout' menu click
  */
 class UserMenu extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -70,7 +69,7 @@ UserMenu.propTypes = {
     user: PropTypes.string,
     userEmail: PropTypes.string,
   }),
-    PropTypes.instanceOf(User),
+  PropTypes.instanceOf(User),
   ]).isRequired,
   onLogout: PropTypes.func.isRequired,
 };

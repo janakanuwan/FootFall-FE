@@ -17,7 +17,6 @@ import Select from 'material-ui/Select';
  * @param props.size size of button ('small','medium', 'large'; default: 'medium')
  */
 class ButtonSelectGroup extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { selectedItem: props.selectedItem };
@@ -31,40 +30,45 @@ class ButtonSelectGroup extends React.Component {
   }
 
   render() {
-    const itemList = this.props.items;
-    const selectedItem = this.state.selectedItem;
-    const size = this.props.size;
+    const {
+      items, size, maxButtonCount,
+    } = this.props;
+    const { selectedItem } = this.state;
 
-    const MAX_BUTTON_COUNT_MINUS_1 = this.props.maxButtonCount - 1;
+    const MAX_BUTTON_COUNT_MINUS_1 = maxButtonCount - 1;
 
-    const directButtons = itemList.slice(0, MAX_BUTTON_COUNT_MINUS_1).map(item =>
-      (<Button
+    const directButtons = items.slice(0, MAX_BUTTON_COUNT_MINUS_1).map(item => (
+      <Button
         key={item.id}
-        children={item.name}
         variant={item === selectedItem ? 'raised' : 'flat'}
         onClick={() => this.handleClick(item)}
         size={size}
-      />));
+      >
+        {item.name}
+      </Button>
+    ));
 
-    const itemsInSelect = itemList.slice(MAX_BUTTON_COUNT_MINUS_1);
+    const itemsInSelect = items.slice(MAX_BUTTON_COUNT_MINUS_1);
     const buttonsInSelect = itemsInSelect.map((item, index) => (
       <Button
         key={item.id}
-        children={item.name}
         variant={item === selectedItem ? 'raised' : 'flat'}
         size={size}
 
         value={index}
-      />
+      >
+        {item.name}
+      </Button>
     ));
 
-    const selectComponent = itemsInSelect.length === 0 ? null :
-      (<Select
+    const selectComponent = itemsInSelect.length === 0 ? null : (
+      <Select
         value={itemsInSelect.indexOf(selectedItem)}
         onChange={event => this.handleClick(itemsInSelect[event.target.value])}
       >
         {buttonsInSelect}
-      </Select>);
+      </Select>
+    );
 
     return (
       <div>
@@ -76,17 +80,15 @@ class ButtonSelectGroup extends React.Component {
 }
 
 ButtonSelectGroup.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ),
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
   selectedItem: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     name: PropTypes.string.isRequired,
-  }),
-  onClick: PropTypes.func,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
   maxButtonCount: PropTypes.number,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };

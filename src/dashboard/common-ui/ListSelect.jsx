@@ -11,11 +11,11 @@ import { MenuItem } from 'material-ui/Menu';
  * @param onSelect(item) fired at selecting a list item
  */
 const ListSelect = ({ items, selectedItem, onSelect }) => {
-
-  const menuItems = items.map((entry, index) =>
-    (<MenuItem key={entry.id} value={index}>
+  const menuItems = items.map((entry, index) => (
+    <MenuItem key={entry.id} value={index}>
       {entry.name}
-    </MenuItem>));
+    </MenuItem>
+  ));
 
   const handleChange = (event) => {
     if (onSelect) {
@@ -36,17 +36,15 @@ const ListSelect = ({ items, selectedItem, onSelect }) => {
 };
 
 ListSelect.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ),
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
   selectedItem: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     name: PropTypes.string.isRequired,
-  }),
-  onSelect: PropTypes.func,
+  }).isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default ListSelect;

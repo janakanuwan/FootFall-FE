@@ -34,8 +34,8 @@ const Dashboard = ({ user, location }) => {
 };
 
 Dashboard.propTypes = {
-  user: PropTypes.object,
-  location: PropTypes.object,
+  user: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  location: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 

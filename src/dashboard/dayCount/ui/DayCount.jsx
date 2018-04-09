@@ -22,8 +22,9 @@ const styles = theme => ({
  * @param props.count visitor count at the given date and time
  */
 const DayCount = (props) => {
-
-  const { dayName, date, count, classes } = props;
+  const {
+    dayName, date, count, classes,
+  } = props;
 
   return (
     <div>
@@ -73,6 +74,8 @@ DayCount.propTypes = {
     PropTypes.string,
   ]).isRequired,
   count: PropTypes.number.isRequired,
+
+  classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default withStyles(styles)(DayCount);

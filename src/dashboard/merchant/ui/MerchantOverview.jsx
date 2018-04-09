@@ -42,12 +42,10 @@ const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => (
 
 MerchantOverview.propTypes = {
   merchantList: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-        name: PropTypes.string.isRequired,
-      }).isRequired
-    ),
+    PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired),
     PropTypes.instanceOf(List),
   ]).isRequired,
   selectedMerchant: PropTypes.oneOfType([
