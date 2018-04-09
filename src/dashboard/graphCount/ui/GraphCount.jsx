@@ -7,38 +7,36 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 
 import CountChart from '../../common-ui/CountChart';
-import DateTextField from "../../common-ui/DateTextField";
+import DateTextField from '../../common-ui/DateTextField';
 import ButtonSelectGroup from '../../common-ui/ButtonSelectGroup';
 
 import { GraphDateRangeTypes, GraphDisplayOptions, GraphDisplayTypes } from '../graphCountConstants';
 
-const DisplayButton = ({ children, selected, onClick }) => {
-  return (
-    <Button
-      size="small"
-      variant={selected ? "raised" : "flat"}
-      onClick={() => onClick({ displayType: children })}
-      children={children}
-    />
-  );
-};
+const DisplayButton = ({ children, selected, onClick }) => (
+  <Button
+    size="small"
+    variant={selected ? 'raised' : 'flat'}
+    onClick={() => onClick({ displayType: children })}
+    children={children}
+  />
+);
 
 DisplayButton.propTypes = {
   children: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 const GraphOptionItems = GraphDisplayOptions.map((value, index) => ({
   id: index,
-  name: value
+  name: value,
 }));
 
-const styles = (theme) => ({
+const styles = theme => ({
   graphCount: {
     padding: theme.spacing.unit * 2,
-    backgroundColor: '#FAFAFA'
-  }
+    backgroundColor: '#FAFAFA',
+  },
 });
 
 
@@ -67,7 +65,7 @@ const GraphCount = (props) => {
     dateRange,
     onChangeDate,
 
-    classes
+    classes,
   } = props;
 
 
@@ -77,38 +75,46 @@ const GraphCount = (props) => {
         <Grid container justify="space-between" alignItems="center" direction="row">
 
           <Grid item xs={8}>
-            {GraphDisplayTypes.map((value) =>
-              <DisplayButton key={value} selected={displayTypeData[value]}
-                             onClick={onClickDisplayType}>{value}</DisplayButton>
-            )}
+            {GraphDisplayTypes.map(value =>
+              (<DisplayButton
+                key={value}
+                selected={displayTypeData[value]}
+                onClick={onClickDisplayType}
+              >{value}
+              </DisplayButton>))}
           </Grid>
 
           <Grid item xs>
 
             <ButtonSelectGroup
-              size="small" maxButtonCount={5}
+              size="small"
+              maxButtonCount={5}
               items={GraphOptionItems}
               selectedItem={GraphOptionItems.find(option => option.name === selectedDisplayOption)}
-              onClick={(option) => onClickDisplayOption(option.name)}
+              onClick={option => onClickDisplayOption(option.name)}
             />
             <br />
 
-            {GraphDateRangeTypes.map((value) =>
-              <DateTextField key={value} label={value.toUpperCase()} date={dateRange[`${value}Date`]}
-                             max={dateRange[`${value}DateMax`]} min={dateRange[`${value}DateMin`]}
-                             onChange={(date) => onChangeDate({ type: value, date })}
-              />
-            )}
+            {GraphDateRangeTypes.map(value =>
+              (<DateTextField
+                key={value}
+                label={value.toUpperCase()}
+                date={dateRange[`${value}Date`]}
+                max={dateRange[`${value}DateMax`]}
+                min={dateRange[`${value}DateMin`]}
+                onChange={date => onChangeDate({ type: value, date })}
+              />))}
 
           </Grid>
 
         </Grid>
 
-        <CountChart data={graphData}
-                    displayIn={displayTypeData.in}
-                    displayOut={displayTypeData.out}
-                    displayPresence={displayTypeData.presence}
-                    width="90%"
+        <CountChart
+          data={graphData}
+          displayIn={displayTypeData.in}
+          displayOut={displayTypeData.out}
+          displayPresence={displayTypeData.presence}
+          width="90%"
         />
       </Paper>
     </div>
@@ -141,12 +147,10 @@ GraphCount.propTypes = {
     fromDateMax: PropTypes.string,
     toDateMin: PropTypes.string,
     fromDateMin: PropTypes.string,
-    toDateMax: PropTypes.string
+    toDateMax: PropTypes.string,
   }).isRequired,
   onChangeDate: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(GraphCount);
-
-
 

@@ -13,10 +13,9 @@ import { MenuItem } from 'material-ui/Menu';
 const ListSelect = ({ items, selectedItem, onSelect }) => {
 
   const menuItems = items.map((entry, index) =>
-    <MenuItem key={entry.id} value={index}>
+    (<MenuItem key={entry.id} value={index}>
       {entry.name}
-    </MenuItem>
-  );
+    </MenuItem>));
 
   const handleChange = (event) => {
     if (onSelect) {
@@ -47,7 +46,7 @@ ListSelect.propTypes = {
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     name: PropTypes.string.isRequired,
   }),
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
 };
 
 export default ListSelect;

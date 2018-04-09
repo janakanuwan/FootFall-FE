@@ -35,7 +35,7 @@ const Dashboard = ({ user, location }) => {
 
 Dashboard.propTypes = {
   user: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
 };
 
 

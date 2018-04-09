@@ -5,15 +5,15 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 
-import { formatDate, formatTime } from "./DayCountHelper";
+import { formatDate, formatTime } from './DayCountHelper';
 
-const styles = (theme) => ({
+const styles = theme => ({
   paperCount: {
     padding: theme.spacing.unit * 2,
     width: '50%',
-    textAlign: "center",
-    backgroundColor: theme.palette.primary.light
-  }
+    textAlign: 'center',
+    backgroundColor: theme.palette.primary.light,
+  },
 });
 
 /**
@@ -70,9 +70,9 @@ DayCount.propTypes = {
   dayName: PropTypes.string.isRequired,
   date: PropTypes.oneOfType([
     PropTypes.instanceOf(Date),
-    PropTypes.string
+    PropTypes.string,
   ]).isRequired,
-  count: PropTypes.number.isRequired
+  count: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(DayCount);

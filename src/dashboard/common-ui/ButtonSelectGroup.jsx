@@ -28,7 +28,7 @@ class ButtonSelectGroup extends React.Component {
     if (this.props.onClick) {
       this.props.onClick(item);
     }
-  };
+  }
 
   render() {
     const itemList = this.props.items;
@@ -37,38 +37,34 @@ class ButtonSelectGroup extends React.Component {
 
     const MAX_BUTTON_COUNT_MINUS_1 = this.props.maxButtonCount - 1;
 
-    const directButtons = itemList.slice(0, MAX_BUTTON_COUNT_MINUS_1).map((item) =>
+    const directButtons = itemList.slice(0, MAX_BUTTON_COUNT_MINUS_1).map(item =>
+      (<Button
+        key={item.id}
+        children={item.name}
+        variant={item === selectedItem ? 'raised' : 'flat'}
+        onClick={() => this.handleClick(item)}
+        size={size}
+      />));
+
+    const itemsInSelect = itemList.slice(MAX_BUTTON_COUNT_MINUS_1);
+    const buttonsInSelect = itemsInSelect.map((item, index) => (
       <Button
         key={item.id}
         children={item.name}
-        variant={item === selectedItem ? "raised" : "flat"}
-        onClick={() => this.handleClick(item)}
+        variant={item === selectedItem ? 'raised' : 'flat'}
         size={size}
+
+        value={index}
       />
-    );
-
-    const itemsInSelect = itemList.slice(MAX_BUTTON_COUNT_MINUS_1);
-    const buttonsInSelect = itemsInSelect.map((item, index) => {
-      return (
-        <Button
-          key={item.id}
-          children={item.name}
-          variant={item === selectedItem ? "raised" : "flat"}
-          size={size}
-
-          value={index}
-        />
-      );
-    });
+    ));
 
     const selectComponent = itemsInSelect.length === 0 ? null :
-      <Select
+      (<Select
         value={itemsInSelect.indexOf(selectedItem)}
-        onChange={(event) => this.handleClick(itemsInSelect[event.target.value])}
+        onChange={event => this.handleClick(itemsInSelect[event.target.value])}
       >
         {buttonsInSelect}
-      </Select>
-    ;
+      </Select>);
 
     return (
       <div>
@@ -92,12 +88,12 @@ ButtonSelectGroup.propTypes = {
   }),
   onClick: PropTypes.func,
   maxButtonCount: PropTypes.number,
-  size: PropTypes.oneOf(['small', 'medium', 'large'])
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 ButtonSelectGroup.defaultProps = {
   maxButtonCount: 4,
-  size: 'medium'
+  size: 'medium',
 };
 
 export default ButtonSelectGroup;

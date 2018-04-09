@@ -15,33 +15,30 @@ import { List, Merchant } from 'Models';
  * @param selectedMerchant{object}
  * @param onSelect(merchant) fired at a select change
  */
-const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => {
+const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => (
+  <div>
+    <br />
 
-  return (
-    <div>
-      <br />
-
-      <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
-        <Grid item xs>
-          <Typography variant="headline">
-            Overview
-          </Typography>
-        </Grid>
-
-        <Grid item xs>
-          <ListSelect
-            items={merchantList}
-            selectedItem={selectedMerchant}
-            onSelect={onSelect}
-          />
-        </Grid>
+    <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
+      <Grid item xs>
+        <Typography variant="headline">
+          Overview
+        </Typography>
       </Grid>
 
-      <br />
-      <Divider />
-    </div>
-  );
-};
+      <Grid item xs>
+        <ListSelect
+          items={merchantList}
+          selectedItem={selectedMerchant}
+          onSelect={onSelect}
+        />
+      </Grid>
+    </Grid>
+
+    <br />
+    <Divider />
+  </div>
+);
 
 MerchantOverview.propTypes = {
   merchantList: PropTypes.oneOfType([
@@ -51,16 +48,16 @@ MerchantOverview.propTypes = {
         name: PropTypes.string.isRequired,
       }).isRequired
     ),
-    PropTypes.instanceOf(List)
+    PropTypes.instanceOf(List),
   ]).isRequired,
   selectedMerchant: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       name: PropTypes.string.isRequired,
     }),
-    PropTypes.instanceOf(Merchant)
+    PropTypes.instanceOf(Merchant),
   ]).isRequired,
-  onSelect: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default MerchantOverview;

@@ -15,33 +15,30 @@ import { List, Location } from 'Models';
  * @param selectedLocation
  * @param onClick(location) fired at a select change
  */
-const MerchantLocation = ({ locationList, selectedLocation, onClick }) => {
+const MerchantLocation = ({ locationList, selectedLocation, onClick }) => (
+  <div>
+    <br />
 
-  return (
-    <div>
-      <br />
-
-      <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
-        <Grid item xs={4}>
-          <Typography variant="headline" component="h2">
-            Location
-          </Typography>
-        </Grid>
-
-        <Grid item xs={8}>
-          <ButtonSelectGroup
-            items={locationList}
-            selectedItem={selectedLocation}
-            onClick={onClick}
-            maxButtonCount={4}
-          />
-        </Grid>
+    <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
+      <Grid item xs={4}>
+        <Typography variant="headline" component="h2">
+          Location
+        </Typography>
       </Grid>
 
-      <br />
-    </div>
-  );
-};
+      <Grid item xs={8}>
+        <ButtonSelectGroup
+          items={locationList}
+          selectedItem={selectedLocation}
+          onClick={onClick}
+          maxButtonCount={4}
+        />
+      </Grid>
+    </Grid>
+
+    <br />
+  </div>
+);
 
 
 MerchantLocation.propTypes = {
@@ -52,16 +49,16 @@ MerchantLocation.propTypes = {
         name: PropTypes.string.isRequired,
       }).isRequired
     ),
-    PropTypes.instanceOf(List)
+    PropTypes.instanceOf(List),
   ]).isRequired,
   selectedLocation: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       name: PropTypes.string.isRequired,
     }),
-    PropTypes.instanceOf(Location)
+    PropTypes.instanceOf(Location),
   ]).isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default MerchantLocation;

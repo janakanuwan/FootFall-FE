@@ -22,7 +22,7 @@ const UserLogin = (props) => {
 UserLogin.propTypes = {
   user: PropTypes.object,
   onSubmit: PropTypes.func,
-  location: PropTypes.object
+  location: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {
