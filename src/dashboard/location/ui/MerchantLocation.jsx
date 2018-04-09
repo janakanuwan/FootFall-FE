@@ -19,7 +19,7 @@ const MerchantLocation = ({ locationList, selectedLocation, onClick }) => {
 
   return (
     <div>
-      <br/>
+      <br />
 
       <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
         <Grid item xs={4}>
@@ -38,7 +38,7 @@ const MerchantLocation = ({ locationList, selectedLocation, onClick }) => {
         </Grid>
       </Grid>
 
-      <br/>
+      <br />
     </div>
   );
 };

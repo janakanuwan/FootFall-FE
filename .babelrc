@@ -1,4 +1,6 @@
 {
   "presets": ["env", "react"],
-  "plugins": ["recharts"]
+  "plugins": [
+    "recharts"
+  ]
 }

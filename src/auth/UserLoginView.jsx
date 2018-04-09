@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import UserLoginForm from './ui/UserLoginForm';
 import { loginUser } from './authActions';
@@ -16,6 +17,12 @@ const UserLogin = (props) => {
   }
 
   return (<UserLoginForm onSubmit={onSubmit} />);
+};
+
+UserLogin.propTypes = {
+  user: PropTypes.object,
+  onSubmit: PropTypes.func,
+  location: PropTypes.object
 };
 
 const mapStateToProps = (state) => {

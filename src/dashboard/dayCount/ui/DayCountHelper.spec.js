@@ -9,14 +9,14 @@ describe('DayCountHelper', () => {
   });
 
   [new Date('2018-03-21'), new Date('2018-03-21T05:04:42')].forEach((param) => {
-    it(`should return the formatted output for (Date) \'${param}\'`, () => {
+    it(`should return the formatted output for (Date) '${param}'`, () => {
       expect(formatDate(param)).toEqual('Wednesday, March 21st 2018');
       expect(formatTime(param)).toMatchSnapshot();
     });
   });
 
   ['2018-03-21', '2018-03-21T05:04:42'].forEach((param) => {
-    it(`should return the formatted output (String) for \'${param}\'`, () => {
+    it(`should return the formatted output (String) for '${param}'`, () => {
       expect(formatDate(param)).toEqual('Wednesday, March 21st 2018');
       expect(formatTime(param)).toMatchSnapshot();
     });

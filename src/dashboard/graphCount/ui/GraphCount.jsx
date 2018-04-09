@@ -91,7 +91,7 @@ const GraphCount = (props) => {
               selectedItem={GraphOptionItems.find(option => option.name === selectedDisplayOption)}
               onClick={(option) => onClickDisplayOption(option.name)}
             />
-            <br/>
+            <br />
 
             {GraphDateRangeTypes.map((value) =>
               <DateTextField key={value} label={value.toUpperCase()} date={dateRange[`${value}Date`]}

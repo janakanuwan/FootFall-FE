@@ -13,15 +13,15 @@ const initialState = Record({
 const dayCountReducer = createReducer(initialState, {
 
   [SET_DAY_COUNT](state, action) {
-    return state.withMutations((state) => {
+    return state.withMutations((updatedState) => {
       if (action.payload.dayName) {
-        state.set('dayName', action.payload.dayName);
+        updatedState.set('dayName', action.payload.dayName);
       }
       if (action.payload.date) {
-        state.set('date', action.payload.date);
+        updatedState.set('date', action.payload.date);
       }
       if (action.payload.count) {
-        state.set('count', action.payload.count);
+        updatedState.set('count', action.payload.count);
       }
     });
   },

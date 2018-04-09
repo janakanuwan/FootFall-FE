@@ -37,24 +37,24 @@ const CountChart = (props) => {
     <ResponsiveContainer width={props.width} height={props.height}>
       <LineChart data={props.data} margin={CHART_MARGIN}>
 
-        <XAxis dataKey="NAME" height={X_AXIS_WIDTH}/>
+        <XAxis dataKey="NAME" height={X_AXIS_WIDTH} />
         <YAxis width={Y_AXIS_WIDTH}>
-          <Label value={props.yAxisLabel} angle={-90} position="left"/>
+          <Label value={props.yAxisLabel} angle={-90} position="left" />
         </YAxis>
 
-        {props.grid && <CartesianGrid strokeDasharray="3 3"/>}
-        {props.tooltip && <Tooltip/>}
-        {props.legend && <Legend verticalAlign="bottom"/>}
+        {props.grid && <CartesianGrid strokeDasharray="3 3" />}
+        {props.tooltip && <Tooltip />}
+        {props.legend && <Legend verticalAlign="bottom" />}
 
         <Line strokeWidth={2} type="monotone" activeDot={ACTIVE_DOT}
               dataKey={props.displayIn ? "IN" : "IN*"}
-              stroke={IN_COLOR}/>
+              stroke={IN_COLOR} />
         <Line strokeWidth={2} type="monotone" activeDot={ACTIVE_DOT}
               dataKey={props.displayOut ? "OUT" : "OUT*"}
-              stroke={OUT_COLOR}/>
+              stroke={OUT_COLOR} />
         <Line strokeWidth={3} type="monotone" activeDot={ACTIVE_DOT}
               dataKey={props.displayPresence ? "PRESENCE" : "PRESENCE*"}
-              stroke={PRESENT_COLOR}/>
+              stroke={PRESENT_COLOR} />
 
       </LineChart>
     </ResponsiveContainer>

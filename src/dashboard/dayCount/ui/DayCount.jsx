@@ -27,7 +27,7 @@ const DayCount = (props) => {
 
   return (
     <div>
-      <br/>
+      <br />
 
       <Paper elevation={4}>
         <Grid container alignItems="center" justify="center" direction="row">
@@ -61,7 +61,7 @@ const DayCount = (props) => {
         </Grid>
       </Paper>
 
-      <br/>
+      <br />
     </div>
   );
 };

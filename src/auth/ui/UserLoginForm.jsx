@@ -68,7 +68,7 @@ class UserLoginForm extends React.Component {
           <Typography variant="headline" component="h2">
             Login
           </Typography>
-          <Divider/>
+          <Divider />
 
           <form autoComplete="on" onSubmit={this.handleSubmit}>
 
@@ -83,7 +83,7 @@ class UserLoginForm extends React.Component {
               error={userEmailError}
               helperText={undefined}
             />
-            <br/>
+            <br />
 
             <TextField
               label="Password"
@@ -96,7 +96,7 @@ class UserLoginForm extends React.Component {
               error={userPasswordError}
               helperText={undefined}
             />
-            <br/>
+            <br />
 
             <FormControlLabel
               label="Remember me"
@@ -109,7 +109,7 @@ class UserLoginForm extends React.Component {
                 />
               }
             />
-            <br/>
+            <br />
 
             <Button type="submit" color="primary" variant="raised" disabled={false}>
               Log in

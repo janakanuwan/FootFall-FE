@@ -21,8 +21,8 @@ describe('graphCountManager', () => {
       dateRange: { fromDate: '2018-04-05', toDate: '2018-04-05' }, type: 'to', date: '2018-04-04', expected: false,
     },
   ].forEach(({
-    dateRange, type, date, expected,
-  }) => {
+               dateRange, type, date, expected,
+             }) => {
     it(`should send correct result for 'isValidDateRange' ({${dateRange.fromDate}, ${dateRange.toDate}}, ${type}, ${date})`, () => {
       expect(graphCountManager.isValidDateRange(dateRange, type, date)).toEqual(expected);
     });
@@ -62,8 +62,8 @@ describe('graphCountManager', () => {
       expected: [{ toDate: '2018-04-05' }, { fromDateMax: '2018-04-05' }],
     },
   ].forEach(({
-    dateRange, type, date, expected,
-  }, index) => {
+               dateRange, type, date, expected,
+             }, index) => {
     it(`should send correct result for 'getUpdatedDateRangeValues' (index:${index})`, () => {
       expect(graphCountManager.getUpdatedDateRangeValues(dateRange, type, date)).toEqual(expected);
     });

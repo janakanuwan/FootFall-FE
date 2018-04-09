@@ -1,8 +1,7 @@
 import { fromJS, Map } from 'immutable';
+import { Any, List, Maybe, Record, Typed, Union } from 'typed-immutable';
 
 export { Map, fromJS };
-
-import { Any, List, Maybe, Record, Typed, Union } from 'typed-immutable';
 
 export { Maybe, Any, List, Record, Typed, Union };
 
@@ -19,7 +18,9 @@ Typed.Enum = (types) => {
     return TypeError(`${value} should be in ${keys}`);
   });
 
-  keys.forEach(key => TypedEnum[key] = key);
+  keys.forEach((key) => {
+    TypedEnum[key] = key;
+  });
 
   return TypedEnum;
 };

@@ -43,15 +43,16 @@ const graphReducer = createReducer(initialState, {
     const { type, date } = action.payload.graphDateRange;
     const dateRange = state.get('dateRange');
 
+    let updatedState = state;
     if (graphCountManager.isValidDateRange(dateRange, type, date)) {
       const updatedValues = graphCountManager.getUpdatedDateRangeValues(dateRange, type, date);
       updatedValues.forEach((values) => {
         Object.entries(values).forEach(([key, value]) => {
-          state = state.setIn(['dateRange', key], value);
+          updatedState = updatedState.setIn(['dateRange', key], value);
         });
       });
     }
-    return state;
+    return updatedState;
   },
 
   [CHANGE_GRAPH_DISPLAY_OPTION](state, action) {

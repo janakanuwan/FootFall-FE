@@ -19,7 +19,7 @@ const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => {
 
   return (
     <div>
-      <br/>
+      <br />
 
       <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
         <Grid item xs>
@@ -37,8 +37,8 @@ const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => {
         </Grid>
       </Grid>
 
-      <br/>
-      <Divider/>
+      <br />
+      <Divider />
     </div>
   );
 };

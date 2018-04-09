@@ -19,7 +19,7 @@ const GLOBALS = {
 };
 
 const webpackConfig = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     filename: '[name].bundle.js',
     path: outputDir
