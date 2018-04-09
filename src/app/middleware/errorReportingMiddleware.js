@@ -2,7 +2,7 @@ import { getNewLogger } from '../logger';
 
 const logger = getNewLogger('errorReportingMiddleware');
 
-const errorReportingMiddleware = () => next => action => {
+const errorReportingMiddleware = () => next => (action) => {
   try {
     next(action);
   } catch (err) {
