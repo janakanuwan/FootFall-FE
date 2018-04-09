@@ -65,11 +65,12 @@ class UserMenu extends React.Component {
 }
 
 UserMenu.propTypes = {
-  user: PropTypes.oneOfType([PropTypes.shape({
-    user: PropTypes.string,
-    userEmail: PropTypes.string,
-  }),
-  PropTypes.instanceOf(User),
+  user: PropTypes.oneOfType([
+    PropTypes.shape({
+      user: PropTypes.string,
+      userEmail: PropTypes.string,
+    }),
+    PropTypes.instanceOf(User),
   ]).isRequired,
   onLogout: PropTypes.func.isRequired,
 };

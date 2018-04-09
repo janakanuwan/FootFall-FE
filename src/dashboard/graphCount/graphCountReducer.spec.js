@@ -98,29 +98,29 @@ describe('graphReducer', () => {
   });
 
 
-  [{
-    action: changeGraphDateRange({ type: 'from', date: yesterday }),
-    expected: {
-      fromDate: yesterday,
-      toDate: today,
-      fromDateMax: today,
-      toDateMin: yesterday,
-      toDateMax: today,
-      fromDateMin: null,
+  [
+    {
+      action: changeGraphDateRange({ type: 'from', date: yesterday }),
+      expected: {
+        fromDate: yesterday,
+        toDate: today,
+        fromDateMax: today,
+        toDateMin: yesterday,
+        toDateMax: today,
+        fromDateMin: null,
+      },
     },
-  },
-
-  {
-    action: changeGraphDateRange({ type: 'to', date: tomorrow }),
-    expected: {
-      fromDate: today,
-      toDate: tomorrow,
-      fromDateMax: tomorrow,
-      toDateMin: today,
-      toDateMax: today,
-      fromDateMin: null,
+    {
+      action: changeGraphDateRange({ type: 'to', date: tomorrow }),
+      expected: {
+        fromDate: today,
+        toDate: tomorrow,
+        fromDateMax: tomorrow,
+        toDateMin: today,
+        toDateMax: today,
+        fromDateMin: null,
+      },
     },
-  },
   ].forEach(({ action, expected }, index) => {
     it(`should change the date range (index:${index})`, () => {
       expect(reducer(initialState, action).get('dateRange').toJS()).toEqual(expected);
