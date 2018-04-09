@@ -5,11 +5,11 @@ const dayCountData = [{
   date: new Date(),
   count: 40,
 },
-  {
-    dayName: 'Yesterday',
-    date: '2018-04-01',
-    count: 50,
-  },
+{
+  dayName: 'Yesterday',
+  date: '2018-04-01',
+  count: 50,
+},
 ];
 
 describe('DayCount', () => {
