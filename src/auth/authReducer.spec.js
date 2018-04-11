@@ -5,7 +5,7 @@ import { User } from 'Models';
 describe('userReducer', () => {
   const initialState = reducer(undefined, { TYPE: 'INIT' });
 
-  const user1 = User({ id: 1, userEmail: 'hellotest@gmail.com', userName: 'Hello Test' });
+  const user1 = User({ id: 1, email: 'hellotest@gmail.com', name: 'Hello Test' });
 
   it('should logout user who is logged in', () => {
     const baseState = initialState.set('user', user1);
@@ -16,9 +16,9 @@ describe('userReducer', () => {
   });
 
   it('should login the user with given login info', () => {
-    const action = loginUser({ userEmail: 'hellotest@gmail.com', userPassword: '1234', rememberMe: false });
+    const action = loginUser({ email: 'hellotest@gmail.com', name: '1234', rememberMe: false });
 
-    const expected = { user: { id: 1, userName: 'Test User', userEmail: 'hellotest@gmail.com' } };
+    const expected = { user: { id: 1, name: 'Test User', email: 'hellotest@gmail.com', lastLoginTime: 0 } };
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
 

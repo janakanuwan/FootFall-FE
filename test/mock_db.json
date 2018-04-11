@@ -1,0 +1,80 @@
+{
+  "login": [
+    {
+      "token": "1234",
+      "settings": {
+        "id": 1,
+        "name": "Hello Test",
+        "email": "hellotest@gmail.com",
+        "language": "en",
+        "lastLoginTime": 1523324002458
+      }
+    }
+  ],
+  "merchants": [
+    {
+      "id": 234,
+      "name": "LookRich",
+      "description": "Colombo 07"
+    },
+    {
+      "id": 235,
+      "name": "RichLook",
+      "description": "Galle"
+    }
+  ],
+  "locations": [
+    {
+      "id": 124,
+      "location": "Colombo 07",
+      "merchantId": 234,
+      "description": null,
+      "subLocations": [
+        {
+          "id": 125,
+          "location": "3rd Floor",
+          "merchantId": 234,
+          "description": null,
+          "subLocations": []
+        },
+        {
+          "id": 126,
+          "location": "2nd Floor",
+          "merchantId": 234,
+          "description": null,
+          "subLocations": []
+        }
+      ]
+    },
+    {
+      "id": 567,
+      "location": "Galle",
+      "merchantId": 235,
+      "description": "Near the main entrance",
+      "subLocations": []
+    }
+  ],
+  "customers": [
+    {
+      "entry": 4,
+      "exit": 2,
+      "time": 1523324003458,
+      "merchantId": 234,
+      "locationId": 125
+    },
+    {
+      "entry": 2,
+      "exit": 0,
+      "time": 1523324004458,
+      "merchantId": 234,
+      "locationId": 126
+    },
+    {
+      "entry": 5,
+      "exit": 4,
+      "time": 1523324005458,
+      "merchantId": 235,
+      "locationId": 567
+    }
+  ]
+}

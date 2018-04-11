@@ -19,8 +19,8 @@ const authReducer = createReducer(initialState, {
     console.log(action, ' - ', state);
     const user = User({
       id: 1,
-      userEmail: action.payload.loginInfo.userEmail,
-      userName: 'Test User',
+      email: action.payload.loginInfo.email,
+      name: 'Test User',
     });
     return state.set('user', user);
   },

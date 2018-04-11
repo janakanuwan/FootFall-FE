@@ -12,7 +12,7 @@ import DateTextField from './dashboard/common-ui/DateTextField';
 import GraphCount from './dashboard/graphCount/ui/GraphCount';
 
 const userMenuData = {
-  user: { userName: 'Hello Test', userEmail: 'hellotest@gmail.com' },
+  user: { name: 'Hello Test', email: 'hellotest@gmail.com' },
   onLogout: user => console.log('Loging out:', user),
 };
 

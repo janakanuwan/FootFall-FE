@@ -22,15 +22,15 @@ const styles = theme => ({
 });
 
 /**
- * @param props.onSubmit ({userEmail, userPassword, rememberMe})
+ * @param props.onSubmit ({email, password, rememberMe})
  */
 class UserLoginForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userEmail: props.userEmail,
-      userPassword: props.userPassword,
+      email: props.email,
+      password: props.password,
       rememberMe: props.rememberMe,
     };
 
@@ -58,8 +58,8 @@ class UserLoginForm extends React.Component {
 
 
   render() {
-    const { classes, userEmailError, userPasswordError } = this.props;
-    const { userEmail, userPassword, rememberMe } = this.state;
+    const { classes, emailError, passwordError } = this.props;
+    const { email, password, rememberMe } = this.state;
 
     return (
       <div align="center">
@@ -72,27 +72,27 @@ class UserLoginForm extends React.Component {
           <form autoComplete="on" onSubmit={this.handleSubmit}>
 
             <TextField
-              label="User Email"
-              name="userEmail"
+              label="Email"
+              name="email"
               required
               margin="normal"
               autoFocus
               onChange={this.handleChange}
-              value={userEmail}
-              error={userEmailError}
+              value={email}
+              error={emailError}
               helperText={undefined}
             />
             <br />
 
             <TextField
               label="Password"
-              name="userPassword"
+              name="password"
               type="password"
               required
               margin="normal"
               onChange={this.handleChange}
-              value={userPassword}
-              error={userPasswordError}
+              value={password}
+              error={passwordError}
               helperText={undefined}
             />
             <br />
@@ -124,22 +124,22 @@ class UserLoginForm extends React.Component {
 
 
 UserLoginForm.propTypes = {
-  userEmail: PropTypes.string,
-  userPassword: PropTypes.string,
+  email: PropTypes.string,
+  password: PropTypes.string,
   rememberMe: PropTypes.bool,
-  userEmailError: PropTypes.bool,
-  userPasswordError: PropTypes.bool,
+  emailError: PropTypes.bool,
+  passwordError: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
 
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 UserLoginForm.defaultProps = {
-  userEmail: '',
-  userPassword: '',
+  email: '',
+  password: '',
   rememberMe: false,
-  userEmailError: false,
-  userPasswordError: false,
+  emailError: false,
+  passwordError: false,
 };
 
 export default withStyles(styles)(UserLoginForm);

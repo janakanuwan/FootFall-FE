@@ -4,9 +4,9 @@ exports[`userActions should create an action for user login request 1`] = `
 Object {
   "payload": Object {
     "loginInfo": Object {
+      "email": "hello@test.com",
+      "password": "1234",
       "rememberMe": true,
-      "userEmail": "hello@test.com",
-      "userPassword": "1234",
     },
   },
   "type": "LOGIN_USER_REQUEST",

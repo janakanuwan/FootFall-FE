@@ -1,14 +1,9 @@
 import fetch from 'cross-fetch';
-
 import { getNewLogger, Level } from '../logger';
 
-const logger = getNewLogger('restService', Level.INFO, Level.INFO);
-
-const BASE_URL = '';
-
-const defaultOptions = data => ({
+// FIXME : cache, stay alive, ...
+const DEFAULT_OPTIONS = ({
   method: 'GET',
-  body: JSON.stringify(data),
   headers: {
     'Content-Type': 'application/json',
   },
@@ -16,13 +11,18 @@ const defaultOptions = data => ({
   mode: 'cors',
 });
 
+const DEFAULT_ERROR_STATUS = 520;
+const DEFAULT_ERROR_STATUS_TEXT = 'Unexpected Error';
+
+const logger = getNewLogger('restService', Level.INFO, Level.INFO);
+
 /**
- * @param options
- * @param data
- * @returns {{}} updated options
+ * @param options {object}
+ * @param data {object}
+ * @returns {object} updated options
  */
 const getUpdatedOptions = (options, data) => {
-  const updatedOptions = Object.assign({}, defaultOptions(data), options);
+  const updatedOptions = Object.assign({}, DEFAULT_OPTIONS, options, { body: JSON.stringify(data) });
   const {method} = updatedOptions;
   if(method === 'GET' || method === 'HEAD' ){
     delete updatedOptions.body;
@@ -31,49 +31,53 @@ const getUpdatedOptions = (options, data) => {
 };
 
 /**
- * Higher-Order function to execute the given function with payload and error data
+ * Higher-Order function to execute the given function with payload
+ * NOTE: validation should be done before hand
  *
- * @param func function(payload, error) to execute
- * @param payload payload to add
- * @param error true if error
+ * @param func {function}  function(payload) to execute
+ * @param payload {object} payload to add
+ *
+ * @returns {*}
  */
-const execute = (func, payload = {}, error = false) => {
-  if(func && typeof func === 'function' ){
-    return func(payload, error);
-  }
+const execute = (func, payload = {}) => {
+  return func(payload);
 };
 
 /**
  *
- * @param types function types {request: function(payload, error), success: function(payload, error)
- * , failure: function(payload, error)}
+ * @param types {object} function types {request: function(payload), success: function(payload)
+ * , failure: function(payload)} [NOTE: payload : {status, statusText, body, context}, and validate using {@link isSupportedType} ]
  * @param endpoint
- * @param options default options {method: 'GET', headers: {'Content-Type': 'application/json'}, credentials: 'include', mode: 'cors'}
- * @param data body data in JSON format
+ * @param options {object }default options {method: 'GET', headers: {'Content-Type': 'application/json'}, credentials: 'include', mode: 'cors'}
+ * @param data {object} body data in JSON format (object)
+ * @param context {object|string|number} to identify the responses
+ *
  * @returns {Promise<void>}
  */
-const makeRequest = async (types, endpoint, options = {}, data = {}) => {
+const makeRequest = async (types, endpoint, options = {}, data = {}, context) => {
   const {request, success, failure} = types;
+
   try{
-    execute(request);
+    execute(request, { context });
 
     const updatedOptions = getUpdatedOptions(options, data);
 
-    const res = await fetch(`${BASE_URL}${endpoint}`, updatedOptions);
+    const res = await fetch(endpoint, updatedOptions);
+    const { status, statusText } = res;
 
-    if (res.status >= 400) {
-      return execute(failure, {status: res.status, message: res.statusText}, true);
+    const body = await res.json();
+    const payload = { status, statusText, body, context };
+
+    if (status >= 200 && status < 300) {
+      return execute(success, payload);
     }
-
-    const resultData = await res.json();
-    return execute(success, resultData);
+    return execute(failure, payload);
 
   }catch (err){
-    logger.error('makeRequest', err);
-    return execute(failure, {message: 'Unexpected Error'}, true);
+    logger.error('makeRequest', context, err);
+    return execute(failure, { status: DEFAULT_ERROR_STATUS, statusText: DEFAULT_ERROR_STATUS_TEXT, context });
   }
-
 };
 
 
-export default {makeRequest};
+export default { makeRequest };

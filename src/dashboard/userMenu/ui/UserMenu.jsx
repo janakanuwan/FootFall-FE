@@ -6,10 +6,9 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import { User } from 'Models';
 
 /**
- * @userName: logged in user's name
- * @userEmail: logged in user's email
+ * @param props.user {object} logged in user
  *
- * @onLogout({username, userEmail}): fired on 'Logout' menu click
+ * @param props.onLogout({User}) fired on 'Logout' menu click
  */
 class UserMenu extends React.Component {
   constructor(props) {
@@ -36,8 +35,7 @@ class UserMenu extends React.Component {
   }
 
   render() {
-    const userName = this.props.user && this.props.user.userName;
-    const userEmail = this.props.user && this.props.user.userEmail;
+    const { name, email } = this.props.user;
 
     const { anchorEl } = this.state;
 
@@ -48,7 +46,7 @@ class UserMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          {userName}
+          {name}
         </Button>
         <Menu
           id="simple-user-menu"
@@ -56,7 +54,7 @@ class UserMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Profile ({userEmail})</MenuItem>
+          <MenuItem onClick={this.handleClose}>Profile ({email})</MenuItem>
           <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
         </Menu>
       </div>
@@ -67,8 +65,8 @@ class UserMenu extends React.Component {
 UserMenu.propTypes = {
   user: PropTypes.oneOfType([
     PropTypes.shape({
-      user: PropTypes.string,
-      userEmail: PropTypes.string,
+      name: PropTypes.string,
+      email: PropTypes.string,
     }),
     PropTypes.instanceOf(User),
   ]).isRequired,

@@ -2,8 +2,9 @@ import { Record } from './Model';
 
 const User = Record({
   id: Number,
-  userEmail: String,
-  userName: String,
+  email: String,
+  name: String,
+  lastLoginTime: Number(0),
 }, 'User');
 
 export default User;
