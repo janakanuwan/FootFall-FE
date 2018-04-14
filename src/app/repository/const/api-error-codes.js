@@ -1,0 +1,8 @@
+const Auth = {
+  AUTH_USER_EMAIL_INVALID: 4003,
+  AUTH_USER_PASSWORD_INVALID: 4004,
+  AUTH_USER_DISABLED: 4005,
+};
+
+
+export default { Auth };

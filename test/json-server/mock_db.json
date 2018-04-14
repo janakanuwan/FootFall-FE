@@ -1,6 +1,5 @@
 {
-  "login": [
-    {
+  "login": {
       "token": "1234",
       "settings": {
         "id": 1,
@@ -9,8 +8,7 @@
         "language": "en",
         "lastLoginTime": 1523324002458
       }
-    }
-  ],
+  },
   "merchants": [
     {
       "id": 234,

@@ -12,9 +12,6 @@ describe('userService', () => {
 
     userService.getUser(types, loginInfo);
 
-
-
-
   });
 });
 

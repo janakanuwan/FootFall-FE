@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
 import { getNewLogger, Level } from '../logger';
+import { HTTP_CODE_520_UNKNOWN_ERROR } from './const/http-codes';
 
 // FIXME : cache, stay alive, ...
 const DEFAULT_OPTIONS = ({
@@ -10,9 +11,6 @@ const DEFAULT_OPTIONS = ({
   credentials: 'include',
   mode: 'cors',
 });
-
-const DEFAULT_ERROR_STATUS = 520;
-const DEFAULT_ERROR_STATUS_TEXT = 'Unexpected Error';
 
 const logger = getNewLogger('restService', Level.INFO, Level.INFO);
 
@@ -31,53 +29,35 @@ const getUpdatedOptions = (options, data) => {
 };
 
 /**
- * Higher-Order function to execute the given function with payload
- * NOTE: validation should be done before hand
- *
- * @param func {function}  function(payload) to execute
- * @param payload {object} payload to add
- *
- * @returns {*}
- */
-const execute = (func, payload = {}) => {
-  return func(payload);
-};
-
-/**
- *
- * @param types {object} function types {request: function(payload), success: function(payload)
- * , failure: function(payload)} [NOTE: payload : {status, statusText, body, context}, and validate using {@link isSupportedType} ]
  * @param endpoint
  * @param options {object }default options {method: 'GET', headers: {'Content-Type': 'application/json'}, credentials: 'include', mode: 'cors'}
  * @param data {object} body data in JSON format (object)
  * @param context {object|string|number} to identify the responses
  *
- * @returns {Promise<void>}
+ * @returns {Promise<{status: number, statusText: string, body: Object, context: Object|string|number}>} response json object
  */
-const makeRequest = async (types, endpoint, options = {}, data = {}, context) => {
-  const {request, success, failure} = types;
-
+const makeRequest = async (endpoint, options = {}, data = {}, context) => {
   try{
-    execute(request, { context });
-
     const updatedOptions = getUpdatedOptions(options, data);
 
     const res = await fetch(endpoint, updatedOptions);
     const { status, statusText } = res;
 
     const body = await res.json();
-    const payload = { status, statusText, body, context };
-
-    if (status >= 200 && status < 300) {
-      return execute(success, payload);
-    }
-    return execute(failure, payload);
-
+    return ({ status, statusText, body, context });
   }catch (err){
     logger.error('makeRequest', context, err);
-    return execute(failure, { status: DEFAULT_ERROR_STATUS, statusText: DEFAULT_ERROR_STATUS_TEXT, context });
+    return ({ status: HTTP_CODE_520_UNKNOWN_ERROR, statusText: 'Unknown Error', body: {}, context });
   }
 };
 
+/**
+ *
+ * @param status {number}
+ * @returns {boolean} true if status is success
+ */
+const isSuccessStatus = status => {
+  return status >= 200 && status < 300;
+};
 
-export default { makeRequest };
+export default { makeRequest, isSuccessStatus };

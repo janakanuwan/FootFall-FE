@@ -1,6 +1,9 @@
 {
   "presets": ["env", "react"],
   "plugins": [
-    "recharts"
+    "recharts",
+    ["transform-builtin-extend", {
+      "globals": ["Error"]
+    }]
   ]
 }
