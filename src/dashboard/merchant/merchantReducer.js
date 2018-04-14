@@ -10,7 +10,7 @@ const initialState = Record({
 const merchantReducer = createReducer(initialState, {
 
   [CHANGE_MERCHANT](state, action) {
-    return state.set('selectedMerchant', action.payload.selectedMerchant);
+    return state.set('selectedMerchant', action.payload);
   },
 
 });

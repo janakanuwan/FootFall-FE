@@ -1,11 +1,11 @@
 import reducer from './authReducer';
-import { loginUser, logoutUser } from './authActions';
+import { loginUserResponse, logoutUser } from './authActions';
 import { User } from 'Models';
 
 describe('userReducer', () => {
   const initialState = reducer(undefined, { TYPE: 'INIT' });
 
-  const user1 = User({ id: 1, email: 'hellotest@gmail.com', name: 'Hello Test' });
+  const user1 = User({ id: 1, email: 'hellotest@gmail.com', name: 'Hello Test', lastLoginTime: 1234 });
 
   it('should logout user who is logged in', () => {
     const baseState = initialState.set('user', user1);
@@ -15,10 +15,11 @@ describe('userReducer', () => {
     expect(reducer(baseState, action).toJS()).toEqual(expected);
   });
 
-  it('should login the user with given login info', () => {
-    const action = loginUser({ email: 'hellotest@gmail.com', name: '1234', rememberMe: false });
+  it('should login the user with login response', () => {
+    const user = { id: 1, email: 'hellotest@gmail.com', name: 'Hello Test', lastLoginTime: 1234 };
+    const action = loginUserResponse({ token: '1234', user });
 
-    const expected = { user: { id: 1, name: 'Test User', email: 'hellotest@gmail.com', lastLoginTime: 0 } };
+    const expected = { user };
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
 

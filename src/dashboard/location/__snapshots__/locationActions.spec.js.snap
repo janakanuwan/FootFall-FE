@@ -3,7 +3,8 @@
 exports[`locationActions should create an action for location change 1`] = `
 Object {
   "payload": Object {
-    "selectedLocation": 1,
+    "id": 1,
+    "name": "Test Location",
   },
   "type": "CHANGE_LOCATION",
 }

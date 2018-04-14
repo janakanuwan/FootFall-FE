@@ -3,7 +3,8 @@
 exports[`merchantActions should create an action for merchant change 1`] = `
 Object {
   "payload": Object {
-    "selectedMerchant": 1,
+    "id": 2,
+    "name": "Test Merchant",
   },
   "type": "CHANGE_MERCHANT",
 }

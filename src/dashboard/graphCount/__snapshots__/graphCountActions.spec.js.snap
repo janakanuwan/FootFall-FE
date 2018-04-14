@@ -2,9 +2,7 @@
 
 exports[`graphActions should create an action to change graph display type 1`] = `
 Object {
-  "payload": Object {
-    "displayType": "IN",
-  },
+  "payload": "IN",
   "type": "CHANGE_GRAPH_DISPLAY_TYPE",
 }
 `;
@@ -12,10 +10,8 @@ Object {
 exports[`graphActions should create an action to change the graph date range 1`] = `
 Object {
   "payload": Object {
-    "graphDateRange": Object {
-      "date": "2018-04-04",
-      "type": "FROM",
-    },
+    "date": "2018-04-04",
+    "type": "FROM",
   },
   "type": "CHANGE_GRAPH_DATE_RANGE",
 }
@@ -23,25 +19,21 @@ Object {
 
 exports[`graphActions should create an action to change the graph display option 1`] = `
 Object {
-  "payload": Object {
-    "displayOption": "day",
-  },
+  "payload": "day",
   "type": "CHANGE_GRAPH_DISPLAY_OPTION",
 }
 `;
 
 exports[`graphActions should create an action to set graph data 1`] = `
 Object {
-  "payload": Object {
-    "graphData": Array [
-      Object {
-        "IN": 1,
-        "OUT": 1,
-        "PRESENCE": 0,
-        "name": "Hello",
-      },
-    ],
-  },
+  "payload": Array [
+    Object {
+      "IN": 1,
+      "OUT": 1,
+      "PRESENCE": 0,
+      "name": "Hello",
+    },
+  ],
   "type": "SET_GRAPH_DATA",
 }
 `;

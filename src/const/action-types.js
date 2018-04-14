@@ -3,7 +3,7 @@ export const CHANGE_MERCHANT = 'CHANGE_MERCHANT';
 export const CHANGE_LOCATION = 'CHANGE_LOCATION';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
-export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
+export const LOGIN_USER = 'LOGIN_USER';
 
 
 export const SET_DAY_COUNT = 'SET_DAY_COUNT';

@@ -20,9 +20,13 @@ const UserLogin = (props) => {
 };
 
 UserLogin.propTypes = {
-  user: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  user: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   onSubmit: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
+UserLogin.defaultProps = {
+  user: null,
 };
 
 const mapStateToProps = (state) => {

@@ -1,7 +1,7 @@
 import { createReducer } from 'redux-create-reducer';
 
 import { Maybe, Record, User } from 'Models';
-import { LOGIN_USER_REQUEST, LOGOUT_USER } from '../const/action-types';
+import { LOGIN_USER, LOGOUT_USER } from '../const/action-types';
 
 const initialState = Record({
   user: Maybe(User),
@@ -14,15 +14,16 @@ const authReducer = createReducer(initialState, {
     return state.remove('user');
   },
 
-  [LOGIN_USER_REQUEST](state, action) {
+  [LOGIN_USER](state, action) {
     // FIXME
     console.log(action, ' - ', state);
-    const user = User({
-      id: 1,
-      email: action.payload.loginInfo.email,
-      name: 'Test User',
-    });
-    return state.set('user', user);
+
+    if (!action.error) {
+      const user = User(action.payload.user);
+      return state.set('user', user);
+    }
+
+    return state;
   },
 
 });

@@ -11,7 +11,7 @@ const initialState = Record({
 const locationReducer = createReducer(initialState, {
 
   [CHANGE_LOCATION](state, action) {
-    return state.set('selectedLocation', action.payload.selectedLocation);
+    return state.set('selectedLocation', action.payload);
   },
 
 });

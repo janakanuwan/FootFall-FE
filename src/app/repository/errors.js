@@ -13,4 +13,4 @@ class DataFetchError extends Error {
   }
 }
 
-export { DataFetchError }
+export { DataFetchError };

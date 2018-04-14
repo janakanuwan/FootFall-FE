@@ -30,17 +30,17 @@ const initialState = Record({
 const graphReducer = createReducer(initialState, {
 
   [CHANGE_GRAPH_DISPLAY_TYPE](state, action) {
-    const type = action.payload.displayType;
+    const type = action.payload;
     if (GraphDisplayTypes.includes(type)) {
       return state.setIn(['displayTypeData', type], !state.getIn(['displayTypeData', type]));
     }
     return state;
   },
   [SET_GRAPH_DATA](state, action) {
-    return state.set('graphData', action.payload.graphData);
+    return state.set('graphData', action.payload);
   },
   [CHANGE_GRAPH_DATE_RANGE](state, action) {
-    const { type, date } = action.payload.graphDateRange;
+    const { type, date } = action.payload;
     const dateRange = state.get('dateRange');
 
     let updatedState = state;
@@ -56,7 +56,7 @@ const graphReducer = createReducer(initialState, {
   },
 
   [CHANGE_GRAPH_DISPLAY_OPTION](state, action) {
-    const option = action.payload.displayOption;
+    const option = action.payload;
     if (GraphDisplayOptions.includes(option)) {
       return state.set('displayOption', option);
     }

@@ -19,7 +19,7 @@ const GLOBALS = {
 };
 
 const webpackConfig = {
-  entry: './src/index.jsx',
+  entry: ['babel-regenerator-runtime', './src/index.jsx'],
   output: {
     filename: '[name].bundle.js',
     path: outputDir

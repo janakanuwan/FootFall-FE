@@ -1,14 +1,22 @@
 import { createAction } from 'redux-actions';
-import { LOGIN_USER_REQUEST, LOGOUT_USER } from '../const/action-types';
+import { LOGIN_USER, LOGOUT_USER } from '../const/action-types';
+import userService from '../app/repository/userService';
 
 const logoutUser = createAction(
   LOGOUT_USER,
-  user => ({ user }),
+  user => ({user}),
 );
 
-const loginUser = createAction(
-  LOGIN_USER_REQUEST,
-  loginInfo => ({ loginInfo }),
+const loginUserResponse = createAction(
+  LOGIN_USER,
+  loginResponse => loginResponse,
 );
 
-export { logoutUser, loginUser };
+const loginUser = loginInfo => (dispatch) => {
+  // dispatch({type: 'DISPLAY_LOADING_OVERLAY'});
+
+  userService.getUser(loginInfo, res => dispatch(loginUserResponse(res)));
+};
+
+
+export { logoutUser, loginUser, loginUserResponse };

@@ -1,22 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`userActions should create an action for user login request 1`] = `
+exports[`userActions should create an action for user login request 1`] = `[Function]`;
+
+exports[`userActions should create an action for user login response '[object Object]' 1`] = `
 Object {
   "payload": Object {
-    "loginInfo": Object {
+    "token": "1233",
+    "user": Object {
       "email": "hello@test.com",
       "password": "1234",
       "rememberMe": true,
     },
   },
-  "type": "LOGIN_USER_REQUEST",
+  "type": "LOGIN_USER",
+}
+`;
+
+exports[`userActions should create an action for user login response 'Error: Invalid Email' 1`] = `
+Object {
+  "error": true,
+  "payload": [Error: Invalid Email],
+  "type": "LOGIN_USER",
 }
 `;
 
 exports[`userActions should create an action for user logout 1`] = `
 Object {
   "payload": Object {
-    "user": 1,
+    "user": Object {
+      "email": "hello@gamil.com",
+      "name": "Hello",
+    },
   },
   "type": "LOGOUT_USER",
 }
