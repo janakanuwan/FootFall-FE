@@ -5,6 +5,7 @@ import { ROUTE_PATH_DASHBOARD, ROUTE_PATH_DEFAULT, ROUTE_PATH_LOGIN } from '../c
 
 import DashboardView from '../dashboard/DashboardView';
 import UserLoginView from '../auth/UserLoginView';
+import OverlayView from '../overlay/OverlayView';
 
 const Routes = () => (
   <Router>
@@ -12,6 +13,7 @@ const Routes = () => (
       <Route exact path={ROUTE_PATH_DEFAULT} component={DashboardView} />
       <Route path={ROUTE_PATH_DASHBOARD} component={DashboardView} />
       <Route path={ROUTE_PATH_LOGIN} component={UserLoginView} />
+      <OverlayView />
     </div>
   </Router>
 );

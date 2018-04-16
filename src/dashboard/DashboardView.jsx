@@ -34,10 +34,13 @@ const Dashboard = ({ user, location }) => {
 };
 
 Dashboard.propTypes = {
-  user: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  user: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   location: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
+Dashboard.defaultProps = {
+  user: null,
+};
 
 const mapStateToProps = (state) => {
   const auth = state.get('auth');

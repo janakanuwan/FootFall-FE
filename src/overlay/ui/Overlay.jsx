@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import Dialog, { DialogContent, DialogContentText, DialogTitle } from 'material-ui/Dialog';
 
-const Overlay = ({ title, message, open, onClose }) => (
+const Overlay = ({
+  title, message, open, onClose,
+}) => (
   <Dialog open={open} onClose={onClose}>
     <DialogTitle>{title}</DialogTitle>
     <DialogContent>
@@ -17,8 +19,15 @@ const Overlay = ({ title, message, open, onClose }) => (
 Overlay.propTypes = {
   title: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+};
+
+Overlay.defaultProps = {
+  open: true,
+  onClose: () => {
+    // DO NOTHING
+  },
 };
 
 export default Overlay;
