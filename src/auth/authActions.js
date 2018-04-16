@@ -4,7 +4,7 @@ import userService from '../app/repository/userService';
 
 const logoutUser = createAction(
   LOGOUT_USER,
-  user => ({user}),
+  user => ({ user }),
 );
 
 const loginUserResponse = createAction(

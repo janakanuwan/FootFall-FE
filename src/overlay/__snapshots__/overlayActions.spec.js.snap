@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`overlayActions should create an action to hide an overlay 1`] = `
+Object {
+  "payload": Object {
+    "id": "user_login",
+    "message": "Validating",
+    "title": "Loading",
+  },
+  "type": "HIDE_OVERLAY",
+}
+`;
+
+exports[`overlayActions should create an action to show an overlay 1`] = `
+Object {
+  "payload": Object {
+    "id": "user_login",
+    "message": "Validating",
+    "title": "Loading",
+  },
+  "type": "SHOW_OVERLAY",
+}
+`;

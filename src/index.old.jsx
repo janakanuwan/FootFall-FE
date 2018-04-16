@@ -10,6 +10,7 @@ import MerchantOverview from './dashboard/merchant/ui/MerchantOverview';
 import MerchantLocation from './dashboard/location/ui/MerchantLocation';
 import DateTextField from './dashboard/common-ui/DateTextField';
 import GraphCount from './dashboard/graphCount/ui/GraphCount';
+import Overlay from "./overlay/ui/Overlay";
 
 const userMenuData = {
   user: { name: 'Hello Test', email: 'hellotest@gmail.com' },
@@ -245,6 +246,13 @@ const graphCountData = {
 
 };
 
+const overlayData = {
+  title: 'Loading...',
+  message: 'Verifying login ...',
+  open: true,
+  onClose: e => console.log(e),
+};
+
 ReactDOM.render(
   <div>
     <UserLoginForm />
@@ -264,6 +272,8 @@ ReactDOM.render(
       <MerchantLocation key={index} {...data} />)}
 
     <GraphCount {...graphCountData} />
+
+    {/*<Overlay {...overlayData} />*/}
 
   </div>,
   document.getElementById('root'),
