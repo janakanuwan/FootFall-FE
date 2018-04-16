@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import UserLoginForm from './ui/UserLoginForm';
-import { loginUser } from './authActions';
+import { fetchUser } from './authActions';
 
 import { ROUTE_PATH_DEFAULT } from '../const/route-paths';
 import { Redirect } from 'react-router-dom';
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapStateToDispatch = dispatch => ({
-  onSubmit: loginInfo => dispatch(loginUser(loginInfo)),
+  onSubmit: loginInfo => dispatch(fetchUser(loginInfo)),
 });
 
 const UserLoginView = connect(

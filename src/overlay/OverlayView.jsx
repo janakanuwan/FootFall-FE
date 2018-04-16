@@ -21,7 +21,6 @@ Overlays.propTypes = {
 
 const mapStateToProps = (state) => {
   const overlay = state.get('overlay');
-  console.log(overlay);
   return {
     list: overlay.get('list'),
   };

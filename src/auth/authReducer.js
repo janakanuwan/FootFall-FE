@@ -1,7 +1,7 @@
 import { createReducer } from 'redux-create-reducer';
 
 import { Maybe, Record, User } from 'Models';
-import { LOGIN_USER, LOGOUT_USER } from '../const/action-types';
+import { LOGOUT_USER, SET_USER } from '../const/action-types';
 
 const initialState = Record({
   user: Maybe(User),
@@ -14,7 +14,7 @@ const authReducer = createReducer(initialState, {
     return state.remove('user');
   },
 
-  [LOGIN_USER](state, action) {
+  [SET_USER](state, action) {
     // FIXME
     console.log(action, ' - ', state);
 

@@ -48,8 +48,8 @@ function failurePayloadMapper(payload) {
  * @param responseFunction {function} e.g. (response) => responseFunction(response)
  * @returns {Promise<*>}
  */
-const getUser = async (loginInfo, responseFunction) => {
-  const context = `getUser: ${loginInfo.email}`;
+const fetchUser = async (loginInfo, responseFunction) => {
+  const context = `fetchUser: ${loginInfo.email}`;
 
   const response = await restService.makeRequest(restEndpointLogin(), {}, loginInfo, context);
 
@@ -59,4 +59,4 @@ const getUser = async (loginInfo, responseFunction) => {
   return responseFunction(failurePayloadMapper(response));
 };
 
-export default { getUser };
+export default { fetchUser };

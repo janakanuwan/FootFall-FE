@@ -62,20 +62,13 @@
     },
     {
       "id": 2,
-      "entry": 5,
-      "exit": 6,
-      "time": 1523324003558,
-      "locationId": 125
-    },
-    {
-      "id": 3,
       "entry": 2,
       "exit": 0,
       "time": 1523324004458,
       "locationId": 126
     },
     {
-      "id": 4,
+      "id": 3,
       "entry": 5,
       "exit": 4,
       "time": 1523324005458,

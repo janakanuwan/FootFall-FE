@@ -1,5 +1,5 @@
 import reducer from './authReducer';
-import { loginUserResponse, logoutUser } from './authActions';
+import { logoutUser, setUser } from './authActions';
 import { User } from 'Models';
 
 describe('userReducer', () => {
@@ -17,7 +17,7 @@ describe('userReducer', () => {
 
   it('should login the user with login response', () => {
     const user = { id: 1, email: 'hellotest@gmail.com', name: 'Hello Test', lastLoginTime: 1234 };
-    const action = loginUserResponse({ token: '1234', user });
+    const action = setUser({ token: '1234', user });
 
     const expected = { user };
     expect(reducer(initialState, action).toJS()).toEqual(expected);
