@@ -4,7 +4,7 @@ export const CHANGE_LOCATION = 'CHANGE_LOCATION';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const SET_USER = 'SET_USER';
-
+export const FETCH_USER = 'FETCH_USER';
 
 export const SET_DAY_COUNT = 'SET_DAY_COUNT';
 
@@ -17,3 +17,4 @@ export const SHOW_OVERLAY = 'SHOW_OVERLAY';
 export const HIDE_OVERLAY = 'HIDE_OVERLAY';
 
 export const SET_MERCHANTS = 'SET_MERCHANTS';
+export const FETCH_MERCHANTS = 'FETCH_MERCHANTS';

@@ -1,17 +1,22 @@
 import { createAction } from 'redux-actions';
-import { CHANGE_MERCHANT, SET_MERCHANTS } from '../../const/action-types';
+import { CHANGE_MERCHANT, FETCH_MERCHANTS, SET_MERCHANTS } from '../../const/action-types';
 
 const changeMerchant = createAction(
   CHANGE_MERCHANT,
   selectedMerchant => selectedMerchant,
 );
 
-/**
- * DO NOT use directly
- */
 const setMerchants = createAction(
   SET_MERCHANTS,
-  merchants => merchants
+  merchantsResponse => merchantsResponse,
 );
 
-export { changeMerchant, setMerchants };
+/**
+ * async call to api {@link userFlowMiddleware}
+ */
+const fetchMerchants = createAction(
+  FETCH_MERCHANTS,
+  authInfo => authInfo,
+);
+
+export { changeMerchant, setMerchants, fetchMerchants };

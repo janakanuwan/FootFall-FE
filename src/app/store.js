@@ -4,7 +4,7 @@ import { Map } from 'Models';
 import rootReducer from './rootReducer';
 
 import errorReportingMiddleware from './middleware/errorReportingMiddleware';
-import thunkMiddleware from 'redux-thunk';
+import userFlowMiddleware from './middleware/userFlowMiddleware';
 
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
@@ -19,8 +19,8 @@ const store = createStore(
   rootReducer,
   initialState,
   composeEnhancers(applyMiddleware(
+    userFlowMiddleware,
     errorReportingMiddleware,
-    thunkMiddleware,
   )),
 );
 

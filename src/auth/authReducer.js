@@ -5,22 +5,20 @@ import { LOGOUT_USER, SET_USER } from '../const/action-types';
 
 const initialState = Record({
   user: Maybe(User),
+  token: Maybe(String),
 }, 'AuthState')();
 
 const authReducer = createReducer(initialState, {
-  [LOGOUT_USER](state, action) {
+  [LOGOUT_USER](state) {
     // FIXME
-    console.log(action, ' - ', state);
-    return state.remove('user');
+    return state.remove('user').remove('token');
   },
 
   [SET_USER](state, action) {
     // FIXME
-    console.log(action, ' - ', state);
-
     if (!action.error) {
-      const user = User(action.payload.user);
-      return state.set('user', user);
+      const { user, token } = action.payload;
+      return state.set('user', User(user)).set('token', token);
     }
 
     return state;

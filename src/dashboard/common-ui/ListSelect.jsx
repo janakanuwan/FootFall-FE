@@ -18,8 +18,9 @@ const ListSelect = ({ items, selectedItem, onSelect }) => {
   ));
 
   const handleChange = (event) => {
+    const item = items.find((val, index) => index === event.target.value);
     if (onSelect) {
-      onSelect(items[event.target.value]);
+      onSelect(item);
     }
   };
 

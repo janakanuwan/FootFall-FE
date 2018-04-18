@@ -10,16 +10,17 @@ describe('userReducer', () => {
   it('should logout user who is logged in', () => {
     const baseState = initialState.set('user', user1);
     const action = logoutUser(user1);
-    const expected = { user: null };
+    const expected = { user: null, token: null };
 
     expect(reducer(baseState, action).toJS()).toEqual(expected);
   });
 
   it('should login the user with login response', () => {
     const user = { id: 1, email: 'hellotest@gmail.com', name: 'Hello Test', lastLoginTime: 1234 };
-    const action = setUser({ token: '1234', user });
+    const token = '1234';
+    const action = setUser({ user, token });
 
-    const expected = { user };
+    const expected = { user, token };
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
 

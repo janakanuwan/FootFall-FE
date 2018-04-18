@@ -10,6 +10,11 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
 
+// position: 'absolute',
+// top: '50%',
+// left: '50%',
+// transform: 'translate(-50%, -50%)',
+
 const styles = theme => ({
   paper: {
     width: '50%',
@@ -17,6 +22,7 @@ const styles = theme => ({
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
+
     marginTop: theme.spacing.unit * 3,
   },
 });

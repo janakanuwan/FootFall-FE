@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`userActions should create an action for set user '[object Object]' 1`] = `
+exports[`userActions should create an action for set failed user  1`] = `
+Object {
+  "error": true,
+  "payload": [Error: Invalid Email],
+  "type": "SET_USER",
+}
+`;
+
+exports[`userActions should create an action for set user 1`] = `
 Object {
   "payload": Object {
     "token": "1233",
@@ -10,15 +18,7 @@ Object {
       "rememberMe": true,
     },
   },
-  "type": "LOGIN_USER",
-}
-`;
-
-exports[`userActions should create an action for set user 'Error: Invalid Email' 1`] = `
-Object {
-  "error": true,
-  "payload": [Error: Invalid Email],
-  "type": "LOGIN_USER",
+  "type": "SET_USER",
 }
 `;
 

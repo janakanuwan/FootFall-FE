@@ -10,7 +10,7 @@ describe('errorReportingMiddleware', () => {
     middleware = errorReportingMiddleware({ dispatch, getState })(next);
   });
 
-  it('should process action', () => {
+  it('should process next action', () => {
     const sampleAction = { type: 'SAMPLE_ACTION' };
     middleware(sampleAction);
 

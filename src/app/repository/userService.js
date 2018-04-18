@@ -1,62 +1,54 @@
 import restService from './restService';
-import { User } from 'Models';
-import { HTTP_CODE_400_BAD_REQUEST } from './const/http-codes';
-import repositoryUtil from './repositoryUtil';
-import { DataFetchError } from './errors';
+import apiEndpoints from './const/api-end-points';
 
-const BASE_URL = 'http://localhost:3004';
+import responseMapper from './userServiceResponseMapper';
+import { getNewLogger, Level } from '../logger';
 
-const restEndpointLogin = () => `${BASE_URL}/login`;
+const logger = getNewLogger('userService', Level.INFO, Level.INFO);
 
-function successPayloadMapper(payload) {
-  const { body: { token, settings } } = payload;
-  const {
-    id, name, email, lastLoginTime,
-  } = settings;
-  return ({
-    token,
-    user: User({
-      id, name, email, lastLoginTime,
-    }),
-  });
-}
-
-function failurePayloadMapper(payload) {
-  console.log(payload);
-
-  const result = { error: true };
-
-  const { status, statusText, body } = payload;
-  if (status === HTTP_CODE_400_BAD_REQUEST && !repositoryUtil.isEmpty(body)) {
-    const { code, message, description } = body;
-
-    result.code = code;
-    result.description = description;
-
-    // mapping
-    result.message = message;
-  } else {
-    result.message = repositoryUtil.toTitleCase(statusText);
-  }
-
-  return new DataFetchError(result);
-}
 
 /**
  *
  * @param loginInfo {object} user credentials
- * @param responseFunction {function} e.g. (response) => responseFunction(response)
- * @returns {Promise<*>}
+ * @param callbackFunction {function} e.g. (user) => callbackFunction(user)
+ * @returns {Promise<void>}
  */
-const fetchUser = async (loginInfo, responseFunction) => {
+const fetchUser = async (loginInfo, callbackFunction) => {
   const context = `fetchUser: ${loginInfo.email}`;
 
-  const response = await restService.makeRequest(restEndpointLogin(), {}, loginInfo, context);
+  const response = await restService.makeRequest(apiEndpoints.endpointLogin(), { method: 'POST' }, loginInfo, context);
+  logger.info('fetchUser: response', JSON.stringify(response));
 
   if (restService.isSuccessStatus(response.status)) {
-    return responseFunction(successPayloadMapper(response));
+    callbackFunction(responseMapper.fetchUserSuccess(response));
+  } else {
+    callbackFunction(responseMapper.fetchUserFailure(response));
   }
-  return responseFunction(failurePayloadMapper(response));
 };
 
-export default { fetchUser };
+/**
+ *
+ * @param authInfo {object} in format {token, id, email}
+ * @param callbackFunction {function} e.g. (merchants) => callbackFunction(merchants)
+ * @returns {Promise<void>}
+ */
+const fetchMerchants = async (authInfo, callbackFunction) => {
+  const { token, id, email } = authInfo;
+  const context = `fetchMerchants: ${email}`;
+
+  const response = await restService.makeRequest(
+    apiEndpoints.endpointMerchants(),
+    {
+      method: 'GET', authorization: token, 'user-id': id, 'user-email': email,
+    }, {}, context,
+  );
+  logger.info('fetchMerchants: response', JSON.stringify(response));
+
+  if (restService.isSuccessStatus(response.status)) {
+    callbackFunction(responseMapper.fetchMerchantsSuccess(response));
+  } else {
+    callbackFunction(responseMapper.fetchMerchantsFailure(response));
+  }
+};
+
+export default { fetchUser, fetchMerchants };
