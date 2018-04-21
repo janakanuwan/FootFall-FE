@@ -23,6 +23,7 @@ See more details at [Google Drive](https://drive.google.com/drive/folders/1a23Ad
 - [Typed-Immutable](https://github.com/typed-immutable/typed-immutable)
 - [Jest](https://facebook.github.io/jest/)
 - [React Router](https://reacttraining.com/react-router/web/example/basic)
+- [API](http://jsonapi.org/format/upcoming)
 
 ### Practises
 - Make all view components (react) stateless

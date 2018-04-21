@@ -6,8 +6,8 @@ import { Location } from 'Models';
 describe('reducer', () => {
   const initialState = reducer(undefined, { type: 'INIT' });
 
-  const location1 = { id: 1, name: 'Location 1' };
-  const location2 = { id: 2, name: 'Location 2' };
+  const location1 = { id: 1, name: 'Location 1', description: null, merchantId: 1, parentId: null };
+  const location2 = { id: 2, name: 'Location 2', description: null, merchantId: 1, parentId: 1 };
 
   it('should change the location for empty selected location', () => {
     const action = changeLocation(Location(location1));

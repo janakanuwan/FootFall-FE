@@ -14,31 +14,31 @@
   "locations": [
     {
       "id": 124,
-      "location": "Colombo 07",
-      "merchantId": 234,
+      "name": "Colombo 07",
       "description": null,
+      "merchantId": 234,
       "subLocations": [
         {
           "id": 125,
-          "location": "3rd Floor",
-          "merchantId": 234,
+          "name": "3rd Floor",
           "description": null,
+          "merchantId": 234,
           "subLocations": []
         },
         {
           "id": 126,
-          "location": "2nd Floor",
-          "merchantId": 234,
+          "name": "2nd Floor",
           "description": null,
+          "merchantId": 234,
           "subLocations": []
         }
       ]
     },
     {
       "id": 567,
-      "location": "Galle",
-      "merchantId": 235,
+      "name": "Galle",
       "description": "Near the main entrance",
+      "merchantId": 235,
       "subLocations": []
     }
   ],
