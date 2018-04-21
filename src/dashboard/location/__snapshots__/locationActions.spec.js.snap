@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`locationActions should create an action for adding locations 1`] = `
+Object {
+  "payload": Array [
+    Object {
+      "id": 2,
+      "name": "Test Location 2",
+    },
+    Object {
+      "id": 3,
+      "name": "Test Loc3",
+    },
+  ],
+  "type": "ADD_LOCATIONS",
+}
+`;
+
 exports[`locationActions should create an action for location change 1`] = `
 Object {
   "payload": Object {
@@ -7,5 +23,16 @@ Object {
     "name": "Test Location",
   },
   "type": "CHANGE_LOCATION",
+}
+`;
+
+exports[`locationActions should create an action to fetch locations 1`] = `
+Object {
+  "payload": Object {
+    "email": "hello@test.com",
+    "merchantId": 1234,
+    "token": 12,
+  },
+  "type": "FETCH_LOCATIONS",
 }
 `;

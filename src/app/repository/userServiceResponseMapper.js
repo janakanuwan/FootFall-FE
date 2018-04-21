@@ -5,8 +5,7 @@ import { DataFetchError } from './errors';
 import { normalize, schema } from 'normalizr';
 
 const isNonEmptyBadResponse = (status, body) =>
-  status === HTTP_CODE_400_BAD_REQUEST && !repositoryUtil.isEmpty(body)
-;
+  status === HTTP_CODE_400_BAD_REQUEST && !repositoryUtil.isEmpty(body);
 
 const fetchUserSuccess = (response) => {
   const { body: { token, settings } } = response;

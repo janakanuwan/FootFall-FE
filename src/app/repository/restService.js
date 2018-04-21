@@ -7,9 +7,11 @@ const DEFAULT_OPTIONS = ({
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
+    'Cache-Control': 'private, max-age=3600',
   },
   credentials: 'include',
   mode: 'cors',
+  timeout: 20000,
 });
 
 const logger = getNewLogger('restService', Level.INFO, Level.INFO);

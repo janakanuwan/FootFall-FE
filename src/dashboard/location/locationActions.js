@@ -1,9 +1,22 @@
 import { createAction } from 'redux-actions';
-import { CHANGE_LOCATION } from '../../const/action-types';
+import { ADD_LOCATIONS, CHANGE_LOCATION, FETCH_LOCATIONS } from '../../const/action-types';
 
 const changeLocation = createAction(
   CHANGE_LOCATION,
   selectedLocation => selectedLocation,
 );
 
-export { changeLocation };
+const addLocations = createAction(
+  ADD_LOCATIONS,
+  locations => locations,
+);
+
+/**
+ * async call to api {@link userFlowMiddleware}
+ */
+const fetchLocations = createAction(
+  FETCH_LOCATIONS,
+  merchantAuthInfo => merchantAuthInfo,
+);
+
+export { changeLocation, addLocations, fetchLocations };

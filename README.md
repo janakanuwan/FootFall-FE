@@ -51,5 +51,5 @@ will simply development efforts and enable debugging
 ## TODO
 - Add storybook
 - Add test cases
-- Add loading overlay
+- Add caching for APIs 
 
