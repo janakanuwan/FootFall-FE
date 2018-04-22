@@ -52,4 +52,6 @@ will simply development efforts and enable debugging
 - Add storybook
 - Add test cases
 - Add caching for APIs 
+- Add parentId = null, for displaying locations
+
 

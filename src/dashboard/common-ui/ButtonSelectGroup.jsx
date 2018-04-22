@@ -61,10 +61,12 @@ class ButtonSelectGroup extends React.Component {
       </Button>
     ));
 
-    const selectComponent = itemsInSelect.length === 0 ? null : (
+    const selectComponent = (itemsInSelect.length || itemsInSelect.size) === 0 ? null : (
       <Select
         value={itemsInSelect.indexOf(selectedItem)}
-        onChange={event => this.handleClick(itemsInSelect[event.target.value])}
+        onChange={(event) => {
+          this.handleClick(itemsInSelect.find((val, index) => index === event.target.value));
+        }}
       >
         {buttonsInSelect}
       </Select>

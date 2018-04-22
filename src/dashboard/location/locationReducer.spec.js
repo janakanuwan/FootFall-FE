@@ -32,10 +32,10 @@ describe('reducer', () => {
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
 
-  it('should add the new locations for non-empty list', () => {
+  it('should add the new locations (if it does not exist) for non-empty list', () => {
     const baseState = reducer(initialState, addLocations(List(Location)().push(location2)));
     const action = addLocations(List(Location)().push(location1).push(location2_1));
-    const expected = {list: [location1, location2_1], selectedLocation: null};
+    const expected = {list: [location2, location1], selectedLocation: null};
 
     expect(reducer(baseState, action).toJS()).toEqual(expected);
   });

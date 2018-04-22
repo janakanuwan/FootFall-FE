@@ -17,14 +17,14 @@ const locationReducer = createReducer(initialState, {
   [ADD_LOCATIONS](state, action) {
     if (!action.error) {
       const newLocations = action.payload;
-      const newLocationsIds = newLocations.reduce((acc, curr) => [...acc, curr.id], []);
+      const oldLocations = state.get('list');
+      const oldLocationsIds = oldLocations.reduce((acc, curr) => [...acc, curr.id], []);
 
-      const updatedLocations = state.get('list')
-        .filter(location => !newLocationsIds.includes(location.id))
-        .withMutations((locations) => {
-          newLocations.forEach(location => locations.push(location));
-        });
-
+      const updatedLocations = oldLocations.withMutations((locations) => {
+        newLocations
+          .filter(location => !oldLocationsIds.includes(location.id))
+          .forEach(newLocation => locations.push(newLocation));
+      });
       return state.set('list', updatedLocations);
     }
     return state;
