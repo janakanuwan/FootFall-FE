@@ -1,7 +1,7 @@
 import { addLocations, changeLocation } from './locationActions';
 import reducer from './locationReducer';
 
-import { Location, List } from 'Models';
+import { List, Location } from 'Models';
 
 describe('reducer', () => {
   const initialState = reducer(undefined, { type: 'INIT' });
@@ -38,6 +38,13 @@ describe('reducer', () => {
     const expected = {list: [location2, location1], selectedLocation: null};
 
     expect(reducer(baseState, action).toJS()).toEqual(expected);
+  });
+
+  it('should not add locations at error', () => {
+    const action = addLocations(new Error('Failed to fetch'));
+    const expected = {list: [], selectedLocation: null};
+
+    expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
 
   it('should not change the state for unsupported action', () => {

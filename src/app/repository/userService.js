@@ -6,15 +6,15 @@ import { getNewLogger, Level } from '../logger';
 
 const logger = getNewLogger('userService', Level.INFO, Level.INFO);
 
-
 /**
  *
- * @param loginInfo {object} user credentials
- * @param callbackFunction {function} e.g. (user) => callbackFunction(user)
+ * @param loginInfo {object} user credentials including {email, password}
+ * @param callbackFunction {function} e.g. (user) => callbackFunction(user) where
+ * 'user' can be the user or an error
  * @returns {Promise<void>}
  */
 const fetchUser = async (loginInfo, callbackFunction) => {
-  const context = `fetchUser: ${loginInfo.email}`;
+  const context = `fetchUser: '${loginInfo.email}'`;
 
   const response = await restService.makeRequest(apiEndpoints.login(), { method: 'POST' }, loginInfo, context);
   logger.info('fetchUser: response', JSON.stringify(response));
@@ -29,14 +29,15 @@ const fetchUser = async (loginInfo, callbackFunction) => {
 /**
  *
  * @param authInfo {object} in format {token, id, email, merchantId = undefined}
- * @param callbackFunction {function} e.g. (merchants) => callbackFunction(merchants)
+ * @param callbackFunction {function} e.g. (merchants) => callbackFunction(merchants) where
+ * 'merchants' can be a list or an error
  * @returns {Promise<void>}
  */
 const fetchMerchants = async (authInfo, callbackFunction) => {
   const {
     token, id, email, merchantId,
   } = authInfo;
-  const context = `fetchMerchants: ${email}`;
+  const context = `fetchMerchants: '${email}', merchant-${merchantId}`;
 
   const response = await restService.makeRequest(
     apiEndpoints.merchants(merchantId),
@@ -53,11 +54,19 @@ const fetchMerchants = async (authInfo, callbackFunction) => {
   }
 };
 
-const fetchLocations = async (authInfo, callbackFunction) => {
+/**
+ *
+ * @param merchantAuthInfo {object} in format
+ * {token, id, email, merchantId , locationId = undefined}
+ * @param callbackFunction {function} e.g. (locations) => callbackFunction(locations) where
+ * 'locations' can be a list or an error
+ * @returns {Promise<void>}
+ */
+const fetchLocations = async (merchantAuthInfo, callbackFunction) => {
   const {
     token, id, email, merchantId, locationId,
-  } = authInfo;
-  const context = `fetchLocations: ${email}`;
+  } = merchantAuthInfo;
+  const context = `fetchLocations: '${email}', merchant-${merchantId}, location-${locationId}`;
 
   const response = await restService.makeRequest(
     apiEndpoints.locations(merchantId, locationId),
@@ -74,4 +83,27 @@ const fetchLocations = async (authInfo, callbackFunction) => {
   }
 };
 
-export default { fetchUser, fetchMerchants, fetchLocations };
+const fetchEntries = async (merchantAuthInfo, callbackFunction) => {
+  const {
+    token, id, email, merchantId, locationId, customerEntryId,
+  } = merchantAuthInfo;
+  const context = `fetchCustomers: merchant-${merchantId}, location-${locationId}, customer-${customerEntryId}`;
+
+  const response = await restService.makeRequest(
+    apiEndpoints.entries(merchantId, locationId, customerEntryId),
+    {
+      method: 'GET', authorization: token, 'user-id': id, 'user-email': email,
+    }, {}, context,
+  );
+  logger.info('fetchEntries: response', JSON.stringify(response));
+
+  if (restService.isSuccessStatus(response.status)) {
+    callbackFunction(responseMapper.fetchEntriesSuccess(response));
+  } else {
+    callbackFunction(responseMapper.fetchEntriesFailure(response));
+  }
+};
+
+export default {
+  fetchUser, fetchMerchants, fetchLocations, fetchCustomers: fetchEntries,
+};

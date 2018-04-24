@@ -1,4 +1,4 @@
-import { List, Location, Merchant, User } from 'Models';
+import { Entry, List, Location, Merchant, User } from 'Models';
 import { HTTP_CODE_400_BAD_REQUEST } from './const/http-codes';
 import repositoryUtil from './repositoryUtil';
 import { DataFetchError } from './errors';
@@ -114,6 +114,37 @@ const fetchLocationsFailure = (response) => {
   return new DataFetchError(result);
 };
 
+const fetchEntriesSuccess = (response) => {
+  const { body } = response;
+
+  const customerEntries = [];
+  body.forEach(customerEntry =>
+    customerEntries.push(Entry(customerEntry)));
+
+  return List(Entry)(customerEntries);
+};
+
+const fetchEntriesFailure = (response) => {
+  // FIXME
+  const { status, statusText, body } = response;
+
+  const result = { error: true };
+
+  if (isNonEmptyBadResponse(status, body)) {
+    const { code, message, description } = body;
+
+    result.code = code;
+    result.description = description;
+
+    // mapping
+    result.message = message;
+  } else {
+    result.message = repositoryUtil.toTitleCase(statusText);
+  }
+
+  return new DataFetchError(result);
+};
+
 export default {
   fetchUserSuccess,
   fetchUserFailure,
@@ -121,4 +152,6 @@ export default {
   fetchMerchantsFailure,
   fetchLocationsSuccess,
   fetchLocationsFailure,
+  fetchEntriesSuccess,
+  fetchEntriesFailure,
 };

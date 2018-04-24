@@ -36,3 +36,11 @@ Object {
   "type": "FETCH_LOCATIONS",
 }
 `;
+
+exports[`locationActions should create an action to set failed locations 1`] = `
+Object {
+  "error": true,
+  "payload": [Error: Failed to fetch],
+  "type": "ADD_LOCATIONS",
+}
+`;

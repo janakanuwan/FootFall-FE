@@ -53,4 +53,30 @@ describe('api-end-points', () => {
     });
   });
 
+
+  [
+    {
+      merchantId: 12,
+      locationId: 1,
+      id: undefined,
+      expected: '/merchants/12/locations/1/entries'
+    },
+    {
+      merchantId: 12,
+      locationId: 1,
+      id: 0,
+      expected: '/merchants/12/locations/1/entries'
+    },
+    {
+      merchantId: 12,
+      locationId: 1,
+      id: 2,
+      expected: '/merchants/12/locations/1/entries/2'
+    },
+  ].map(({ merchantId, locationId, id, expected }) => {
+    it(`should match the entries end point (merchantId: ${merchantId}, locationId: ${locationId}, id: ${id})`, () => {
+      expect(apiEndpoints.entries(merchantId, locationId, id)).toEqual(TEST_BASE_URL + expected);
+    });
+  });
+
 });

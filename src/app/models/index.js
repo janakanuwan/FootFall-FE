@@ -29,3 +29,7 @@ export { GraphDisplayTypeData, GraphData, GraphDateRange } from './graph/index';
 import OverlayData from './OverlayData.model';
 
 export { OverlayData };
+
+import Entry from './Entry.model';
+
+export { Entry };

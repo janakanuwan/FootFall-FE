@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`entriesActions should create an action to add dashboard data 1`] = `
+Object {
+  "payload": Array [
+    Object {
+      "entry": 1,
+      "exit": 2,
+      "id": 1,
+      "locationId": 1,
+      "time": 12345656,
+    },
+  ],
+  "type": "ADD_ENTRIES",
+}
+`;
+
+exports[`entriesActions should create an action to change entries from 1`] = `
+Object {
+  "payload": 1524528000000,
+  "type": "CHANGE_ENTRIES_FROM",
+}
+`;
+
+exports[`entriesActions should create an action to change entries to 1`] = `
+Object {
+  "payload": 1524873600000,
+  "type": "CHANGE_ENTRIES_TO",
+}
+`;
+
+exports[`entriesActions should create an action to set failed dashboard data 1`] = `
+Object {
+  "error": true,
+  "payload": [Error: Failed to fetch],
+  "type": "ADD_ENTRIES",
+}
+`;

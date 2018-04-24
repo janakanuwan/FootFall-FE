@@ -1,9 +1,9 @@
 import responseMapper from './userServiceResponseMapper';
-import { List, Location, Merchant, User } from 'Models';
+import { Entry, List, Location, Merchant, User } from 'Models';
 
 
 describe('userResponseServiceMapper', () => {
-  // FIXME
+  // FIXME: add failure cases and more inputs
   // throw ('NEED TO IMPLEMENT');
 
   it('should map user \'fetchUserSuccess\'', () => {
@@ -101,6 +101,35 @@ describe('userResponseServiceMapper', () => {
     const result = responseMapper.fetchLocationsSuccess({ body });
     expect(result).toBeInstanceOf(List);
     expect(result.get(0)).toBeInstanceOf(Location);
+    expect(result.toJS()).toEqual(expected);
+  });
+
+  it('should map customers data \'fetchEntriesSuccess\'', () => {
+    const body = [
+      {
+        id: 1,
+        entry: 4,
+        exit: 2,
+        time: 1523324003458,
+        locationId: 125
+      },
+      {
+        id: 2,
+        entry: 5,
+        exit: 6,
+        time: 1523324003558,
+        locationId: 125
+      }
+    ];
+
+    const expected = [
+      { id: 1, entry: 4, exit: 2, time: 1523324003458, locationId: 125 },
+      { id: 2, entry: 5, exit: 6, time: 1523324003558, locationId: 125 }
+    ];
+
+    const result = responseMapper.fetchEntriesSuccess({ body });
+    expect(result).toBeInstanceOf(List);
+    expect(result.get(0)).toBeInstanceOf(Entry);
     expect(result.toJS()).toEqual(expected);
   });
 

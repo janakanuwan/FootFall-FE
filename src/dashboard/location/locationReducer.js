@@ -1,5 +1,6 @@
 import { createReducer } from 'redux-create-reducer';
 import { List, Location, Maybe, Record } from 'Models';
+import dashboardUtil from '../dashboardUtil';
 
 import { ADD_LOCATIONS, CHANGE_LOCATION } from '../../const/action-types';
 
@@ -16,16 +17,7 @@ const locationReducer = createReducer(initialState, {
 
   [ADD_LOCATIONS](state, action) {
     if (!action.error) {
-      const newLocations = action.payload;
-      const oldLocations = state.get('list');
-      const oldLocationsIds = oldLocations.reduce((acc, curr) => [...acc, curr.id], []);
-
-      const updatedLocations = oldLocations.withMutations((locations) => {
-        newLocations
-          .filter(location => !oldLocationsIds.includes(location.id))
-          .forEach(newLocation => locations.push(newLocation));
-      });
-      return state.set('list', updatedLocations);
+      return state.set('list', dashboardUtil.unionList(state.get('list'), action.payload));
     }
     return state;
   },

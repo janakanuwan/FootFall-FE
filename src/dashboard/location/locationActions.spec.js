@@ -10,7 +10,16 @@ describe('locationActions', () => {
     expect(action).toMatchSnapshot();
   });
 
+  it('should create an action to set failed locations', () => {
+    const action = addLocations(new Error('Failed to fetch'));
+    expect(action).toMatchSnapshot();
+    expect(action.error).toEqual(true);
+    expect(action.payload.message).not.toEqual(null);
+  });
+
   it('should create an action to fetch locations', () => {
     expect(fetchLocations({ merchantId: 1234, token: 12, email: 'hello@test.com' })).toMatchSnapshot();
   });
+
+
 });
