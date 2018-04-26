@@ -8,78 +8,66 @@ import Select from 'material-ui/Select';
 // }}
 
 /**
- * @param props.items array of data in {id:<ID>, name: <NAME> } format
- * @param props.selectedItem selected item from data
+ * @param items array of data in {id:<ID>, name: <NAME> } format
+ * @param selectedItem selected item from data
  *
- * @param props.onClick(item) fired at clicking a button
+ * @param onClick(item) fired at clicking a button
  *
- * @param props.maxButtonCount maximum number of items to display in-line
- * @param props.size size of button ('small','medium', 'large'; default: 'medium')
+ * @param maxButtonCount maximum number of items to display in-line
+ * @param size size of button ('small','medium', 'large'; default: 'medium')
  */
-class ButtonSelectGroup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { selectedItem: props.selectedItem };
-  }
-
-  handleClick(item) {
-    this.setState({ selectedItem: item });
-    if (this.props.onClick) {
-      this.props.onClick(item);
+const ButtonSelectGroup = ({
+  items, selectedItem, onClick, maxButtonCount, size,
+}) => {
+  const handleClick = (item) => {
+    if (onClick) {
+      onClick(item);
     }
-  }
+  };
 
-  render() {
-    const {
-      items, size, maxButtonCount,
-    } = this.props;
-    const { selectedItem } = this.state;
+  const MAX_BUTTON_COUNT_MINUS_1 = maxButtonCount - 1;
+  const directButtons = items.slice(0, MAX_BUTTON_COUNT_MINUS_1).map(item => (
+    <Button
+      key={item.id}
+      variant={item === selectedItem ? 'raised' : 'flat'}
+      onClick={() => handleClick(item)}
+      size={size}
+    >
+      {item.name}
+    </Button>
+  ));
 
-    const MAX_BUTTON_COUNT_MINUS_1 = maxButtonCount - 1;
+  const itemsInSelect = items.slice(MAX_BUTTON_COUNT_MINUS_1);
+  const buttonsInSelect = itemsInSelect.map((item, index) => (
+    <Button
+      key={item.id}
+      variant={item === selectedItem ? 'raised' : 'flat'}
+      size={size}
 
-    const directButtons = items.slice(0, MAX_BUTTON_COUNT_MINUS_1).map(item => (
-      <Button
-        key={item.id}
-        variant={item === selectedItem ? 'raised' : 'flat'}
-        onClick={() => this.handleClick(item)}
-        size={size}
-      >
-        {item.name}
-      </Button>
-    ));
+      value={index}
+    >
+      {item.name}
+    </Button>
+  ));
 
-    const itemsInSelect = items.slice(MAX_BUTTON_COUNT_MINUS_1);
-    const buttonsInSelect = itemsInSelect.map((item, index) => (
-      <Button
-        key={item.id}
-        variant={item === selectedItem ? 'raised' : 'flat'}
-        size={size}
+  const selectComponent = (itemsInSelect.length || itemsInSelect.size) === 0 ? null : (
+    <Select
+      value={itemsInSelect.indexOf(selectedItem)}
+      onChange={event =>
+        handleClick(itemsInSelect.find((val, index) => index === event.target.value))
+      }
+    >
+      {buttonsInSelect}
+    </Select>
+  );
 
-        value={index}
-      >
-        {item.name}
-      </Button>
-    ));
-
-    const selectComponent = (itemsInSelect.length || itemsInSelect.size) === 0 ? null : (
-      <Select
-        value={itemsInSelect.indexOf(selectedItem)}
-        onChange={(event) => {
-          this.handleClick(itemsInSelect.find((val, index) => index === event.target.value));
-        }}
-      >
-        {buttonsInSelect}
-      </Select>
-    );
-
-    return (
-      <div>
-        {directButtons}
-        {selectComponent}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {directButtons}
+      {selectComponent}
+    </div>
+  );
+};
 
 ButtonSelectGroup.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
