@@ -21,5 +21,4 @@ describe('locationActions', () => {
     expect(fetchLocations({ merchantId: 1234, token: 12, email: 'hello@test.com' })).toMatchSnapshot();
   });
 
-
 });

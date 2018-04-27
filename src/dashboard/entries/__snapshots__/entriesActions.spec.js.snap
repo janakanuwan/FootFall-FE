@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`entriesActions should create an action to add dashboard data 1`] = `
+exports[`entriesActions should create an action to add entries data 1`] = `
 Object {
   "payload": Array [
     Object {
@@ -29,7 +29,19 @@ Object {
 }
 `;
 
-exports[`entriesActions should create an action to set failed dashboard data 1`] = `
+exports[`entriesActions should create an action to fetch entries 1`] = `
+Object {
+  "payload": Object {
+    "email": "hello@test.com",
+    "locationId": 2,
+    "merchantId": 1234,
+    "token": 12,
+  },
+  "type": "FETCH_ENTRIES",
+}
+`;
+
+exports[`entriesActions should create an action to set failed entries data 1`] = `
 Object {
   "error": true,
   "payload": [Error: Failed to fetch],
