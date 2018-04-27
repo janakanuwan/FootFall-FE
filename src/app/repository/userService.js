@@ -85,12 +85,12 @@ const fetchLocations = async (merchantAuthInfo, callbackFunction) => {
 
 const fetchEntries = async (merchantAuthInfo, callbackFunction) => {
   const {
-    token, id, email, merchantId, locationId, customerEntryId,
+    token, id, email, merchantId, locationId, customerEntryId, fromTime, toTime,
   } = merchantAuthInfo;
-  const context = `fetchCustomers: merchant-${merchantId}, location-${locationId}, customer-${customerEntryId}`;
+  const context = `fetchEntries: merchant-${merchantId}, location-${locationId}, customer-${customerEntryId}`;
 
   const response = await restService.makeRequest(
-    apiEndpoints.entries(merchantId, locationId, customerEntryId),
+    apiEndpoints.entries(merchantId, locationId, fromTime, toTime, customerEntryId),
     {
       method: 'GET', authorization: token, 'user-id': id, 'user-email': email,
     }, {}, context,
@@ -105,5 +105,5 @@ const fetchEntries = async (merchantAuthInfo, callbackFunction) => {
 };
 
 export default {
-  fetchUser, fetchMerchants, fetchLocations, fetchCustomers: fetchEntries,
+  fetchUser, fetchMerchants, fetchLocations, fetchEntries,
 };

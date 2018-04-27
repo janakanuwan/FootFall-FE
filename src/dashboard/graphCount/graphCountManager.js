@@ -1,4 +1,4 @@
-import dashboardUtil from '../dashboardUtil';
+import dateTimeUtil from '../../app/utils/dateTimeUtil';
 
 /**
  *
@@ -9,9 +9,9 @@ import dashboardUtil from '../dashboardUtil';
  */
 const isValidDateRange = (dateRange, type, date) => {
   if (type === 'from') {
-    return dashboardUtil.isSameOrAfter(dateRange.toDate, date);
+    return dateTimeUtil.isSameOrAfter(dateRange.toDate, date);
   } else if (type === 'to') {
-    return dashboardUtil.isSameOrAfter(date, dateRange.fromDate);
+    return dateTimeUtil.isSameOrAfter(date, dateRange.fromDate);
   }
   return false;
 };

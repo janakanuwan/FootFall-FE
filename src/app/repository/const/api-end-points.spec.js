@@ -73,9 +73,28 @@ describe('api-end-points', () => {
       id: 2,
       expected: '/merchants/12/locations/1/entries/2'
     },
-  ].map(({ merchantId, locationId, id, expected }) => {
-    it(`should match the entries end point (merchantId: ${merchantId}, locationId: ${locationId}, id: ${id})`, () => {
-      expect(apiEndpoints.entries(merchantId, locationId, id)).toEqual(TEST_BASE_URL + expected);
+    {
+      merchantId: 12,
+      locationId: 1,
+      fromTime: 1,
+      expected: '/merchants/12/locations/1/entries?fromTime=1'
+    },
+    {
+      merchantId: 12,
+      locationId: 1,
+      toTime: 1,
+      expected: '/merchants/12/locations/1/entries?toTime=1'
+    },
+    {
+      merchantId: 12,
+      locationId: 1,
+      fromTime: 1,
+      toTime: 2,
+      expected: '/merchants/12/locations/1/entries?fromTime=1&toTime=2'
+    },
+  ].map(({ merchantId, locationId, fromTime, toTime, id, expected }, index) => {
+    it(`should match the entries end point (index: ${index})`, () => {
+      expect(apiEndpoints.entries(merchantId, locationId, fromTime, toTime, id)).toEqual(TEST_BASE_URL + expected);
     });
   });
 

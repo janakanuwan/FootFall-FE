@@ -9,4 +9,15 @@ const OVERLAY_DATA_FETCH_MERCHANTS
 const OVERLAY_DATA_FETCH_LOCATIONS
   = OverlayData({ id: 'locations_fetch', title: 'Loading...', message: 'Loading locations ..,.' });
 
-export { OVERLAY_DATA_FETCH_USER, OVERLAY_DATA_FETCH_MERCHANTS, OVERLAY_DATA_FETCH_LOCATIONS };
+const overlayDataFetchEntries = location => OverlayData({
+  id: `entries_fetch_${location.id}`,
+  title: 'Loading...',
+  message: `Loading entries at ${location.name}`,
+});
+
+export {
+  OVERLAY_DATA_FETCH_USER,
+  OVERLAY_DATA_FETCH_MERCHANTS,
+  OVERLAY_DATA_FETCH_LOCATIONS,
+  overlayDataFetchEntries,
+};

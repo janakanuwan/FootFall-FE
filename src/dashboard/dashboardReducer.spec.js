@@ -1,8 +1,8 @@
 import reducer from './dashboardReducer';
-import dashboardUtil from './dashboardUtil';
+import dateTimeUtil from '../app/utils/dateTimeUtil';
 
 describe('reducer', () => {
-  const today = dashboardUtil.today();
+  const today = dateTimeUtil.today();
 
 
   it('should create initial state for unsupported action', () => {
@@ -18,7 +18,7 @@ describe('reducer', () => {
       },
       dayCount: {
         count: 0,
-        date: dashboardUtil.todayWithTime(),
+        date: dateTimeUtil.todayWithTime(),
         dayName: 'Today',
       },
 

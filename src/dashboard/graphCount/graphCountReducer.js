@@ -13,9 +13,9 @@ import GraphDateRange from '../../app/models/graph/GraphDateRange.model';
 import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants';
 
 import graphCountManager from './graphCountManager';
-import dashboardUtil from '../dashboardUtil';
+import dateTimeUtil from '../../app/utils/dateTimeUtil';
 
-const Today = dashboardUtil.today();
+const Today = dateTimeUtil.today();
 
 const initialState = Record({
   displayTypeData: GraphDisplayTypeData({ in: true, out: true, presence: true }),

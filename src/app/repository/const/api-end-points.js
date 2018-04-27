@@ -30,14 +30,20 @@ const locations = (merchantId, id = 0) => {
  *
  * @param merchantId {number}
  * @param locationId {number}
+ * @param fromTime {number}
+ * @param toTime {number}
  * @param id {number} customer entry/exit detail id
  * @returns {string}
  */
-const entries = (merchantId, locationId, id = 0) => {
+const entries = (merchantId, locationId, fromTime = 0, toTime = 0, id = 0) => {
+  let filterParameters = (fromTime > 0 || toTime > 0) ? '?' : '';
+  filterParameters += fromTime > 0 ? `fromTime=${fromTime}` : '';
+  filterParameters += toTime > 0 ? `${(filterParameters.length > 1 ? '&' : '')}toTime=${toTime}` : '';
+
   if (id === 0) {
-    return `${BASE_URL}/merchants/${merchantId}/locations/${locationId}/entries`;
+    return `${BASE_URL}/merchants/${merchantId}/locations/${locationId}/entries${filterParameters}`;
   }
-  return `${BASE_URL}/merchants/${merchantId}/locations/${locationId}/entries/${id}`;
+  return `${BASE_URL}/merchants/${merchantId}/locations/${locationId}/entries/${id}${filterParameters}`;
 };
 
 export default {

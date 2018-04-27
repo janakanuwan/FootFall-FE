@@ -1,19 +1,14 @@
 import { createAction } from 'redux-actions';
-import { ADD_ENTRIES, CHANGE_ENTRIES_FROM, CHANGE_ENTRIES_TO, FETCH_ENTRIES } from '../../const/action-types';
+import { ADD_ENTRIES, CHANGE_ENTRIES_RANGE, FETCH_ENTRIES } from '../../const/action-types';
 
-const changeEntriesFrom = createAction(
-  CHANGE_ENTRIES_FROM,
-  time => time,
-);
-
-const changeEntriesTo = createAction(
-  CHANGE_ENTRIES_TO,
-  time => time,
+const changeEntriesRange = createAction(
+  CHANGE_ENTRIES_RANGE,
+  range => range,
 );
 
 const addEntries = createAction(
   ADD_ENTRIES,
-  data => data,
+  entries => entries,
 );
 
 /**
@@ -24,4 +19,4 @@ const fetchEntries = createAction(
   merchantLocationAuthInfo => merchantLocationAuthInfo,
 );
 
-export { changeEntriesFrom, changeEntriesTo, addEntries, fetchEntries };
+export { changeEntriesRange, addEntries, fetchEntries };

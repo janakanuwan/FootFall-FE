@@ -1,29 +1,30 @@
 import { createReducer } from 'redux-create-reducer';
 import { Entry, List, Record } from 'Models';
-import dashboardUtil from '../dashboardUtil';
-import { ADD_ENTRIES, CHANGE_ENTRIES_FROM, CHANGE_ENTRIES_TO } from '../../const/action-types';
+import immutableUtil from '../../app/utils/immutableUtil';
+import dateTimeUtil from '../../app/utils/dateTimeUtil';
+import { ADD_ENTRIES, CHANGE_ENTRIES_RANGE } from '../../const/action-types';
+import entriesManager from './entriesManager';
 
-const nowTime = dashboardUtil.now();
+const oneMonthBeforeTime = dateTimeUtil.oneMonthBefore();
+const nowTime = dateTimeUtil.now();
 
 const initialState = Record({
-  from: Number(nowTime),
-  to: Number(nowTime),
+  range: Record({
+    from: Number(oneMonthBeforeTime),
+    to: Number(nowTime),
+  })(),
   list: List(Entry),
 }, 'EntriesState')();
 
 const entriesReducer = createReducer(initialState, {
 
-  [CHANGE_ENTRIES_FROM](state, action) {
-    return state.set('from', action.payload);
-  },
-
-  [CHANGE_ENTRIES_TO](state, action) {
-    return state.set('to', action.payload);
+  [CHANGE_ENTRIES_RANGE](state, action) {
+    return state.set('range', entriesManager.updatedRange(state.get('range'), action.payload));
   },
 
   [ADD_ENTRIES](state, action) {
     if (!action.error) {
-      return state.set('list', dashboardUtil.unionList(state.get('list'), action.payload));
+      return state.set('list', immutableUtil.unionList(state.get('list'), action.payload));
     }
     return state;
   },

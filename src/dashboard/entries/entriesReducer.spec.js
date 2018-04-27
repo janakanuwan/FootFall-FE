@@ -1,10 +1,12 @@
 import reducer from './entriesReducer';
-import { addEntries, changeEntriesFrom, changeEntriesTo } from './entriesActions';
+import { addEntries, changeEntriesRange } from './entriesActions';
 import { Entry, List } from 'Models';
 
 describe('entriesReducer', () => {
 
   const initialState = reducer(undefined, { type: 'INIT' });
+  const initialStateRangeFrom = initialState.getIn(['range', 'from']);
+  const initialStateRangeTo = initialState.getIn(['range', 'to']);
 
   const entry1 = { id: 1, entry: 2, exit: 0, time: 1234, locationId: 1 };
   const entry2 = { id: 2, entry: 4, exit: 5, time: 1235, locationId: 2 };
@@ -12,24 +14,34 @@ describe('entriesReducer', () => {
   const entry3 = { id: 3, entry: 4, exit: 5, time: 1237, locationId: 2 };
 
   it('should set the entries with default values', () => {
-    const initialStateTime = initialState.get('from');
-    const expected = { from: initialStateTime, to: initialStateTime, list: [] };
+    const expected = { range: { from: initialStateRangeFrom, to: initialStateRangeTo }, list: [] };
 
-    expect(initialStateTime).toBeLessThanOrEqual(Date.now());
+    expect(initialStateRangeTo).toBeLessThanOrEqual(Date.now());
     expect(initialState.toJS()).toEqual(expected);
   });
 
-  it('should set the \'from\' for entries', () => {
-    const action = changeEntriesFrom(12345);
-
-    expect(reducer(initialState, action).get('from')).toEqual(12345);
-  });
-
-  it('should set the \'to\' for entries', () => {
-    const action = changeEntriesTo(4321);
-
-    expect(reducer(initialState, action).get('to')).toEqual(4321);
-  });
+  [
+    {
+      action: changeEntriesRange({ from: 123, to: 1234 }),
+      expected: { from: 123, to: 1234 }
+    },
+    {
+      action: changeEntriesRange({ from: 123 }),
+      expected: { from: 123, to: initialStateRangeTo }
+    },
+    {
+      action: changeEntriesRange({ from: initialStateRangeTo + 1 }),
+      expected: { from: initialStateRangeFrom, to: initialStateRangeTo }
+    },
+    {
+      action: changeEntriesRange({ to: initialStateRangeFrom + 1 }),
+      expected: { from: initialStateRangeFrom, to: initialStateRangeFrom + 1 }
+    },
+  ].map(({ action, expected }, index) =>
+    it(`should set the range for entries (index: ${index})`, () => {
+      expect(reducer(initialState, action).get('range').toJS()).toEqual(expected);
+    })
+  );
 
   it('should add new entries for empty list', () => {
     const action = addEntries(List(Entry)().push(entry1).push(entry2));

@@ -1,13 +1,10 @@
-import { addEntries, changeEntriesFrom, changeEntriesTo, fetchEntries } from './entriesActions';
+import { addEntries, changeEntriesFrom, changeEntriesRange, changeEntriesTo, fetchEntries } from './entriesActions';
 
 describe('entriesActions', () => {
 
-  it('should create an action to change entries from', () => {
-    expect(changeEntriesFrom(+new Date('2018-04-24'))).toMatchSnapshot();
-  });
-
-  it('should create an action to change entries to', () => {
-    expect(changeEntriesTo(+new Date('2018-04-28'))).toMatchSnapshot();
+  it('should create an action to change entries range', () => {
+    const time = +new Date('2018-04-28');
+    expect(changeEntriesRange({ from: time, to: time })).toMatchSnapshot();
   });
 
   it('should create an action to add entries data', () => {

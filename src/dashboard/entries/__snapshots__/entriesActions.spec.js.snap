@@ -15,17 +15,13 @@ Object {
 }
 `;
 
-exports[`entriesActions should create an action to change entries from 1`] = `
+exports[`entriesActions should create an action to change entries range 1`] = `
 Object {
-  "payload": 1524528000000,
-  "type": "CHANGE_ENTRIES_FROM",
-}
-`;
-
-exports[`entriesActions should create an action to change entries to 1`] = `
-Object {
-  "payload": 1524873600000,
-  "type": "CHANGE_ENTRIES_TO",
+  "payload": Object {
+    "from": 1524873600000,
+    "to": 1524873600000,
+  },
+  "type": "CHANGE_ENTRIES_RANGE",
 }
 `;
 

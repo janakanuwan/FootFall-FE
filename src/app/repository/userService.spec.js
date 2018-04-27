@@ -97,7 +97,7 @@ describe('userService', () => {
     );
 
     const authInfo = { token: '12345', userId: 1, userEmail: 'hello@gmail.com', merchantId: 234, locationId: 125 };
-    return userService.fetchCustomers(authInfo, customerEntries => {
+    return userService.fetchEntries(authInfo, customerEntries => {
       expect(customerEntries.size).toEqual(2);
       expect(customerEntries.get(0)).toBeInstanceOf(Entry);
     });

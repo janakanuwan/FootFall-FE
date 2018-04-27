@@ -2,11 +2,11 @@ import { createReducer } from 'redux-create-reducer';
 import { Record } from 'Models';
 import { SET_DAY_COUNT } from '../../const/action-types';
 
-import dashboardUtil from '../dashboardUtil';
+import dateTimeUtil from '../../app/utils/dateTimeUtil';
 
 const initialState = Record({
   dayName: String('Today'),
-  date: String(dashboardUtil.todayWithTime()),
+  date: String(dateTimeUtil.todayWithTime()),
   count: Number(0),
 }, 'DayCountState')();
 
