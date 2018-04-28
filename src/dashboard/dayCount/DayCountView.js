@@ -5,13 +5,13 @@ import DayCount from './ui/DayCount';
 import dateTimeUtil from '../../app/utils/dateTimeUtil';
 import entriesUtil from '../../app/utils/entriesUtil';
 
-const getEntries = state => state.getIn(['dashboard', 'entries', 'list']);
+const getEntriesList = state => state.getIn(['dashboard', 'entries', 'list']);
 const getSelectedLocation = state => state.getIn(['dashboard', 'locations', 'selected']);
 const getTodayTo = state => state.getIn(['dashboard', 'entries', 'range', 'to']);
 const getTodayFrom = () => dateTimeUtil.today0000h();
 
 const netEntrySelector = createSelector(
-  [getEntries, getSelectedLocation, getTodayFrom, getTodayTo],
+  [getEntriesList, getSelectedLocation, getTodayFrom, getTodayTo],
   (entries, location, fromTime, toTime) => {
     if (entries.size > 0 && location) {
       return entriesUtil.netEntry(entriesUtil.filteredEntries(entries, location, fromTime, toTime));
