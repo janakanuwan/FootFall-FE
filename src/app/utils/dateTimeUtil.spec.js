@@ -10,12 +10,6 @@ describe('dateTimeUtil', () => {
     expect(dateTimeUtil.today()).toEqual(expected);
   });
 
-  it('should display \'todayWithTime\'', () => {
-    console.log(dateTimeUtil.todayWithTime());
-
-    expect(dateTimeUtil.todayWithTime().substring(0, 10)).toEqual(dateTimeUtil.today());
-  });
-
   it('should display the milliseconds \'now\'', () => {
     const now = dateTimeUtil.now();
     const expected = Date.now();

@@ -10,8 +10,6 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const SET_USER = 'SET_USER';
 export const FETCH_USER = 'FETCH_USER';
 
-export const SET_DAY_COUNT = 'SET_DAY_COUNT';
-
 export const CHANGE_GRAPH_DISPLAY_TYPE = 'CHANGE_GRAPH_DISPLAY_TYPE';
 export const SET_GRAPH_DATA = 'SET_GRAPH_DATA';
 export const CHANGE_GRAPH_DATE_RANGE = 'CHANGE_GRAPH_DATE_RANGE';

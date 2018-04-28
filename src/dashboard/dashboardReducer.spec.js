@@ -18,7 +18,8 @@ describe('reducer', () => {
       },
       dayCount: {
         count: 0,
-        date: dateTimeUtil.todayWithTime(),
+        day: '',
+        time: '',
         dayName: 'Today',
       },
 

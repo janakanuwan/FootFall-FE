@@ -1,11 +1,11 @@
-import _ from 'lodash';
-
+import startCase from 'lodash/startCase';
+import isString from 'lodash/isString';
 
 const isEmpty = object => object && Object.keys(object).length === 0;
 
 const toTitleCase = (text) => {
-  if (_.isString(text)) {
-    return _.startCase(text.toLowerCase());
+  if (isString(text)) {
+    return startCase(text.toLowerCase());
   }
   return '';
 };

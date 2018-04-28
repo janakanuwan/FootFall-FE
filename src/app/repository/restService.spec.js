@@ -1,13 +1,13 @@
 import restService from './restService';
 import nock from 'nock';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
 
 describe('restService', () => {
 
   const verifyResponse = async (response, expectedStatus, expectedBody) => {
     const res = await response;
     console.log(res);
-    if (expectedStatus !== res.status || !_.isEqual(expectedBody, res.body)) {
+    if (expectedStatus !== res.status || !isEqual(expectedBody, res.body)) {
       throw new Error(`Response '${JSON.stringify(res)}' does not match with expected status:${expectedStatus} and body:${JSON.stringify(expectedBody)}`);
     }
   };

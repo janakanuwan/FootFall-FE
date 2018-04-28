@@ -1,16 +1,16 @@
 import moment from 'moment';
 
 /**
- *
- * @returns {string} today in "YYYY-MM-DD" format
+ * TODO: change with date-fns or date
  */
-const today = () => moment().format('YYYY-MM-DD');
 
 /**
  *
- * @returns {string} today in ISO 8601 format (e.g. "2018-04-05T07:09:23+05:30")
+ * @returns {string} today in "YYYY-MM-DD" format
+ *
+ * FIXME: remove this
  */
-const todayWithTime = () => moment().format();
+const today = () => moment().format('YYYY-MM-DD');
 
 /**
  *
@@ -75,7 +75,6 @@ const formatTime = (date) => {
 
 export default {
   today,
-  todayWithTime,
   now,
   today0000h,
   oneMonthBefore,
