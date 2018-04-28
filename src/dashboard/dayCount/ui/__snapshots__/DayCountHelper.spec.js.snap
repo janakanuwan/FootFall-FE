@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`DayCountHelper should return the formatted output (String) for '2018-03-21' 1`] = `"12:00 AM"`;
-
-exports[`DayCountHelper should return the formatted output (String) for '2018-03-21T05:04:42' 1`] = `"5:04 AM"`;
-
-exports[`DayCountHelper should return the formatted output for (Date) 'Wed Mar 21 2018 05:04:42 GMT+0530 (+0530)' 1`] = `"5:04 AM"`;
-
-exports[`DayCountHelper should return the formatted output for (Date) 'Wed Mar 21 2018 05:30:00 GMT+0530 (+0530)' 1`] = `"5:30 AM"`;

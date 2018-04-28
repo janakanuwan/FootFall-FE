@@ -5,8 +5,6 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 
-import { formatDate, formatTime } from './DayCountHelper';
-
 const styles = theme => ({
   paperCount: {
     padding: theme.spacing.unit * 2,
@@ -23,7 +21,7 @@ const styles = theme => ({
  */
 const DayCount = (props) => {
   const {
-    dayName, date, count, classes,
+    dayName, day, time, count, classes,
   } = props;
 
   return (
@@ -41,10 +39,10 @@ const DayCount = (props) => {
 
           <Grid item xs>
             <Typography variant="headline" component="h5">
-              {formatDate(date)}
+              {day}
             </Typography>
             <Typography variant="headline" component="h6">
-              {formatTime(date)}
+              {time}
             </Typography>
           </Grid>
 
@@ -69,10 +67,8 @@ const DayCount = (props) => {
 
 DayCount.propTypes = {
   dayName: PropTypes.string.isRequired,
-  date: PropTypes.oneOfType([
-    PropTypes.instanceOf(Date),
-    PropTypes.string,
-  ]).isRequired,
+  day: PropTypes.PropTypes.string.isRequired,
+  time: PropTypes.PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
 
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types

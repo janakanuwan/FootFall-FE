@@ -3,12 +3,14 @@ import DayCount from './DayCount';
 const dayCountData = [
   {
     dayName: 'Today',
-    date: new Date(),
+    day: 'Wed Mar 21 2018',
+    time: '12:00 PM',
     count: 40,
   },
   {
     dayName: 'Yesterday',
-    date: '2018-04-01',
+    day: 'Saturday, April 28th 2018',
+    time: '6:27 AM',
     count: 50,
   },
 ];

@@ -58,16 +58,19 @@ const listSelectData = [
 ];
 
 
-const dayCountData = [{
-  dayName: 'Today',
-  date: new Date(),
-  count: 40,
-},
-{
-  dayName: 'Yesterday',
-  date: '2018-04-01',
-  count: 50,
-},
+const dayCountData = [
+  {
+    dayName: 'Today',
+    day: 'Wed Mar 21 2018',
+    time: '12:00 PM',
+    count: 40,
+  },
+  {
+    dayName: 'Yesterday',
+    day: 'Saturday, April 28th 2018',
+    time: '6:27 AM',
+    count: 50,
+  },
 ];
 
 const buttonSelectItems = ['Button 1', 'Button 2', 'Button 3', 'Button 4', 'Button 5'].map((item, index) => ({

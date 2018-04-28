@@ -1,6 +1,6 @@
 import dateTimeUtil from './dateTimeUtil';
 
-describe('dashboardManager', () => {
+describe('dateTimeUtil', () => {
   const getTwoDigitNumber = number => (number <= 9 ? `0${number}` : `${number}`);
 
   it('should display \'today\'', () => {
@@ -20,7 +20,12 @@ describe('dashboardManager', () => {
     const now = dateTimeUtil.now();
     const expected = Date.now();
 
-    expect(now).toEqual(expected);
+    expect(now).toBeLessThanOrEqual(expected);
+    expect(now).toBeGreaterThanOrEqual(expected - 10);
+  });
+
+  it('should display the milliseconds \'today0000h\'', () => {
+    expect(dateTimeUtil.today0000h()).toBeLessThan(Date.now());
   });
 
   it('should display the milliseconds \'oneMonthBefore\'', () => {
@@ -45,5 +50,37 @@ describe('dashboardManager', () => {
       expect(dateTimeUtil.isSameOrAfter(date1, date2)).toEqual(expected);
     });
   });
+
+  [
+    { date: undefined, expected: '' },
+    { date: null, expected: '' },
+    { date: '', expected: '' },
+    { date: new Date('2018-03-21'), expected: 'Wednesday, March 21st 2018' },
+    { date: new Date('2018-03-21T05:04:42'), expected: 'Wednesday, March 21st 2018' },
+    { date: '2018-03-21', expected: 'Wednesday, March 21st 2018' },
+    { date: '2018-03-21T05:04:42', expected: 'Wednesday, March 21st 2018' },
+    { date: 1524853800000, expected: 'Saturday, April 28th 2018' },
+    { date: 1524877032181, expected: 'Saturday, April 28th 2018' },
+  ].map(({ date, expected }, index) =>
+    it(`should 'formatDate' date=${date} (index:${index})`, () => {
+      expect(dateTimeUtil.formatDate(date)).toEqual(expected);
+    })
+  );
+
+  [
+    { date: undefined, expected: '' },
+    { date: null, expected: '' },
+    { date: '', expected: '' },
+    { date: new Date('2018-03-21'), expected: '5:30 AM' },
+    { date: new Date('2018-03-21T05:04:42'), expected: '5:04 AM' },
+    { date: '2018-03-21', expected: '12:00 AM' },
+    { date: '2018-03-21T05:04:42', expected: '5:04 AM' },
+    { date: 1524853800000, expected: '12:00 AM' },
+    { date: 1524877032181, expected: '6:27 AM' },
+  ].map(({ date, expected }, index) =>
+    it(`should 'formatTime' date=${date} (index:${index})`, () => {
+      expect(dateTimeUtil.formatTime(date)).toEqual(expected);
+    })
+  );
 
 });

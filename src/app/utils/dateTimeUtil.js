@@ -18,9 +18,15 @@ const todayWithTime = () => moment().format();
  */
 const now = () => moment().valueOf();
 
+/**
+ *
+ * @return {number} today 00:00h in millis (unix timestamp)
+ */
+const today0000h = () => moment().startOf('day').valueOf();
+
 /** *
  *
- * @return {number} one month before now in millis (unix)
+ * @return {number} one month before now in millis (unix timestamp)
  */
 const oneMonthBefore = () => moment().subtract(1, 'month').valueOf();
 
@@ -42,11 +48,38 @@ const isSameOrAfter = (date1, date2) => {
   }
 };
 
+/**
+ *
+ * @param date {Date|String|Number} encourage to use string and number
+ * @returns {string} empty, if input invalid, else formatted date
+ */
+const formatDate = (date) => {
+  if (date) {
+    return moment(date).format('dddd, MMMM Do YYYY');
+  }
+  return '';
+};
+
+/**
+ *
+ * @param date {Date|String|Number} encourage to use string and number
+ * @returns {string} empty, if time invalid, else formatted time
+ */
+const formatTime = (date) => {
+  if (date) {
+    return moment(date).format('h:mm A');
+  }
+  return '';
+};
+
 
 export default {
   today,
   todayWithTime,
   now,
+  today0000h,
   oneMonthBefore,
   isSameOrAfter,
+  formatDate,
+  formatTime,
 };
