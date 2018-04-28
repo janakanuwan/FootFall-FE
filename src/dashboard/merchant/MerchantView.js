@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const merchants = state.getIn(['dashboard', 'merchants']);
   return {
     merchantList: merchants.get('list'),
-    selectedMerchant: merchants.get('selectedMerchant'),
+    selectedMerchant: merchants.get('selected'),
   };
 };
 

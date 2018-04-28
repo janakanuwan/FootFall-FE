@@ -4,13 +4,13 @@ import { List, Maybe, Merchant, Record } from 'Models';
 
 const initialState = Record({
   list: List(Merchant),
-  selectedMerchant: Maybe(Merchant),
+  selected: Maybe(Merchant),
 }, 'MerchantState')();
 
 const merchantReducer = createReducer(initialState, {
 
   [CHANGE_MERCHANT](state, action) {
-    return state.set('selectedMerchant', action.payload);
+    return state.set('selected', action.payload);
   },
 
   [SET_MERCHANTS](state, action) {

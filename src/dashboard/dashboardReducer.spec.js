@@ -10,7 +10,7 @@ describe('reducer', () => {
     const expected = {
       merchants: {
         list: [],
-        selectedMerchant: null,
+        selected: null,
       },
       locations: {
         list: [],
