@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appSrc = path.resolve(__dirname, 'src');
 const assetSrc = path.resolve(__dirname, 'assets');
@@ -92,6 +93,7 @@ const webpackConfig = {
     new ExtractTextPlugin('[name].css', {
       allChunks: true,
     }),
+    new BundleAnalyzerPlugin(),
   ])
   ,
   resolve: {
