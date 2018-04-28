@@ -14,7 +14,7 @@ describe('reducer', () => {
       },
       locations: {
         list: [],
-        selectedLocation: null,
+        selected: null,
       },
       dayCount: {
         count: 0,

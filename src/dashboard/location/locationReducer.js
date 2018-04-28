@@ -6,13 +6,13 @@ import { ADD_LOCATIONS, CHANGE_LOCATION } from '../../const/action-types';
 
 const initialState = Record({
   list: List(Location),
-  selectedLocation: Maybe(Location),
+  selected: Maybe(Location),
 }, 'LocationState')();
 
 const locationReducer = createReducer(initialState, {
 
   [CHANGE_LOCATION](state, action) {
-    return state.set('selectedLocation', action.payload);
+    return state.set('selected', action.payload);
   },
 
   [ADD_LOCATIONS](state, action) {

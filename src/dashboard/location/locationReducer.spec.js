@@ -12,7 +12,7 @@ describe('reducer', () => {
 
   it('should change the location for empty selected location', () => {
     const action = changeLocation(Location(location1));
-    const expected = { list: [], selectedLocation: location1 };
+    const expected = { list: [], selected: location1 };
 
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
@@ -20,14 +20,14 @@ describe('reducer', () => {
   it('should change the location for non-empty selected location', () => {
     const baseState = reducer(initialState, changeLocation(Location(location2)));
     const action = changeLocation(Location(location1));
-    const expected = { list: [], selectedLocation: location1 };
+    const expected = { list: [], selected: location1 };
 
     expect(reducer(baseState, action).toJS()).toEqual(expected);
   });
 
   it('should add the new locations for empty list', () => {
     const action = addLocations(List(Location)().push(location1).push(location2));
-    const expected = {list: [location1, location2], selectedLocation: null};
+    const expected = {list: [location1, location2], selected: null};
 
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });
@@ -35,14 +35,14 @@ describe('reducer', () => {
   it('should add the new locations (if it does not exist) for non-empty list', () => {
     const baseState = reducer(initialState, addLocations(List(Location)().push(location2)));
     const action = addLocations(List(Location)().push(location1).push(location2_1));
-    const expected = {list: [location2, location1], selectedLocation: null};
+    const expected = {list: [location2, location1], selected: null};
 
     expect(reducer(baseState, action).toJS()).toEqual(expected);
   });
 
   it('should not add locations at error', () => {
     const action = addLocations(new Error('Failed to fetch'));
-    const expected = {list: [], selectedLocation: null};
+    const expected = {list: [], selected: null};
 
     expect(reducer(initialState, action).toJS()).toEqual(expected);
   });

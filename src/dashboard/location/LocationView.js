@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const locations = state.getIn(['dashboard', 'locations']);
   return {
     locationList: locations.get('list'),
-    selectedLocation: locations.get('selectedLocation'),
+    selectedLocation: locations.get('selected'),
   };
 };
 
