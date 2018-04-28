@@ -14,9 +14,23 @@ const today = () => moment().format('YYYY-MM-DD');
 
 /**
  *
- * @returns {number} today in millis (millis)
+ * @returns {number} today in millis (unix timestamp)
  */
 const now = () => moment().valueOf();
+
+/**
+ *
+ * @param date {string} e.g. '2018-04-28'
+ * @return {number} start of given 'date' in millis
+ */
+const millisStartOfDay = (date) => moment(date).startOf('day').valueOf();
+
+/**
+ *
+ * @param date {string} e.g. '2018-04-28'
+ * @return {number} end of given 'date' in millis
+ */
+const millisEndOfDay = (date) => moment(date).endOf('day').valueOf();
 
 /**
  *
@@ -72,10 +86,11 @@ const formatTime = (date) => {
   return '';
 };
 
-
 export default {
   today,
   now,
+  millisStartOfDay,
+  millisEndOfDay,
   today0000h,
   oneMonthBefore,
   isSameOrAfter,

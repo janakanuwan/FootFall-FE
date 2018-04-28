@@ -3,14 +3,14 @@ import dateTimeUtil from './dateTimeUtil';
 describe('dateTimeUtil', () => {
   const getTwoDigitNumber = number => (number <= 9 ? `0${number}` : `${number}`);
 
-  it('should display \'today\'', () => {
+  it('should return \'today\'', () => {
     const todayDate = new Date();
     const expected = `${todayDate.getFullYear()}-${getTwoDigitNumber(todayDate.getMonth() + 1)}-${getTwoDigitNumber(todayDate.getDate())}`;
 
     expect(dateTimeUtil.today()).toEqual(expected);
   });
 
-  it('should display the milliseconds \'now\'', () => {
+  it('should return the milliseconds \'now\'', () => {
     const now = dateTimeUtil.now();
     const expected = Date.now();
 
@@ -18,11 +18,27 @@ describe('dateTimeUtil', () => {
     expect(now).toBeGreaterThanOrEqual(expected - 10);
   });
 
-  it('should display the milliseconds \'today0000h\'', () => {
+  [
+    { date: '2018-04-28', expected: 1524853800000 },
+  ].map(({ date, expected }, index) =>
+    it(`should return the milliseconds 'millisStartOfDay' (index:${index})`, () => {
+      expect(dateTimeUtil.millisStartOfDay(date)).toEqual(expected);
+    })
+  );
+
+  [
+    { date: '2018-04-28', expected: 1524940199999 },
+  ].map(({ date, expected }, index) =>
+    it(`should return the milliseconds 'millisEndOfDay' (index:${index})`, () => {
+      expect(dateTimeUtil.millisEndOfDay(date)).toEqual(expected);
+    })
+  );
+
+  it('should return the milliseconds \'today0000h\'', () => {
     expect(dateTimeUtil.today0000h()).toBeLessThan(Date.now());
   });
 
-  it('should display the milliseconds \'oneMonthBefore\'', () => {
+  it('should return the milliseconds \'oneMonthBefore\'', () => {
     const oneMonthBefore = dateTimeUtil.oneMonthBefore();
     const now = Date.now();
 
