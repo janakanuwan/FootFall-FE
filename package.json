@@ -17,7 +17,9 @@
     "test:coverage": "jest --coverage",
     "serve": "cd build && python -m SimpleHTTPServer 9090",
     "clean": "rm -rf build",
-    "mock:REST": "cd test/json-server && json-server --watch mock_db.json --port 3004 --middlewares app-middleware.js"
+    "mock:REST": "cd test/json-server && json-server --watch mock_db.json --port 3004 --middlewares app-middleware.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "cross-fetch": "^2.1.1",
@@ -71,7 +73,12 @@
     "webpack": "^4.6.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.1.2",
-    "webpack-dev-server": "^3.1.3"
+    "webpack-dev-server": "^3.1.3",
+    "@storybook/react": "^4.0.0-alpha.4",
+    "@storybook/addon-actions": "^4.0.0-alpha.4",
+    "@storybook/addon-links": "^4.0.0-alpha.4",
+    "@storybook/addons": "^4.0.0-alpha.4",
+    "babel-runtime": "^6.26.0"
   },
   "jest": {
     "moduleNameMapper": {

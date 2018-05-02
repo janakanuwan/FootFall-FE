@@ -24,3 +24,5 @@ npm-debug.log*
 *.log
 *.iml
 
+# storybook
+/storybook-static
