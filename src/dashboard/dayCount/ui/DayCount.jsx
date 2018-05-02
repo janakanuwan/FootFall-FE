@@ -8,6 +8,7 @@ import { withStyles } from 'material-ui/styles';
 const styles = theme => ({
   paperCount: {
     padding: theme.spacing.unit * 2,
+    margin: theme.spacing.unit,
     width: '50%',
     textAlign: 'center',
     backgroundColor: theme.palette.primary.light,

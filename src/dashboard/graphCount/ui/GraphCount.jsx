@@ -113,6 +113,7 @@ const GraphCount = (props) => {
 
         </Grid>
 
+        <br/>
         <CountChart
           data={graphData}
           displayIn={displayTypeData.in}
