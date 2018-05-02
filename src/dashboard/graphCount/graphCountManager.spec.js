@@ -151,7 +151,7 @@ describe('graphCountManager', () => {
     },
   ].map(({ entries, location, dateRange, optionType }, index) =>
     it(`should return 'computedGraphData' (index: ${index})`, () => {
-      expect(graphCountManager.computedGraphData(List(TestEntry)(entries), location, dateRange, optionType).toJS()).toMatchSnapshot();
+      expect(graphCountManager.computedGraphData(List(TestEntry)(entries), location, dateRange, optionType)).toMatchSnapshot();
     })
   );
 

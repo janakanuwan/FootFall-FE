@@ -1,17 +1,28 @@
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import GraphCount from './ui/GraphCount';
 import { changeGraphDateRange, changeGraphDisplayOption, changeGraphDisplayType } from './graphCountActions';
+import graphCountManager from './graphCountManager';
 
-const mapStateToProps = (state) => {
-  const graphCount = state.getIn(['dashboard', 'graphCount']);
-  return {
-    graphData: graphCount.get('graphData'),
-    displayTypeData: graphCount.get('displayTypeData'),
-    dateRange: graphCount.get('dateRange'),
-    selectedDisplayOption: graphCount.get('displayOption'),
-  };
-};
+const getEntriesList = state => state.getIn(['dashboard', 'entries', 'list']);
+const getSelectedLocation = state => state.getIn(['dashboard', 'locations', 'selected']);
+const getGraphCountDateRange = state => state.getIn(['dashboard', 'graphCount', 'dateRange']);
+const getSelectedDisplayOption = state => state.getIn(['dashboard', 'graphCount', 'displayOption']);
+const getDisplayTypeData = state => state.getIn(['dashboard', 'graphCount', 'displayTypeData']);
+
+const graphDataSelector = createSelector(
+  [getEntriesList, getSelectedLocation, getGraphCountDateRange, getSelectedDisplayOption],
+  (entries, location, dateRange, displayOption) =>
+    graphCountManager.computedGraphData(entries, location, dateRange, displayOption),
+);
+
+const mapStateToProps = state => ({
+  graphData: graphDataSelector(state),
+  displayTypeData: getDisplayTypeData(state),
+  dateRange: getGraphCountDateRange(state),
+  selectedDisplayOption: getSelectedDisplayOption(state),
+});
 
 const mapStateToDispatch = dispatch => ({
   onClickDisplayType: ({ displayType }) => dispatch(changeGraphDisplayType(displayType)),

@@ -1,6 +1,5 @@
 import dateTimeUtil from '../../app/utils/dateTimeUtil';
 import entriesUtil from '../../app/utils/entriesUtil';
-import { GraphData, List } from 'Models';
 
 /**
  *
@@ -40,11 +39,11 @@ const updatedDateRangeValues = (dateRange, type, date) => {
  *
  * @param fromTime {number} inclusive
  * @param toTime {number} exclusive
- * @param optionType {string} in {@link GraphDisplayOptions}
+ * @param displayOption {string} in {@link GraphDisplayOptions}
  * @return {string} formatted time ban range name
  */
-const formatTimeBinRangeName = (fromTime, toTime, optionType) => {
-  switch (optionType) {
+const formatTimeBinRangeName = (fromTime, toTime, displayOption) => {
+  switch (displayOption) {
     case 'hourly':
       return dateTimeUtil.formatDateTime(toTime, 'h:mm A');
     case 'day':
@@ -64,32 +63,33 @@ const formatTimeBinRangeName = (fromTime, toTime, optionType) => {
  * @param entries {List} Entry with 'time' and 'locationId' properties
  * @param location {Location} with 'id' property
  * @param dateRange {object} with 'fromData' and 'toDate' properties
- * @param optionType {string} in {@link GraphDisplayOptions}
- * @return {List} the resulting {@link GraphData} list
+ * @param displayOption {string} in {@link GraphDisplayOptions}
+ * @return {[GraphData]} the resulting {@link GraphData} array
  */
-const computedGraphData = (entries, location, dateRange, optionType = 'hourly') => {
+const computedGraphData = (entries, location, dateRange, displayOption = 'hourly') => {
   const graphData = [];
 
   if (entries.size > 0 && location) {
     const fromTime = dateTimeUtil.millisStartOfDay(dateRange.fromDate);
     const toTime = dateTimeUtil.millisEndOfDay(dateRange.toDate);
     const filteredByRange = entriesUtil.filteredEntries(entries, location, fromTime, toTime);
-    const timeBinRange = dateTimeUtil.timeBinRange(fromTime, toTime, optionType);
+    const timeBinRange = dateTimeUtil.timeBinRange(fromTime, toTime, displayOption);
 
     for (let i = 0; i < timeBinRange.length - 1; i += 1) {
       const filteredByTime = entriesUtil.filteredEntriesByTime(
-        filteredByRange, timeBinRange[i], timeBinRange[i + 1]
+        filteredByRange
+        , timeBinRange[i], timeBinRange[i + 1],
       );
       // console.log('Time:', dateTimeUtil.formatDateTime(timeBinRange[i+1]-1));
-      graphData.push(GraphData({
-        NAME: formatTimeBinRangeName(timeBinRange[i], timeBinRange[i + 1], optionType),
+      graphData.push({
+        NAME: formatTimeBinRangeName(timeBinRange[i], timeBinRange[i + 1], displayOption),
         IN: entriesUtil.sumEntry(filteredByTime),
         OUT: entriesUtil.sumExit(filteredByTime),
         PRESENCE: entriesUtil.netEntry(filteredByTime),
-      }));
+      });
     }
   }
-  return List(GraphData)(graphData);
+  return graphData;
 };
 
 

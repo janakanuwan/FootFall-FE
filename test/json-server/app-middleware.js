@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
         id: 1,
         name: "Hello Test",
         email: "hellotest@gmail.com",
-        lastLoginTime: 1523324002458
+        lastLoginTime: now - 6 * hour
       }
     });
   } else if (req.path === '/login') {

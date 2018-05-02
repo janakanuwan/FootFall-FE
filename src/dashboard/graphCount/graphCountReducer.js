@@ -4,10 +4,9 @@ import {
   CHANGE_GRAPH_DATE_RANGE,
   CHANGE_GRAPH_DISPLAY_OPTION,
   CHANGE_GRAPH_DISPLAY_TYPE,
-  SET_GRAPH_DATA,
 } from '../../const/action-types';
 
-import { GraphData, GraphDisplayTypeData, List, Record } from 'Models';
+import { GraphDisplayTypeData, Record } from 'Models';
 import GraphDateRange from '../../app/models/graph/GraphDateRange.model';
 
 import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants';
@@ -19,7 +18,6 @@ const Today = dateTimeUtil.formatDateTime(dateTimeUtil.now(), 'YYYY-MM-DD');
 
 const initialState = Record({
   displayTypeData: GraphDisplayTypeData({ in: true, out: true, presence: true }),
-  graphData: List(GraphData),
   dateRange: GraphDateRange({
     fromDate: Today, toDate: Today, fromDateMax: Today, toDateMin: Today, toDateMax: Today,
   }),
@@ -36,9 +34,7 @@ const graphReducer = createReducer(initialState, {
     }
     return state;
   },
-  [SET_GRAPH_DATA](state, action) {
-    return state.set('graphData', action.payload);
-  },
+
   [CHANGE_GRAPH_DATE_RANGE](state, action) {
     const { type, date } = action.payload;
     const dateRange = state.get('dateRange');

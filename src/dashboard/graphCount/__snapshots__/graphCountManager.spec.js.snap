@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`graphCountManager should return 'graphData' (index: 0) 1`] = `
+exports[`graphCountManager should return 'computedGraphData' (index: 0) 1`] = `
 Array [
   Object {
     "IN": 0,
@@ -149,7 +149,7 @@ Array [
 ]
 `;
 
-exports[`graphCountManager should return 'graphData' (index: 1) 1`] = `
+exports[`graphCountManager should return 'computedGraphData' (index: 1) 1`] = `
 Array [
   Object {
     "IN": 0,
@@ -298,7 +298,7 @@ Array [
 ]
 `;
 
-exports[`graphCountManager should return 'graphData' (index: 2) 1`] = `
+exports[`graphCountManager should return 'computedGraphData' (index: 2) 1`] = `
 Array [
   Object {
     "IN": 4,
@@ -327,7 +327,7 @@ Array [
 ]
 `;
 
-exports[`graphCountManager should return 'graphData' (index: 3) 1`] = `
+exports[`graphCountManager should return 'computedGraphData' (index: 3) 1`] = `
 Array [
   Object {
     "IN": 6,
@@ -350,7 +350,7 @@ Array [
 ]
 `;
 
-exports[`graphCountManager should return 'graphData' (index: 4) 1`] = `
+exports[`graphCountManager should return 'computedGraphData' (index: 4) 1`] = `
 Array [
   Object {
     "IN": 6,

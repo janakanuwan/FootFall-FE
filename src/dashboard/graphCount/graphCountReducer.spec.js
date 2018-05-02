@@ -2,14 +2,7 @@ import reducer from './graphCountReducer';
 
 import moment from 'moment';
 
-import {
-  changeGraphDateRange,
-  changeGraphDisplayOption,
-  changeGraphDisplayType,
-  setGraphData,
-} from './graphCountActions';
-
-import { GraphData, List } from 'Models';
+import { changeGraphDateRange, changeGraphDisplayOption, changeGraphDisplayType, } from './graphCountActions';
 
 import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants';
 
@@ -23,7 +16,6 @@ describe('graphReducer', () => {
   it('should set the state with default values', () => {
     const expected = {
       displayTypeData: { in: true, out: true, presence: true },
-      graphData: [],
       dateRange: {
         fromDate: today,
         toDate: today,
@@ -75,28 +67,6 @@ describe('graphReducer', () => {
       expect(reducer(state, action).get('displayTypeData').toJS()).toEqual(expected);
     });
   });
-
-
-  it('should set the graph data', () => {
-    const expected = [
-      {
-        NAME: 'Test1', IN: 1, OUT: 1, PRESENCE: 0,
-      },
-      {
-        NAME: 'Test2', IN: 2, OUT: 0, PRESENCE: 2,
-      },
-    ];
-
-    let graphDataList = List(GraphData)();
-    expected.forEach((value) => {
-      graphDataList = graphDataList.push(value);
-    });
-
-    const action = setGraphData(graphDataList);
-
-    expect(reducer(initialState, action).get('graphData').toJS()).toEqual(expected);
-  });
-
 
   [
     {

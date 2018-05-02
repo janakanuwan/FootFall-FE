@@ -45,12 +45,13 @@ const styles = theme => ({
  *
  * @param props.graphData data array for chart in
  * [{NAME:<string>, IN:<number>, OUT: <number>, PRESENCE: <number> ,...] format
- * @param props.displayTypeData {in: boolean, out: boolean, presence: boolean}
- * @param props.onClickDisplayType({displayType: 'in|out|presence'}) fired at clicking
- * IN, OUT or PRESENCE
+ * @param props.displayTypeData {object} format: {in: boolean, out: boolean, presence: boolean}
+ * @param props.onClickDisplayType({string}) fired at clicking IN, OUT or PRESENCE
+ * with 'in|out|presence'
  * @param props.selectedDisplayOption {@link GraphDisplayOptions}
  * @param props.onClickDisplayOption(option)
- * @param props.dateRange {fromDate: string, fromDateMax: string, toDate: string, toDateMax: string}
+ * @param props.dateRange {object} format: {fromDate: string, fromDateMax: string, toDate: string
+ * , toDateMax: string}
  * @param props.onChangeDate ({type: 'FROM|TO', date:string})  fired at changing From/To date
  *
  */
