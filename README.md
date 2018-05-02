@@ -50,8 +50,8 @@ will simply development efforts and enable debugging
 
 ## TODO
 - Add storybook
-- Add test cases
+- Add test cases (specially mapping errors in API, e.g. userServiceResponseMapper)
 - Add caching for APIs 
 - Add parentId = null, for displaying locations
-
+- Add exclusion of non-working hours in graph
 

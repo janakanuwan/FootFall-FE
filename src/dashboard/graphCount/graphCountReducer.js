@@ -15,7 +15,7 @@ import { GraphDisplayOptions, GraphDisplayTypes } from './graphCountConstants';
 import graphCountManager from './graphCountManager';
 import dateTimeUtil from '../../app/utils/dateTimeUtil';
 
-const Today = dateTimeUtil.today();
+const Today = dateTimeUtil.formatDateTime(dateTimeUtil.now(), 'YYYY-MM-DD');
 
 const initialState = Record({
   displayTypeData: GraphDisplayTypeData({ in: true, out: true, presence: true }),
@@ -45,7 +45,7 @@ const graphReducer = createReducer(initialState, {
 
     let updatedState = state;
     if (graphCountManager.isValidDateRange(dateRange, type, date)) {
-      const updatedValues = graphCountManager.getUpdatedDateRangeValues(dateRange, type, date);
+      const updatedValues = graphCountManager.updatedDateRangeValues(dateRange, type, date);
       updatedValues.forEach((values) => {
         Object.entries(values).forEach(([key, value]) => {
           updatedState = updatedState.setIn(['dateRange', key], value);

@@ -1,14 +1,6 @@
 import dateTimeUtil from './dateTimeUtil';
 
 describe('dateTimeUtil', () => {
-  const getTwoDigitNumber = number => (number <= 9 ? `0${number}` : `${number}`);
-
-  it('should return \'today\'', () => {
-    const todayDate = new Date();
-    const expected = `${todayDate.getFullYear()}-${getTwoDigitNumber(todayDate.getMonth() + 1)}-${getTwoDigitNumber(todayDate.getDate())}`;
-
-    expect(dateTimeUtil.today()).toEqual(expected);
-  });
 
   it('should return the milliseconds \'now\'', () => {
     const now = dateTimeUtil.now();
@@ -20,6 +12,7 @@ describe('dateTimeUtil', () => {
 
   [
     { date: '2018-04-28', expected: 1524853800000 },
+    { date: 1525160094000, expected: 1525113000000 },
   ].map(({ date, expected }, index) =>
     it(`should return the milliseconds 'millisStartOfDay' (index:${index})`, () => {
       expect(dateTimeUtil.millisStartOfDay(date)).toEqual(expected);
@@ -28,15 +21,12 @@ describe('dateTimeUtil', () => {
 
   [
     { date: '2018-04-28', expected: 1524940199999 },
+    { date: 1525160094000, expected: 1525199399999 },
   ].map(({ date, expected }, index) =>
     it(`should return the milliseconds 'millisEndOfDay' (index:${index})`, () => {
       expect(dateTimeUtil.millisEndOfDay(date)).toEqual(expected);
     })
   );
-
-  it('should return the milliseconds \'today0000h\'', () => {
-    expect(dateTimeUtil.today0000h()).toBeLessThan(Date.now());
-  });
 
   it('should return the milliseconds \'oneMonthBefore\'', () => {
     const oneMonthBefore = dateTimeUtil.oneMonthBefore();
@@ -62,34 +52,64 @@ describe('dateTimeUtil', () => {
   });
 
   [
-    { date: undefined, expected: '' },
-    { date: null, expected: '' },
-    { date: '', expected: '' },
-    { date: new Date('2018-03-21'), expected: 'Wednesday, March 21st 2018' },
-    { date: new Date('2018-03-21T05:04:42'), expected: 'Wednesday, March 21st 2018' },
-    { date: '2018-03-21', expected: 'Wednesday, March 21st 2018' },
-    { date: '2018-03-21T05:04:42', expected: 'Wednesday, March 21st 2018' },
-    { date: 1524853800000, expected: 'Saturday, April 28th 2018' },
-    { date: 1524877032181, expected: 'Saturday, April 28th 2018' },
-  ].map(({ date, expected }, index) =>
-    it(`should 'formatDate' date=${date} (index:${index})`, () => {
-      expect(dateTimeUtil.formatDate(date)).toEqual(expected);
+    { date: undefined, format: 'dddd, MMMM Do YYYY', expected: '' },
+    { date: null, format: 'dddd, MMMM Do YYYY', expected: '' },
+    { date: '', format: 'dddd, MMMM Do YYYY', expected: '' },
+
+    { date: '2018-03-21', expected: '2018-03-21T00:00:00' },
+    { date: '2018-03-21T05:04:42', expected: '2018-03-21T05:04:42' },
+    { date: 1525160094000, expected: '2018-05-01T13:04:54' },
+
+    { date: '2018-03-21', format: 'dddd, MMMM Do YYYY', expected: 'Wednesday, March 21st 2018' },
+    { date: '2018-03-21T05:04:42', format: 'dddd, MMMM Do YYYY', expected: 'Wednesday, March 21st 2018' },
+    { date: 1524853800000, format: 'dddd, MMMM Do YYYY', expected: 'Saturday, April 28th 2018' },
+    { date: 1524877032181, format: 'dddd, MMMM Do YYYY', expected: 'Saturday, April 28th 2018' },
+
+    { date: '2018-03-21', format: 'h:mm A', expected: '12:00 AM' },
+    { date: '2018-03-21T05:04:42', format: 'h:mm A', expected: '5:04 AM' },
+    { date: 1524853800000, format: 'h:mm A', expected: '12:00 AM' },
+    { date: 1524877032181, format: 'h:mm A', expected: '6:27 AM' },
+  ].map(({ date, format, expected }, index) =>
+    it(`should 'formatDateTime' date=${date}, format=${format} (index:${index})`, () => {
+      expect(dateTimeUtil.formatDateTime(date, format)).toEqual(expected);
     })
   );
 
   [
-    { date: undefined, expected: '' },
-    { date: null, expected: '' },
-    { date: '', expected: '' },
-    { date: new Date('2018-03-21'), expected: '5:30 AM' },
-    { date: new Date('2018-03-21T05:04:42'), expected: '5:04 AM' },
-    { date: '2018-03-21', expected: '12:00 AM' },
-    { date: '2018-03-21T05:04:42', expected: '5:04 AM' },
-    { date: 1524853800000, expected: '12:00 AM' },
-    { date: 1524877032181, expected: '6:27 AM' },
-  ].map(({ date, expected }, index) =>
-    it(`should 'formatTime' date=${date} (index:${index})`, () => {
-      expect(dateTimeUtil.formatTime(date)).toEqual(expected);
+    {
+      fromTime: 1525113000000,
+      toTime: 1525141800000,
+      expected: [1525113000000, 1525116600000, 1525120200000, 1525123800000, 1525127400000,
+        1525131000000, 1525134600000, 1525138200000, 1525141800000],
+    },
+    {
+      fromTime: 1525113000000,
+      toTime: 1525141800000,
+      binType: 'hourly',
+      expected: [1525113000000, 1525116600000, 1525120200000, 1525123800000, 1525127400000,
+        1525131000000, 1525134600000, 1525138200000, 1525141800000],
+    },
+    {
+      fromTime: 1525113000000,
+      toTime: 1525458600000,
+      binType: 'day',
+      expected: [1525113000000, 1525199400000, 1525285800000, 1525372200000, 1525458600000],
+    },
+    {
+      fromTime: 1525113000000,
+      toTime: 1526581800000,
+      binType: 'week',
+      expected: [1525113000000, 1525717800000, 1526322600000, 1526581800000],
+    },
+    {
+      fromTime: 1525113000000,
+      toTime: 1533666600000,
+      binType: 'month',
+      expected: [1525113000000, 1527791400000, 1530383400000, 1533061800000, 1533666600000],
+    },
+  ].map(({ fromTime, toTime, binType, expected }, index) =>
+    it(`should return the 'timeBinRange' (index:${index})`, () => {
+      expect(dateTimeUtil.timeBinRange(fromTime, toTime, binType)).toEqual(expected);
     })
   );
 

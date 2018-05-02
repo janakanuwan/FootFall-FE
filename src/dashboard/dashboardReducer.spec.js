@@ -1,9 +1,7 @@
 import reducer from './dashboardReducer';
-import dateTimeUtil from '../app/utils/dateTimeUtil';
 
 describe('reducer', () => {
-  const today = dateTimeUtil.today();
-
+  const today = '2018-05-01';
 
   it('should create initial state for unsupported action', () => {
     const action = { type: 'UNSUPPORTED_ACTION_TYPE' };

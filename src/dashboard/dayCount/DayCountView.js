@@ -8,7 +8,7 @@ import entriesUtil from '../../app/utils/entriesUtil';
 const getEntriesList = state => state.getIn(['dashboard', 'entries', 'list']);
 const getSelectedLocation = state => state.getIn(['dashboard', 'locations', 'selected']);
 const getTodayTo = state => state.getIn(['dashboard', 'entries', 'range', 'to']);
-const getTodayFrom = () => dateTimeUtil.today0000h();
+const getTodayFrom = () => dateTimeUtil.millisStartOfDay(dateTimeUtil.now());
 
 const netEntrySelector = createSelector(
   [getEntriesList, getSelectedLocation, getTodayFrom, getTodayTo],
@@ -24,8 +24,8 @@ const mapStateToProps = (state) => {
   const date = getTodayTo(state);
   return {
     dayName: 'Today',
-    day: dateTimeUtil.formatDate(date),
-    time: dateTimeUtil.formatTime(date),
+    day: dateTimeUtil.formatDateTime(date, 'dddd, MMMM Do YYYY'),
+    time: dateTimeUtil.formatDateTime(date, 'h:mm A'),
     count: netEntrySelector(state),
   };
 };

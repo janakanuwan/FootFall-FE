@@ -1,0 +1,386 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`graphCountManager should return 'graphData' (index: 0) 1`] = `
+Array [
+  Object {
+    "IN": 0,
+    "NAME": "1:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 1,
+    "NAME": "2:00 AM",
+    "OUT": 0,
+    "PRESENCE": 1,
+  },
+  Object {
+    "IN": 3,
+    "NAME": "3:00 AM",
+    "OUT": 1,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 2,
+    "NAME": "4:00 AM",
+    "OUT": 3,
+    "PRESENCE": -1,
+  },
+  Object {
+    "IN": 5,
+    "NAME": "5:00 AM",
+    "OUT": 6,
+    "PRESENCE": -1,
+  },
+  Object {
+    "IN": 4,
+    "NAME": "6:00 AM",
+    "OUT": 2,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 3,
+    "NAME": "7:00 AM",
+    "OUT": 0,
+    "PRESENCE": 3,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "8:00 AM",
+    "OUT": 1,
+    "PRESENCE": -1,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "9:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "10:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "11:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "12:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "1:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "2:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "3:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "4:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "5:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "6:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "7:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "8:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "9:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "10:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "11:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "11:59 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+]
+`;
+
+exports[`graphCountManager should return 'graphData' (index: 1) 1`] = `
+Array [
+  Object {
+    "IN": 0,
+    "NAME": "1:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 1,
+    "NAME": "2:00 AM",
+    "OUT": 0,
+    "PRESENCE": 1,
+  },
+  Object {
+    "IN": 3,
+    "NAME": "3:00 AM",
+    "OUT": 1,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 2,
+    "NAME": "4:00 AM",
+    "OUT": 3,
+    "PRESENCE": -1,
+  },
+  Object {
+    "IN": 5,
+    "NAME": "5:00 AM",
+    "OUT": 6,
+    "PRESENCE": -1,
+  },
+  Object {
+    "IN": 4,
+    "NAME": "6:00 AM",
+    "OUT": 2,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 3,
+    "NAME": "7:00 AM",
+    "OUT": 0,
+    "PRESENCE": 3,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "8:00 AM",
+    "OUT": 1,
+    "PRESENCE": -1,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "9:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "10:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "11:00 AM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "12:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "1:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "2:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "3:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "4:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "5:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "6:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "7:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "8:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "9:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "10:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "11:00 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "11:59 PM",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+]
+`;
+
+exports[`graphCountManager should return 'graphData' (index: 2) 1`] = `
+Array [
+  Object {
+    "IN": 4,
+    "NAME": "May-01",
+    "OUT": 3,
+    "PRESENCE": 1,
+  },
+  Object {
+    "IN": 2,
+    "NAME": "May-02",
+    "OUT": 1,
+    "PRESENCE": 1,
+  },
+  Object {
+    "IN": 3,
+    "NAME": "May-03",
+    "OUT": 1,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 2,
+    "NAME": "May-04",
+    "OUT": 3,
+    "PRESENCE": -1,
+  },
+]
+`;
+
+exports[`graphCountManager should return 'graphData' (index: 3) 1`] = `
+Array [
+  Object {
+    "IN": 6,
+    "NAME": "May-01:May-07",
+    "OUT": 4,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 3,
+    "NAME": "May-08:May-14",
+    "OUT": 1,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 8,
+    "NAME": "May-15:May-18",
+    "OUT": 8,
+    "PRESENCE": 0,
+  },
+]
+`;
+
+exports[`graphCountManager should return 'graphData' (index: 4) 1`] = `
+Array [
+  Object {
+    "IN": 6,
+    "NAME": "May 2018",
+    "OUT": 4,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 3,
+    "NAME": "Jun 2018",
+    "OUT": 1,
+    "PRESENCE": 2,
+  },
+  Object {
+    "IN": 2,
+    "NAME": "Jul 2018",
+    "OUT": 3,
+    "PRESENCE": -1,
+  },
+  Object {
+    "IN": 10,
+    "NAME": "Aug 2018",
+    "OUT": 7,
+    "PRESENCE": 3,
+  },
+  Object {
+    "IN": 0,
+    "NAME": "Sep 2018",
+    "OUT": 0,
+    "PRESENCE": 0,
+  },
+]
+`;
