@@ -12,7 +12,7 @@ const dateTextFieldData = [
       date: '2010-02-20',
       min: '2010-02-01',
       max: '2010-02-28',
-      onChange: value => action(`Selected date : ${value}`),
+      onChange: action(`select-date`),
     }
   },
   {
@@ -20,14 +20,14 @@ const dateTextFieldData = [
     data: {
       label: 'From',
       date: '2010-02',
-      onChange: value => action(`Selected date : ${value}`),
+      onChange: action(`select-date`),
     }
   },
   {
     description: 'With date not set : default',
     data: {
       label: 'From',
-      onChange: value => action(`Selected date : ${value}`),
+      onChange: action(`select-date`),
     }
   },
   {
@@ -43,7 +43,7 @@ const dateTextFieldData = [
       label: 'From',
       date: '2018-01-01',
       max: null,
-      onChange: value => action(`Selected date : ${value}`),
+      onChange: action(`select-date`),
     }
   },
 ];

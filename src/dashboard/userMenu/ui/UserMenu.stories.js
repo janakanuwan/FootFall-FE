@@ -8,7 +8,7 @@ storiesOf('UserMenu', module)
   .add('With all data', () => {
     const data = {
       user: { name: 'Hello Test', email: 'hellotest@gmail.com' },
-      onLogout: user => action(`Logging out: ${user}`),
+      onLogout: action('click-logout'),
     };
     return (<UserMenu {...data} />);
   })

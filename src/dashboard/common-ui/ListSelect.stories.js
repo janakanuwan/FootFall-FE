@@ -21,7 +21,7 @@ const listSelectData = [
     data: {
       items: listItems,
       selectedItem: listItems[0],
-      onSelect: item => action(`Selected item: ${item}`),
+      onSelect: action('select-item'),
     }
   },
   {
@@ -29,7 +29,7 @@ const listSelectData = [
     data: {
       items: listItems,
       selectedItem: null,
-      onSelect: item => action(`Selected item: ${item}`),
+      onSelect: action('select-item'),
     }
   },
   {
@@ -37,7 +37,7 @@ const listSelectData = [
     data: {
       items: [],
       selectedItem: null,
-      onSelect: item => action(`Selected item: ${item}`),
+      onSelect: action('select-item'),
     }
   },
   {
@@ -45,7 +45,7 @@ const listSelectData = [
     data: {
       items: listItems,
       selectedItem: listItems[1],
-      onSelect: item => action(`Selected item: ${item}`),
+      onSelect: action('select-item'),
     }
   },
   {
@@ -53,7 +53,7 @@ const listSelectData = [
     data: {
       items: listItems,
       selectedItem: { id: 3, name: 'Test Merchant 3' },
-      onSelect: item => action(`Selected item: ${item}`),
+      onSelect: action('select-item'),
     }
   },
 ];

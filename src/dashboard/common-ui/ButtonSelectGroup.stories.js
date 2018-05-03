@@ -15,7 +15,7 @@ const buttonSelectGroupData = [
     data: {
       items: buttonSelectItems,
       selectedItem: buttonSelectItems[0],
-      onClick: clickedItem => action(`clicked:${clickedItem}`),
+      onClick: action('click-item'),
     }
   },
   {
@@ -23,7 +23,7 @@ const buttonSelectGroupData = [
     data: {
       items: buttonSelectItems.slice(0, 2),
       selectedItem: buttonSelectItems[1],
-      onClick: clickedItem => action(`clicked:${clickedItem}`)
+      onClick: action('click-item'),
     }
   },
   {
@@ -31,7 +31,7 @@ const buttonSelectGroupData = [
     data: {
       items: buttonSelectItems.slice(0, 4),
       selectedItem: buttonSelectItems[3],
-      onClick: clickedItem => action(`clicked:${clickedItem}`)
+      onClick: action('click-item'),
     }
   },
   {
@@ -40,7 +40,7 @@ const buttonSelectGroupData = [
       items: buttonSelectItems.slice(0, 3),
       selectedItem: buttonSelectItems[2],
       maxButtonCount: 1,
-      onClick: clickedItem => action(`clicked:${clickedItem}`),
+      onClick: action('click-item'),
       size: 'small',
     }
   },
@@ -50,7 +50,7 @@ const buttonSelectGroupData = [
       items: buttonSelectItems.slice(0, 3),
       selectedItem: buttonSelectItems[2],
       maxButtonCount: 2,
-      onClick: clickedItem => action(`clicked:${clickedItem}`),
+      onClick: action('click-item'),
       size: 'large',
     }
   },
@@ -66,7 +66,7 @@ const buttonSelectGroupData = [
     data: {
       items: buttonSelectItems,
       selectedItem: { id: 6, name: 'Button 6' },
-      onClick: clickedItem => action(`clicked:${clickedItem}`)
+      onClick: action('click-item'),
     }
   },
 ];

@@ -15,7 +15,7 @@ const merchantOverviewData = [
     data: {
       merchantList: merchants,
       selectedMerchant: merchants[0],
-      onSelect: merchant => action(`Selected merchant: ${merchant}`),
+      onSelect: action('select-merchant'),
     }
   },
   {
@@ -23,7 +23,7 @@ const merchantOverviewData = [
     data: {
       merchantList: merchants,
       selectedMerchant: null,
-      onSelect: merchant => action(`Selected merchant: ${merchant}`),
+      onSelect: action('select-merchant'),
     }
   },
   {
@@ -31,7 +31,7 @@ const merchantOverviewData = [
     data: {
       merchantList: [],
       selectedMerchant: null,
-      onSelect: merchant => action(`Selected merchant: ${merchant}`),
+      onSelect: action('select-merchant'),
     }
   },
 ];

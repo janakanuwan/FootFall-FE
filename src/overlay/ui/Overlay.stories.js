@@ -10,7 +10,7 @@ storiesOf('Overlay', module)
       title: 'Loading...',
       message: 'Verifying login ...',
       open: false,
-      onClose: action('onClose'),
+      onClose: action('click-overlay:outside'),
     };
     return (<Overlay {...data} />);
   })
@@ -19,7 +19,7 @@ storiesOf('Overlay', module)
       title: 'Loading...',
       message: 'Verifying login ...',
       open: true,
-      onClose: action('onClose'),
+      onClose: action('click-overlay:outside'),
     };
     return (<Overlay {...data} />);
   })

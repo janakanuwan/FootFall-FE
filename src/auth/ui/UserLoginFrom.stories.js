@@ -11,7 +11,7 @@ storiesOf('UserLoginForm', module)
       email: 'hello@test.com',
       password: '1234',
       rememberMe: true,
-      onSubmit: action('Login clicked')
+      onSubmit: action('click-login')
     };
     return (<UserLoginForm {...data} />)
   })
@@ -22,7 +22,7 @@ storiesOf('UserLoginForm', module)
       rememberMe: true,
       emailError: true,
       passwordError: true,
-      onSubmit: action('Login clicked')
+      onSubmit: action('click-login')
     };
     return (<UserLoginForm {...data} />);
   })

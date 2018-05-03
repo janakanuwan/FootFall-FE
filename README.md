@@ -49,7 +49,7 @@ will simply development efforts and enable debugging
 
 
 ## TODO
-- Add storybook
+- Add support for https://github.com/react-theming/storybook-addon-material-ui 
 - Add test cases (specially mapping errors in API, e.g. userServiceResponseMapper)
 - Add caching for APIs 
 - Add parentId = null, for displaying locations

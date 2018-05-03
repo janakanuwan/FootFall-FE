@@ -11,7 +11,7 @@ const merchantLocationData = [
     data: {
       locationList: locationItems,
       selectedLocation: locationItems[0],
-      onClick: location => action(`Selected location : ${location}`),
+      onClick: action('click-location'),
     }
   },
   {
@@ -19,7 +19,7 @@ const merchantLocationData = [
     data: {
       locationList: locationItems,
       selectedLocation: { id: 6, name: 'Location 6' },
-      onClick: location => action(`Selected location : ${location}`),
+      onClick: action('click-location'),
     }
   },
   {

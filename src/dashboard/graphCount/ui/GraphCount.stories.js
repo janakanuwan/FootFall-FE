@@ -26,10 +26,10 @@ storiesOf('GraphCount', module)
       graphData: countChartData,
 
       displayTypeData: { in: true, out: true, presence: true },
-      onClickDisplayType: type => action(`Selected Type: ${type}`),
+      onClickDisplayType: action('click-displayType'),
 
       selectedDisplayOption: 'hourly',
-      onClickDisplayOption: option => action(`Selected option: ${option}`),
+      onClickDisplayOption: action('click-displayOption'),
 
       dateRange: {
         fromDate: '2018-03-01',
@@ -37,7 +37,7 @@ storiesOf('GraphCount', module)
         toDate: '2018-04-02',
         toDateMin: '2018-03-01',
       },
-      onChangeDate: dateRange => action(`Date change: ${dateRange}`),
+      onChangeDate: action('click-dateRange'),
     };
     return (<GraphCount {...data} />)
   })
