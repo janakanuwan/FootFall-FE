@@ -7,8 +7,8 @@
 // to "React Create App". This only has babel loader to load JavaScript.
 
 const path = require('path');
-const appSrc = path.resolve(__dirname, 'src');
-const assetSrc = path.resolve(__dirname, 'assets');
+const appSrc = path.resolve(__dirname, '../src');
+const assetSrc = path.resolve(__dirname, '../assets');
 
 module.exports = {
   plugins: [
@@ -40,7 +40,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      Models: path.resolve(__dirname, 'src/app/models/index.js'),
+      Models: path.resolve(__dirname, '../src/app/models/index.js'),
     }
   },
 };

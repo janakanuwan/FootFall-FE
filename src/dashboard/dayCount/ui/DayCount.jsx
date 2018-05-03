@@ -68,8 +68,8 @@ const DayCount = (props) => {
 
 DayCount.propTypes = {
   dayName: PropTypes.string.isRequired,
-  day: PropTypes.PropTypes.string.isRequired,
-  time: PropTypes.PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
 
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
