@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
-import { withStyles } from 'material-ui/styles';
+import { withStyles, withTheme } from 'material-ui/styles';
 
 import CountChart from '../../common-ui/CountChart';
 import DateTextField from '../../common-ui/DateTextField';
@@ -36,6 +36,8 @@ const GraphOptionItems = GraphDisplayOptions.map((value, index) => ({
 const styles = theme => ({
   graphCount: {
     padding: theme.spacing.unit * 2,
+  },
+  graphCountChart: {
     backgroundColor: '#FAFAFA',
   },
 });
@@ -73,33 +75,32 @@ const GraphCount = (props) => {
 
 
   return (
-    <div>
-      <Paper elevation={8} className={classes.graphCount}>
-        <Grid container justify="space-between" alignItems="center" direction="row">
+    <Paper elevation={12} className={classes.graphCount}>
+      <Grid container justify="space-between" alignItems="center" direction="row">
 
-          <Grid item xs={8}>
-            {GraphDisplayTypes.map(value => (
-              <DisplayButton
-                key={value}
-                selected={displayTypeData[value]}
-                onClick={onClickDisplayType}
-              >{value}
-              </DisplayButton>
+        <Grid item xs={8}>
+          {GraphDisplayTypes.map(value => (
+            <DisplayButton
+              key={value}
+              selected={displayTypeData[value]}
+              onClick={onClickDisplayType}
+            >{value}
+            </DisplayButton>
             ))}
-          </Grid>
+        </Grid>
 
-          <Grid item xs>
+        <Grid item xs>
 
-            <ButtonSelectGroup
-              size="small"
-              maxButtonCount={5}
-              items={GraphOptionItems}
-              selectedItem={GraphOptionItems.find(option => option.name === selectedDisplayOption)}
-              onClick={option => onClickDisplayOption(option.name)}
-            />
-            <br />
+          <ButtonSelectGroup
+            size="small"
+            maxButtonCount={5}
+            items={GraphOptionItems}
+            selectedItem={GraphOptionItems.find(option => option.name === selectedDisplayOption)}
+            onClick={option => onClickDisplayOption(option.name)}
+          />
+          <br />
 
-            {GraphDateRangeTypes.map(value =>
+          {GraphDateRangeTypes.map(value =>
               (<DateTextField
                 key={value}
                 label={value.toUpperCase()}
@@ -109,10 +110,12 @@ const GraphCount = (props) => {
                 onChange={date => onChangeDate({ type: value, date })}
               />))}
 
-          </Grid>
-
         </Grid>
 
+      </Grid>
+
+      <br />
+      <Paper elevation={8} className={classes.graphCountChart}>
         <br />
         <CountChart
           data={graphData}
@@ -121,8 +124,9 @@ const GraphCount = (props) => {
           displayPresence={displayTypeData.presence}
           width="95%"
         />
+        <br />
       </Paper>
-    </div>
+    </Paper>
   );
 };
 
@@ -157,5 +161,5 @@ GraphCount.propTypes = {
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withStyles(styles)(GraphCount);
+export default withTheme()(withStyles(styles)(GraphCount));
 

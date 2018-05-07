@@ -1,5 +1,15 @@
 import { Any, fromJS, List, Map, Maybe, Record, Typed, Union } from './Model';
 
+import Merchant from './Merchant.model';
+
+import Location from './Location.model';
+
+import User from './User.model';
+
+import OverlayData from './OverlayData.model';
+
+import Entry from './Entry.model';
+
 export {
   Map,
   fromJS,
@@ -12,24 +22,14 @@ export {
   Union,
 };
 
-import Merchant from './Merchant.model';
-
 export { Merchant };
 
-import Location from './Location.model';
-
 export { Location };
-
-import User from './User.model';
 
 export { User };
 
 export { GraphDisplayTypeData, GraphData, GraphDateRange } from './graph/index';
 
-import OverlayData from './OverlayData.model';
-
 export { OverlayData };
-
-import Entry from './Entry.model';
 
 export { Entry };

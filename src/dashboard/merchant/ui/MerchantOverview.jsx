@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import { withTheme } from 'material-ui/styles';
 
 import ListSelect from './../../common-ui/ListSelect';
 
@@ -16,7 +18,7 @@ import { List, Merchant } from 'Models';
  * @param onSelect(merchant) fired at a select change
  */
 const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => (
-  <div>
+  <Paper elevation={0}>
     <br />
 
     <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
@@ -37,7 +39,7 @@ const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => (
 
     <br />
     <Divider />
-  </div>
+  </Paper>
 );
 
 MerchantOverview.propTypes = {
@@ -58,4 +60,4 @@ MerchantOverview.propTypes = {
   onSelect: PropTypes.func.isRequired,
 };
 
-export default MerchantOverview;
+export default withTheme()(MerchantOverview);

@@ -8,7 +8,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
-import { withStyles } from 'material-ui/styles';
+import { withStyles, withTheme } from 'material-ui/styles';
 
 // position: 'absolute',
 // top: '50%',
@@ -109,7 +109,6 @@ class UserLoginForm extends React.Component {
               control={
                 <Checkbox
                   name="rememberMe"
-                  color="primary"
                   onChange={this.handleChange}
                   checked={rememberMe}
                 />
@@ -117,7 +116,7 @@ class UserLoginForm extends React.Component {
             />
             <br />
 
-            <Button type="submit" color="primary" variant="raised" disabled={false}>
+            <Button type="submit" variant="raised" disabled={false}>
               Log in
             </Button>
 
@@ -149,4 +148,4 @@ UserLoginForm.defaultProps = {
   passwordError: false,
 };
 
-export default withStyles(styles)(UserLoginForm);
+export default withTheme()(withStyles(styles)(UserLoginForm));

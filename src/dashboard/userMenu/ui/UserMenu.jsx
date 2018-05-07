@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Menu, { MenuItem } from 'material-ui/Menu';
+import Paper from 'material-ui/Paper';
+import { withTheme } from 'material-ui/styles';
 
 import { User } from 'Models';
 
@@ -41,22 +43,26 @@ class UserMenu extends React.Component {
 
     return (
       <div align="right">
-        <Button
-          aria-owns={anchorEl ? 'simple-user-menu' : null}
-          aria-haspopup="true"
-          onClick={this.handleClick}
-        >
-          {name}
-        </Button>
-        <Menu
-          id="simple-user-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem onClick={this.handleClose}>Profile ({email})</MenuItem>
-          <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
-        </Menu>
+        <Paper elevation={0}>
+
+          <Button
+            aria-owns={anchorEl ? 'simple-user-menu' : null}
+            aria-haspopup="true"
+            onClick={this.handleClick}
+          >
+            {name}
+          </Button>
+          <Menu
+            id="simple-user-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={this.handleClose}
+          >
+            <MenuItem onClick={this.handleClose}>Profile ({email})</MenuItem>
+            <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+          </Menu>
+
+        </Paper>
       </div>
     );
   }
@@ -73,4 +79,4 @@ UserMenu.propTypes = {
   onLogout: PropTypes.func.isRequired,
 };
 
-export default UserMenu;
+export default withTheme()(UserMenu);

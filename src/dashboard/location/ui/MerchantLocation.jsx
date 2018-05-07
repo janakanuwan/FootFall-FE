@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
+import { withTheme } from 'material-ui/styles';
 
 import ButtonSelectGroup from './../../common-ui/ButtonSelectGroup';
 
@@ -16,10 +18,10 @@ import { List, Location } from 'Models';
  * @param onClick(location) fired at a select change
  */
 const MerchantLocation = ({ locationList, selectedLocation, onClick }) => (
-  <div>
+  <Paper elevation={0}>
     <br />
 
-    <Grid container alignItems="center" justify="flex-end" direction="row" spacing={4}>
+    <Grid container alignItems="center" justify="flex-end" direction="row" spacing={8}>
       <Grid item xs>
         <Typography variant="headline" component="h2">
           Location
@@ -37,7 +39,7 @@ const MerchantLocation = ({ locationList, selectedLocation, onClick }) => (
     </Grid>
 
     <br />
-  </div>
+  </Paper>
 );
 
 
@@ -59,4 +61,4 @@ MerchantLocation.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default MerchantLocation;
+export default withTheme()(MerchantLocation);

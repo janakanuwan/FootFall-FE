@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import { withStyles } from 'material-ui/styles';
+import { withStyles, withTheme } from 'material-ui/styles';
 
 const styles = theme => ({
-  paperCount: {
+  countValue: {
     padding: theme.spacing.unit * 2,
     margin: theme.spacing.unit,
     width: '50%',
     textAlign: 'center',
     backgroundColor: theme.palette.primary.light,
+  },
+  countName: {
+    paddingRight: theme.spacing.unit * 2,
   },
 });
 
@@ -26,47 +29,37 @@ const DayCount = (props) => {
   } = props;
 
   return (
-    <div>
-      <br />
-
-      <Paper elevation={4}>
-        <Grid container alignItems="center" justify="center" direction="row">
-
-          <Grid item xs>
-            <Typography variant="headline" component="h3">
-              {dayName}
+    <Paper elevation={8}>
+      <Grid container alignItems="center" justify="center" direction="row">
+        <Grid item xs>
+          <Typography variant="headline" component="h3">
+            {dayName}
+          </Typography>
+        </Grid>
+        <Grid item xs>
+          <Grid container alignItems="center" justify="flex-end" direction="column">
+            <Typography variant="headline" component="h5">
+              {day}
+            </Typography>
+            <Typography variant="headline" component="h6">
+              {time}
             </Typography>
           </Grid>
-
-          <Grid item xs>
-            <Grid container alignItems="center" justify="flex-end" direction="column">
-              <Typography variant="headline" component="h5">
-                {day}
-              </Typography>
-              <Typography variant="headline" component="h6">
-                {time}
-              </Typography>
-            </Grid>
-          </Grid>
-
-          <Grid item xs>
-            <Grid container alignItems="flex-end" justify="center" direction="column">
-              <Typography component="p">
-                Visiting Customers
-              </Typography>
-              <Paper elevation={16} className={classes.paperCount}>
-                <Typography variant="headline" component="h4">
-                  {count}
-                </Typography>
-              </Paper>
-            </Grid>
-          </Grid>
-
         </Grid>
-      </Paper>
-
-      <br />
-    </div>
+        <Grid item xs>
+          <Grid container alignItems="flex-end" justify="center" direction="column">
+            <Typography component="p" className={classes.countName}>
+                Visiting Customers
+            </Typography>
+            <Paper elevation={16} className={classes.countValue}>
+              <Typography variant="headline" component="h4">
+                {count}
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
   );
 };
 
@@ -79,4 +72,4 @@ DayCount.propTypes = {
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withStyles(styles)(DayCount);
+export default withTheme()(withStyles(styles)(DayCount));

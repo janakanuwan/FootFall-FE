@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Dialog, { DialogContent, DialogContentText, DialogTitle } from 'material-ui/Dialog';
+import { withTheme } from 'material-ui/styles';
 
 const Overlay = ({
   title, message, open, onClose,
@@ -30,5 +31,5 @@ Overlay.defaultProps = {
   },
 };
 
-export default Overlay;
+export default withTheme()(Overlay);
 
