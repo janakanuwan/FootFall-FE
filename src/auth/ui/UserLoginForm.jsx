@@ -22,8 +22,9 @@ const styles = theme => ({
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
+    // backgroundColor: '#A5A5AF',
 
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 4,
   },
 });
 

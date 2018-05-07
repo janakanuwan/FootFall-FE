@@ -39,23 +39,27 @@ const DayCount = (props) => {
           </Grid>
 
           <Grid item xs>
-            <Typography variant="headline" component="h5">
-              {day}
-            </Typography>
-            <Typography variant="headline" component="h6">
-              {time}
-            </Typography>
+            <Grid container alignItems="center" justify="flex-end" direction="column">
+              <Typography variant="headline" component="h5">
+                {day}
+              </Typography>
+              <Typography variant="headline" component="h6">
+                {time}
+              </Typography>
+            </Grid>
           </Grid>
 
           <Grid item xs>
-            <Typography component="p">
-              Visiting Customers
-            </Typography>
-            <Paper elevation={16} className={classes.paperCount}>
-              <Typography variant="headline" component="h4">
-                {count}
+            <Grid container alignItems="flex-end" justify="center" direction="column">
+              <Typography component="p">
+                Visiting Customers
               </Typography>
-            </Paper>
+              <Paper elevation={16} className={classes.paperCount}>
+                <Typography variant="headline" component="h4">
+                  {count}
+                </Typography>
+              </Paper>
+            </Grid>
           </Grid>
 
         </Grid>

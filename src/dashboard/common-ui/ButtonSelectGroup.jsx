@@ -50,7 +50,7 @@ const ButtonSelectGroup = ({
     </Button>
   ));
 
-  const selectComponent = (itemsInSelect.length || itemsInSelect.size) === 0 ? null : (
+  const selectComponent = (itemsInSelect.length === 0 || itemsInSelect.size === 0) ? null : (
     <Select
       value={itemsInSelect.indexOf(selectedItem)}
       onChange={event =>

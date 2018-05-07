@@ -19,14 +19,14 @@ const MerchantLocation = ({ locationList, selectedLocation, onClick }) => (
   <div>
     <br />
 
-    <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
-      <Grid item xs={4}>
+    <Grid container alignItems="center" justify="flex-end" direction="row" spacing={4}>
+      <Grid item xs>
         <Typography variant="headline" component="h2">
           Location
         </Typography>
       </Grid>
 
-      <Grid item xs={8}>
+      <Grid item xs>
         <ButtonSelectGroup
           items={locationList}
           selectedItem={selectedLocation}

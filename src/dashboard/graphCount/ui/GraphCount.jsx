@@ -119,7 +119,7 @@ const GraphCount = (props) => {
           displayIn={displayTypeData.in}
           displayOut={displayTypeData.out}
           displayPresence={displayTypeData.presence}
-          width="90%"
+          width="95%"
         />
       </Paper>
     </div>
