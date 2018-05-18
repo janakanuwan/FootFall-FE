@@ -51,6 +51,7 @@ will simply development efforts and enable debugging
 ## TODO
 - Add support for https://github.com/react-theming/storybook-addon-material-ui 
 - Add test cases (specially mapping errors in API, e.g. userServiceResponseMapper)
+- Add fonts (https://material-ui-next.com/style/typography/, https://material-ui-next.com/customization/themes/#typography)
 - Add caching for APIs 
 - Add parentId = null, for displaying locations
 - Add exclusion of non-working hours in graph
