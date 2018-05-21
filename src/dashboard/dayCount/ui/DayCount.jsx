@@ -11,7 +11,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     width: '50%',
     textAlign: 'center',
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: '#FFD740',
   },
   countName: {
     paddingRight: theme.spacing.unit * 2,
@@ -33,7 +33,7 @@ const DayCount = (props) => {
       <Grid container alignItems="center" justify="center" direction="row">
         <Grid item xs>
           <Typography variant="headline" component="h3">
-            {dayName}
+            &nbsp;&nbsp;&nbsp;&nbsp;{dayName}
           </Typography>
         </Grid>
         <Grid item xs>

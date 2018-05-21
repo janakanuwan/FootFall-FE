@@ -21,7 +21,17 @@ const muiTheme = createMuiTheme({
       default: '#E0E0E0',
     },
   },
-  overrides: {},
+  typography: {
+    fontFamily: [
+      '"Droid Serif"',
+      'Cambria',
+      'Georgia',
+      'Roboto',
+      'Helvetica',
+      'sans-serif',
+      'Arial',
+    ].join(','),
+  },
 });
 
 ReactDOM.render(

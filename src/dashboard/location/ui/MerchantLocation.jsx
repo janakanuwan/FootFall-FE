@@ -24,7 +24,7 @@ const MerchantLocation = ({ locationList, selectedLocation, onClick }) => (
     <Grid container alignItems="center" justify="flex-end" direction="row" spacing={8}>
       <Grid item xs>
         <Typography variant="headline" component="h2">
-          Location
+          &nbsp;&nbsp;&nbsp;&nbsp;Location
         </Typography>
       </Grid>
 

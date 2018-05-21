@@ -24,7 +24,7 @@ const MerchantOverview = ({ merchantList, selectedMerchant, onSelect }) => (
     <Grid container alignItems="center" justify="center" direction="row" spacing={8}>
       <Grid item xs>
         <Typography variant="headline">
-          Overview
+          &nbsp;&nbsp;&nbsp;&nbsp;Overview
         </Typography>
       </Grid>
 

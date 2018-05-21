@@ -5,6 +5,29 @@
 const now = Date.now();
 const hour = 1000 * 60 * 60;
 
+const random = (max) => Math.floor(Math.random() * (max - + 1));
+
+let entryId = 0;
+const entry = (locationId) => {
+  entryId++;
+  return ({
+    "id": entryId,
+    "entry": random(10),
+    "exit": random(10),
+    "time": now - random(24*60)*hour,
+    "locationId": locationId
+  });
+};
+
+const entries = (locationId, count) => {
+  let data = [];
+  for(let i = 0; i< count; i++){
+    data.push(entry(locationId));
+  }
+
+  return data;
+};
+
 module.exports = (req, res, next) => {
 
   if (req.path === '/login' && req.method === 'POST') {
@@ -12,7 +35,7 @@ module.exports = (req, res, next) => {
       token: "1234",
       settings: {
         id: 1,
-        name: "Hello Test",
+        name: "Hello Janaka",
         email: "hellotest@gmail.com",
         lastLoginTime: now - 6 * hour
       }
@@ -23,50 +46,12 @@ module.exports = (req, res, next) => {
       code: 4003
     });
   } else if (/\/merchants\/(\d+)\/locations\/(\d+)\/entries/.test(req.path)) {
-    res.status(200).json([
-      {
-        "id": 1,
-        "entry": 4,
-        "exit": 2,
-        "time": now - 5 * hour,
-        "locationId": 125
-      },
-      {
-        "id": 2,
-        "entry": 5,
-        "exit": 6,
-        "time": now - 4 * hour,
-        "locationId": 125
-      },
-      {
-        "id": 3,
-        "entry": 3,
-        "exit": 5,
-        "time": now - 3 * hour,
-        "locationId": 125
-      },
-      {
-        "id": 4,
-        "entry": 6,
-        "exit": 0,
-        "time": now - 2 * hour,
-        "locationId": 125
-      },
-      {
-        "id": 5,
-        "entry": 0,
-        "exit": 4,
-        "time": now - hour,
-        "locationId": 125
-      },
-      {
-        "id": 6,
-        "entry": 3,
-        "exit": 1,
-        "time": now - 0.5 * hour,
-        "locationId": 124
-      }
-    ]);
+    res.status(200).json(
+      entries(124, 1000)
+        .concat(entries(125, 600))
+        .concat(entries(126, 500))
+        .concat(entries(567, 400))
+    );
   } else {
     next()
   }
