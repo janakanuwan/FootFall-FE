@@ -24,7 +24,7 @@
   "dependencies": {
     "cross-fetch": "^2.1.1",
     "immutable": "^3.8.2",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "log4javascript": "^1.4.15",
     "material-ui": "^1.0.0-beta.44",
     "moment": "^2.22.1",
